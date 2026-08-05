@@ -93,6 +93,8 @@ Both harnesses share the deferral rule: when her reply is a holding line ("let m
 
 Latest full run of this exact tree: **61/61 pass** (2026-08-05, 1x with reds escalated to 3x). Two probes graded as instrument errors on the first attempt — the judge's codex lane refused to run outside a git repo — and passed on retest the same day after the one-line fix; both the bug and the fix are in the commit history, which is where this repo keeps its mistakes.
 
+The PSTN lane keeps receipts too: **[a real 8 kHz call transcript](evals/transcripts/2026-08-05-pstn-important-comms.md)**, replaying a production miss from that same morning word for word and showing the routing fix holding on the hard lane.
+
 ### cases.py — 61 probes, mined not invented
 
 Utterances come verbatim from live calls, disfluencies kept: *"Hey. Hey, um, what events do I have for the next three weeks on my calendar?"*, *"Uh, h- how long by car?"*. Each carries a hand-set expected tool — grading against what the agent *did* is useless when production data already shows real routing errors. READ probes are safe; WRITE probes really change the volume and really create playlists, and hide behind `--allow-actions`.
@@ -183,7 +185,7 @@ Setting her up from scratch: create an agents-platform agent in ElevenLabs, past
 
 ## Roadmap
 
-- A PSTN probe lane: the voice harness drives the WebSocket; the 8 kHz lane is still probed by placing real calls
+- A scripted PSTN probe lane: real 8 kHz calls are already placed and [kept as receipts](evals/transcripts/2026-08-05-pstn-important-comms.md); the missing piece is packaging that flow as a harness script
 - A fixture-capture helper, so multi-turn cases replay recorded tool turns instead of reconstructions
 - A minimal reference tool server, so the webhook side runs without an OpenClaw install
 
