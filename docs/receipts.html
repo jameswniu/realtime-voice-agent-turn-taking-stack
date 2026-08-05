@@ -16,7 +16,7 @@
        min-height:100vh; padding:44px 20px 90px}
   .wrap{max-width:880px; margin:0 auto}
   .frame{border:1.4px solid var(--trim); outline:1px solid var(--trimsoft); outline-offset:-7px;
-         background:var(--ivory); padding:34px 34px 40px}
+         background:var(--ivory); padding:34px 34px 40px; margin-bottom:30px}
   h1{font-size:30px; letter-spacing:.3px}
   .kick{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--goldk);
         font-weight:700; letter-spacing:2.5px; font-size:13px; margin-bottom:10px}
@@ -46,87 +46,149 @@
             font-size:12.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .note{margin-top:26px; font-size:13.5px; color:var(--mut); line-height:1.6}
   .note b{color:var(--body)}
+  .toc a{color:var(--goldk); text-decoration:none}
+  .toc a:hover{color:var(--rust)}
   @media(max-width:560px){.turn{grid-template-columns:1fr}.who{justify-self:start}}
 </style>
 </head>
 <body>
-<div class="wrap"><div class="frame">
+<div class="wrap">
+
+<div class="frame">
   <div class="top">
     <div class="kick">CALL RECEIPTS</div>
     <h1>Real calls, kept as evidence</h1>
     <div class="sub">Every receipt is a real PSTN call placed by the harness: the owner's verified
     caller ID, his synthesized clone asking the questions, her answering live with real tools.
-    Audio is 8&nbsp;kHz telephony band — the hard lane, as it actually sounds.</div>
-    <div class="sub"><a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">← back to the repo</a>
-    &nbsp;·&nbsp; <a href="architecture.html">the architecture</a></div>
+    Audio is 8&nbsp;kHz telephony band — the hard lane, as it actually sounds. One card per
+    conversation, split turn by turn.</div>
+    <div class="sub toc">
+      <a href="#route-fix">01 the route fix</a> &nbsp;·&nbsp;
+      <a href="#thanks-trap">02 the thanks trap</a> &nbsp;·&nbsp;
+      <a href="#clean-close">03 the clean close</a> &nbsp;·&nbsp;
+      <a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">the repo</a> &nbsp;·&nbsp;
+      <a href="architecture.html">the architecture</a>
+    </div>
   </div>
+</div>
 
-  <div class="rule"></div>
-
-  <div class="kick" style="color:var(--rust)">2026-08-05 · 13:48 PT</div>
-  <div class="call-title">The important-communications route, verified after a same-day fix</div>
+<div class="frame" id="route-fix">
+  <div class="kick" style="color:var(--rust)">01 · 2026-08-05 13:48 PT · 47s</div>
+  <div class="call-title">The route fix</div>
   <div class="mech">
-    <span><b>47s</b> duration</span>
-    <span><b>8 kHz</b> μ-law PSTN</span>
     <span><b>check_notes</b> routed correctly</span>
     <span><b>3 channels</b> swept</span>
+    <span><b>1</b> holding line, said once</span>
   </div>
-  <div class="sub" style="margin-top:12px">That morning, a live call answered this exact question by
-  opening the wrong channel and reading the owner's own agent thread back to him. The fix moved the
-  scope into tool descriptions and server code. This call replays the original ask — stutter included
-  — and shows the route holding.</div>
+  <div class="sub">That morning, a live call answered this exact question by opening the wrong
+  channel and reading the owner's own agent thread back to him. The fix moved the scope into tool
+  descriptions and server code. This call replays the original ask — stutter included — and shows
+  the route holding.</div>
 
-  <div class="full">
-    <div class="lbl">FULL CALL · REDACTED</div>
-    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/full-call-redacted.mp3"></audio>
-  </div>
+  <div class="full"><div class="lbl">FULL CALL · REDACTED</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/full-call-redacted.mp3"></audio></div>
 
-  <div class="turn">
-    <div class="who aj">AJ</div>
+  <div class="turn"><div class="who aj">AJ</div>
     <div><div class="cap">"Hey [owner], it is AJ. What are we sorting out?"</div>
-    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-0-greeting.mp3"></audio></div>
-  </div>
-
-  <div class="turn">
-    <div class="who owner">OWNER'S CLONE</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-0-greeting.mp3"></audio></div></div>
+  <div class="turn"><div class="who owner">OWNER'S CLONE</div>
     <div><div class="cap">"Hey, what, what important, like, communication do I have right now?" — the
     disfluency is deliberate: it is the production utterance, verbatim.</div>
-    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-1-question.mp3"></audio></div>
-  </div>
-
-  <div class="turn">
-    <div class="who aj">AJ</div>
-    <div><div class="cap">"Let me check my notes for any important communications." — one holding line,
-    said once.</div>
-    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-2-holding.mp3"></audio></div>
-  </div>
-
-  <div class="turn">
-    <div class="who sys">CONSULT · ~18s</div>
-    <div><div class="cap">The slow tool does its work. Trimmed from the per-turn clips; present in the
-    full recording above.</div></div>
-  </div>
-
-  <div class="turn">
-    <div class="who aj">AJ</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-1-question.mp3"></audio></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">"Let me check my notes for any important communications."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-2-holding.mp3"></audio></div></div>
+  <div class="turn"><div class="who sys">CONSULT · ~18s</div>
+    <div><div class="cap">The slow tool does its work. Trimmed here; present in the full recording.</div></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
     <div><div class="cap">"Okay, so you've got a few emails: document requests from
     <span class="red">redacted</span> at <span class="red">redacted</span>, a
     <span class="red">redacted</span> update about your <span class="red">redacted</span> transfer, and a
     <span class="red">redacted</span> notice. On iMessage, you have recent texts from
     <span class="red">redacted</span> and <span class="red">redacted</span>. Nothing new on WhatsApp, though."</div>
-    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-3-answer-redacted.mp3"></audio></div>
-  </div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-3-answer-redacted.mp3"></audio></div></div>
+</div>
 
+<div class="frame" id="thanks-trap">
+  <div class="kick" style="color:var(--rust)">02 · 2026-08-05 15:02 PT · 44s</div>
+  <div class="call-title">The thanks trap</div>
+  <div class="mech">
+    <span><b>"Thanks"</b> keeps the line</span>
+    <span><b>no tool</b> on the acknowledgement</span>
+    <span><b>"Next"</b> fires tell_joke</span>
+  </div>
+  <div class="sub">Down an 8&nbsp;kHz line, "next" and "thanks" are nearly the same word, and the costs
+  are asymmetric: a wrong "next" costs one joke, a wrong "thanks" costs the whole call. So thanks
+  never hangs up — the acknowledgement gets a beat and a door, and the run continues.</div>
+
+  <div class="full"><div class="lbl">FULL CALL</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/full-call.mp3"></audio></div>
+
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">"Hey [owner], it is AJ. How is the day treating you?"</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-0-greeting.mp3"></audio></div></div>
+  <div class="turn"><div class="who owner">OWNER'S CLONE</div>
+    <div><div class="cap">"Tell me a joke."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-1-ask.mp3"></audio></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">tell_joke fires; the joke is fetched, never composed: "Someone told me their
+    hobby had become a discipline. Mine is still mostly buying the equipment and feeling spiritually
+    complete."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-2-joke1.mp3"></audio></div></div>
+  <div class="turn"><div class="who owner">OWNER'S CLONE</div>
+    <div><div class="cap">"Thanks." — the trap. An acknowledgement is not a request, and it is never a
+    hang-up.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-3-thanks.mp3"></audio></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">"You are welcome. Anything else I can help with?" — no tool called, the line
+    stays open.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-4-beat.mp3"></audio></div></div>
+  <div class="turn"><div class="who owner">OWNER'S CLONE</div>
+    <div><div class="cap">"Next."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-5-next.mp3"></audio></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">tell_joke fires again: "They have started treating ordinary conversations like
+    escape rooms. I am delighted the missing clue is apparently just confidence."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-thanks-trap/jr-6-joke2.mp3"></audio></div></div>
+</div>
+
+<div class="frame" id="clean-close">
+  <div class="kick" style="color:var(--rust)">03 · 2026-08-05 15:03 PT · 11s</div>
+  <div class="call-title">The clean close</div>
+  <div class="mech">
+    <span><b>end_call</b> carries the farewell</span>
+    <span><b>11s</b> start to finish</span>
+  </div>
+  <div class="sub">Plain words of leaving end a call — and the goodbye rides inside the end_call tool,
+  so saying it and hanging up are one act that cannot come apart. No dead line, no lingering.</div>
+
+  <div class="full"><div class="lbl">FULL CALL</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-clean-close/full-call.mp3"></audio></div>
+
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">"Hey [owner], it is AJ. Afternoon. What is next?"</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-clean-close/cc-0-greeting.mp3"></audio></div></div>
+  <div class="turn"><div class="who owner">OWNER'S CLONE</div>
+    <div><div class="cap">"That's all. Thanks." — ends the call because of the first half, never the
+    second.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-clean-close/cc-1-thatsall.mp3"></audio></div></div>
+  <div class="turn"><div class="who aj">AJ</div>
+    <div><div class="cap">"Alright, [owner]. Glad we got that sorted. Have a good one!" — spoken by
+    end_call itself; termination_reason confirms the tool hung up, not a timeout.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-clean-close/cc-2-close.mp3"></audio></div></div>
+</div>
+
+<div class="frame">
   <div class="note">
-    <b>Redaction, verified by machine:</b> five spans are silenced in the audio (a law firm and its
-    named partner, two account providers, a job board, and two friends' names). The redacted track was
-    re-transcribed and none of the original names survive; where an ASR imagines words over the
-    silence, that is the transcriber hallucinating, not the audio. The call ends mid-sentence because
-    the probe's 40-second window expired — the agent did not hang up.<br><br>
+    <b>Redaction, verified by machine:</b> where a call touches real life (call 01), the sensitive spans
+    are silenced and the redacted track is re-transcribed to prove none of the original names survive.
+    Where an ASR imagines words over the silence, that is the transcriber hallucinating, not the audio.<br><br>
     <b>Voices:</b> the caller is a synthesized clone of the owner's voice, played over the line by the
     test harness; AJ's voice is a designed persona voice. Neither is a recording of a natural person
     speaking these words live.
   </div>
-</div></div>
+</div>
+
+</div>
 </body>
 </html>
