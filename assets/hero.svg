@@ -42,8 +42,8 @@
 
   <!-- service ledger -->
   <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">
-    <text x="330" y="296" font-size="30" font-weight="700" fill="#2B1B12">61</text>
-    <text x="330" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">CASES IN THE SUITE</text>
+    <text x="330" y="296" font-size="30" font-weight="700" fill="#2B1B12">61/61</text>
+    <text x="330" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">SUITE CASES GREEN</text>
     <text x="510" y="296" font-size="30" font-weight="700" fill="#2B1B12">2</text>
     <text x="510" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">TRANSPORTS</text>
     <text x="690" y="296" font-size="30" font-weight="700" fill="#2B1B12">16</text>

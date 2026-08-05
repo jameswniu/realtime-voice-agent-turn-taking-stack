@@ -6,7 +6,7 @@
 
 <br><br>
 
-[![cases](https://img.shields.io/badge/cases-61_probes-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
+[![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
 [![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
 [![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
 [![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
@@ -91,6 +91,8 @@ Both harnesses share the deferral rule: when her reply is a holding line ("let m
 
 ## The white-glove pass, stage by stage
 
+Latest full run of this exact tree: **61/61 pass** (2026-08-05, 1x with reds escalated to 3x). Two probes graded as instrument errors on the first attempt — the judge's codex lane refused to run outside a git repo — and passed on retest the same day after the one-line fix; both the bug and the fix are in the commit history, which is where this repo keeps its mistakes.
+
 ### cases.py — 61 probes, mined not invented
 
 Utterances come verbatim from live calls, disfluencies kept: *"Hey. Hey, um, what events do I have for the next three weeks on my calendar?"*, *"Uh, h- how long by car?"*. Each carries a hand-set expected tool — grading against what the agent *did* is useless when production data already shows real routing errors. READ probes are safe; WRITE probes really change the volume and really create playlists, and hide behind `--allow-actions`.
@@ -140,6 +142,7 @@ Reads the ElevenLabs conversation history and computes the two-layer dashboard (
 
 | what | value | how it is known |
 |---|---|---|
+| latest full run | 61/61 pass | measured 2026-08-05, 1x + reds escalated to 3x |
 | probes shipped | 61 READ + 7 WRITE | `evals/cases.py`, counted by `--dry-run` |
 | decided by pure code | ~54 of 55 | grader coverage over the suite |
 | tier-2 judge involvement | ~9% of runs | measured across stored runs |
