@@ -24,7 +24,13 @@ The interactive version of the architecture lives at **[jameswniu.github.io/real
 
 ## Architecture
 
-<img src="assets/architecture.svg" alt="Caller through Twilio PSTN or WebSocket into the ElevenLabs agent, sixteen webhook tools into a tool server, and the evals loop" width="100%">
+<img src="assets/architecture.svg" alt="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" width="100%">
+
+<details>
+<summary><b>The same map as a terminal read</b> — every box above, as monospace</summary>
+<br>
+<img src="assets/architecture-terminal.svg" alt="The stack end to end, rendered as a terminal screen" width="100%">
+</details>
 
 Two transports land in one agent, and the difference between them is the whole testing story. The WebSocket lane is crisp 16 kHz and drivable from code; the PSTN lane is 8 kHz telephony audio where "next" and "thanks" become the same word. Cheap layers come back green while the real call fails — so the layers are explicit, and every claim names the layer it was proven on.
 

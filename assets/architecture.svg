@@ -1,1 +1,145 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1116" viewBox="0 0 1240 1116" role="img" aria-label="realtime-voice-agent-turn-taking-stack architecture: caller, ElevenLabs agent, tool server, evals"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#140806"/><stop offset="55%" stop-color="#241009"/><stop offset="100%" stop-color="#3B1710"/></linearGradient></defs><rect width="1240" height="1116" rx="14" fill="url(#bg)"/><rect width="1240" height="1116" rx="14" fill="none" stroke="#4A241C" stroke-width="1.5"/><circle cx="34" cy="34" r="7" fill="#B04437"/><circle cx="58" cy="34" r="7" fill="#D96A57" opacity=".55"/><circle cx="82" cy="34" r="7" fill="#E8A196" opacity=".35"/><text x="620" y="40" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17" fill="#D9998B" text-anchor="middle">realtime-voice-agent-turn-taking-stack — the stack, end to end</text><rect x="28" y="58" width="1184" height="1" fill="#4A241C"/><text x="46" y="152" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700" fill="#D96A57" letter-spacing="1.5" xml:space="preserve">CALLER</text><text x="46" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  iPhone ── Twilio PSTN, 8 kHz ────────────┐      browser widget / WebSocket, 16 kHz ──┐</text><text x="46" y="220" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#9A6B5E" xml:space="preserve">  (the hard lane: telephony audio)         │      (what the harness drives)            │</text><text x="46" y="254" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">                                           ▼                                           ▼</text><text x="46" y="288" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700" fill="#D96A57" letter-spacing="1.5" xml:space="preserve">ELEVENLABS AGENTS PLATFORM</text><text x="46" y="322" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  ┌────────────────────────────────────────────────────────────────────────────────────┐</text><text x="46" y="356" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  │  ASR   scribe_realtime · control keywords (&quot;next&quot;, &quot;that&#x27;s all&quot;, &quot;bye&quot;...)         │</text><text x="46" y="390" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  │  TURN  turn_v3 · eager · 3.0s timeout · speculative                                │</text><text x="46" y="424" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  │  LLM   {{AGENT_LLM}} · temp 0 · backup cascade at 4.0s                             │</text><text x="46" y="458" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  │  TTS   eleven_flash_v2 · voice {{VOICE_ID}} · stability .50 · similarity .95       │</text><text x="46" y="492" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  │  SYS   end_call · voicemail_detection   (the hang-up doctrine lives in these)      │</text><text x="46" y="526" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  └──────────────────────────────────┬─────────────────────────────────────────────────┘</text><text x="46" y="560" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#9A6B5E" xml:space="preserve">                                     │  16 webhook tools, one server</text><text x="46" y="594" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">                                     ▼</text><text x="46" y="628" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700" fill="#D96A57" letter-spacing="1.5" xml:space="preserve">TOOL SERVER   {{TOOL_SERVER}} — an OpenClaw gateway + thin shims</text><text x="46" y="662" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  fast   calculate · get_location · get_calendar · get_distance · list_calls</text><text x="46" y="696" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">         schedule_call · cancel_call · set_volume · play_music · create_playlist</text><text x="46" y="730" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  slow   check_notes (the consult brain, 10–22s) · tell_joke · check_telegram</text><text x="46" y="764" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">         make_song · save_note</text><text x="46" y="798" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#9A6B5E" xml:space="preserve">  get_weather skips the server entirely: straight to open-meteo, no key needed</text><text x="46" y="832" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700" fill="#D96A57" letter-spacing="1.5" xml:space="preserve">EVALS — the part that keeps her honest</text><text x="46" y="866" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  harness/talk-to-her.js        text socket, skips audio; measures routing + latency</text><text x="46" y="900" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  harness/talk-to-her-voice.js  real TTS ▸ ASR ▸ VAD; catches mishears + turn-taking</text><text x="46" y="934" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  evals/cases.py    61 probes mined verbatim from live calls, READ/WRITE tagged</text><text x="46" y="968" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  evals/suite.py    runner: checkpointed, majority-across-repeats, 1x then escalate reds</text><text x="46" y="1002" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  evals/grade.py    tier 0/1, pure code — decides ~54 of 55 with no model at all</text><text x="46" y="1036" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  evals/judge.py    tier 2 — structural probe (the letter) + vibes probe (the ear)</text><text x="46" y="1070" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19" font-weight="400" fill="#F7E9E4" xml:space="preserve">  evals/metrics.py  production calls ONLY; harness traffic filtered out, exclusions published</text><text x="46" y="1098" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#B58275" opacity=".92">placeholders in {{double braces}} are yours to fill · interactive version: architecture.html</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1330" width="980" height="1330" role="img" aria-label="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+    <stop offset="0" stop-color="#160907"/>
+    <stop offset="0.55" stop-color="#0F0605"/>
+    <stop offset="1" stop-color="#0B0403"/>
+  </linearGradient>
+  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="0.7" fill="#241210"/>
+  </pattern>
+  <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#7A615A"/>
+    <stop offset="0.28" stop-color="#F3E7E2"/>
+    <stop offset="0.5" stop-color="#A8908A"/>
+    <stop offset="0.72" stop-color="#FCF6F4"/>
+    <stop offset="1" stop-color="#836A63"/>
+  </linearGradient>
+  <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2B130D"/>
+    <stop offset="0.5" stop-color="#20100A"/>
+    <stop offset="1" stop-color="#180B07"/>
+  </linearGradient>
+  <linearGradient id="panelLive" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3A1B12"/>
+    <stop offset="1" stop-color="#221009"/>
+  </linearGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#4A241C" stop-opacity="0.2"/>
+    <stop offset="0.5" stop-color="#C9A79C" stop-opacity="0.75"/>
+    <stop offset="1" stop-color="#4A241C" stop-opacity="0.2"/>
+  </linearGradient>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#A5837A"/>
+  </marker>
+  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#F3E7E2"/>
+  </marker>
+</defs>
+
+<rect x="0" y="0" width="980" height="1330" fill="url(#bg)"/>
+<rect x="0" y="0" width="980" height="1330" fill="url(#grid)"/>
+
+<rect x="34" y="150" width="1" height="1136" fill="#2E1712"/>
+
+<text x="34" y="46" fill="#D96A57" font-size="15" font-weight="700" letter-spacing="3.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">SYSTEM MAP</text>
+<text x="34" y="88" fill="#F5EBE7" font-size="34" font-weight="700" letter-spacing="0.4">Architecture</text>
+<text x="34" y="118" fill="#9B7A70" font-size="19">One call, top to bottom. The bright band is the referee.</text>
+<rect x="700" y="30" width="2" height="62" fill="#3A1D16"/>
+<text x="946" y="52" fill="#A5837A" font-size="17" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">2 transports / 16 tools</text>
+<text x="946" y="78" fill="#A5837A" font-size="17" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">61 cases / 8 kHz floor</text>
+
+<text x="62" y="170" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">01</text>
+<text x="96" y="170" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">CALLER</text>
+<text x="216" y="170" fill="#8F6F65" font-size="18">two transports, one agent; the difference is the testing story</text>
+<line x1="62" y1="184" x2="946" y2="184" stroke="#2E1712" stroke-width="1"/>
+
+<rect x="62" y="200" width="420" height="124" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="74" y="200.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="84" y="236" fill="#F5EBE7" font-size="22" font-weight="700">Twilio PSTN, 8 kHz</text>
+<text x="84" y="270" fill="#C4A196" font-size="19">telephony audio, the hard lane</text>
+<text x="84" y="302" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">'next' and 'thanks' collide here</text>
+
+<rect x="526" y="200" width="420" height="124" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="538" y="200.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="548" y="236" fill="#F5EBE7" font-size="22" font-weight="700">WebSocket, 16 kHz</text>
+<text x="548" y="270" fill="#C4A196" font-size="19">widget sessions and the probe harness</text>
+<text x="548" y="302" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_audio_chunk, pcm_16000</text>
+
+<text x="62" y="378" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">02</text>
+<text x="96" y="378" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">AGENT</text>
+<text x="200" y="378" fill="#8F6F65" font-size="18">ElevenLabs Agents platform; the router, not the brain</text>
+<line x1="62" y1="392" x2="946" y2="392" stroke="#2E1712" stroke-width="1"/>
+
+<rect x="62" y="408" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="74" y="408.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="84" y="444" fill="#F5EBE7" font-size="22" font-weight="700">conversation loop</text>
+<text x="84" y="478" fill="#C4A196" font-size="19">scribe_realtime ASR, keyword-biased</text>
+<text x="84" y="506" fill="#C4A196" font-size="19">turn_v3, eager, 3.0s, speculative</text>
+<text x="84" y="540" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">soft-timeout filler off, deliberately</text>
+
+<rect x="526" y="408" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="538" y="408.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="548" y="444" fill="#F5EBE7" font-size="22" font-weight="700">generation</text>
+<text x="548" y="478" fill="#C4A196" font-size="19">agent LLM at temperature 0</text>
+<text x="548" y="506" fill="#C4A196" font-size="19">TTS eleven_flash_v2, your voice id</text>
+<text x="548" y="540" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">stability .50, similarity .95, cascade 4.0s</text>
+
+<path d="M 482 484 L 518 484" stroke="#A5837A" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+<text x="62" y="614" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">03</text>
+<text x="96" y="614" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">TOOLS</text>
+<text x="196" y="614" fill="#8F6F65" font-size="18">16 webhooks, one server; weather goes straight to open-meteo</text>
+<line x1="62" y1="628" x2="946" y2="628" stroke="#2E1712" stroke-width="1"/>
+
+<rect x="62" y="644" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="74" y="644.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="84" y="680" fill="#F5EBE7" font-size="22" font-weight="700">fast lane, 10 tools</text>
+<text x="84" y="714" fill="#C4A196" font-size="19">calendar, location, distance, calculate</text>
+<text x="84" y="742" fill="#C4A196" font-size="19">calls, volume, music, playlists</text>
+<text x="84" y="776" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">call, then report in ONE sentence</text>
+
+<rect x="526" y="644" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
+<rect x="538" y="644.7" width="396" height="1.4" fill="url(#edge)"/>
+<text x="548" y="680" fill="#F5EBE7" font-size="22" font-weight="700">slow lane</text>
+<text x="548" y="714" fill="#C4A196" font-size="19">check_notes, the consult brain</text>
+<text x="548" y="742" fill="#C4A196" font-size="19">deferral grammar holds the turn open</text>
+<text x="548" y="776" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">measured 10-22s end to end</text>
+
+<path d="M 482 720 L 518 720" stroke="#A5837A" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+<text x="62" y="850" fill="#F3E7E2" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">04</text>
+<text x="96" y="850" fill="#FFFFFF" font-size="17" font-weight="700" letter-spacing="2.2">THE REFEREE</text>
+<text x="270" y="850" fill="#C9A79C" font-size="18">every claim names the layer it was proven on; the subject of this repository</text>
+<line x1="62" y1="864" x2="946" y2="864" stroke="#5A2E24" stroke-width="1"/>
+
+<rect x="62" y="880" width="420" height="146" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
+<text x="84" y="918" fill="#FFFFFF" font-size="22" font-weight="700">harness</text>
+<text x="84" y="952" fill="#E9D5CE" font-size="19">talk-to-her.js, text, no audio</text>
+<text x="84" y="980" fill="#E9D5CE" font-size="19">talk-to-her-voice.js, real ASR and VAD</text>
+<text x="84" y="1008" fill="#A98F86" font-size="17">a turn ends when her ANSWER lands</text>
+
+<rect x="526" y="880" width="420" height="146" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
+<text x="548" y="918" fill="#FFFFFF" font-size="22" font-weight="700">suite</text>
+<text x="548" y="952" fill="#E9D5CE" font-size="19">61 cases mined verbatim from live calls</text>
+<text x="548" y="980" fill="#E9D5CE" font-size="19">1x, reds escalate to 3x, majority wins</text>
+<text x="548" y="1008" fill="#A98F86" font-size="17">checkpointed after every test</text>
+
+<path d="M 482 946 L 518 946" stroke="#F3E7E2" stroke-width="2.2" fill="none" marker-end="url(#ab)"/>
+
+<rect x="62" y="1046" width="884" height="86" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
+<text x="84" y="1082" fill="#FFFFFF" font-size="22" font-weight="700">grade + judge</text>
+<text x="84" y="1114" fill="#E9D5CE" font-size="19">pure code decides ~54 of 55; the rest get two probes, the letter and the ear, and disagreement flags the test</text>
+
+<text x="62" y="1186" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">05</text>
+<text x="96" y="1186" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">PRODUCTION</text>
+<text x="262" y="1186" fill="#8F6F65" font-size="18">metrics that exclude the instrument</text>
+<line x1="62" y1="1200" x2="946" y2="1200" stroke="#2E1712" stroke-width="1"/>
+
+<rect x="62" y="1216" width="420" height="60" fill="url(#panel)" stroke="#4A241C" stroke-width="1.4"/>
+<text x="84" y="1240" fill="#C4A196" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">metrics.py: Twilio + owner number only</text>
+<text x="84" y="1264" fill="#97756A" font-size="16">the harness never grades itself</text>
+<rect x="526" y="1216" width="420" height="60" fill="url(#panel)" stroke="#4A241C" stroke-width="1.4"/>
+<text x="548" y="1240" fill="#C4A196" font-size="18">exclusions published beside the numbers</text>
+<text x="548" y="1264" fill="#97756A" font-size="16">a caller hanging up is not a failure</text>
+</svg>

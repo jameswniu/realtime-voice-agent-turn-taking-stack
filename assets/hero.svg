@@ -24,7 +24,7 @@
   <rect width="1200" height="380" fill="url(#grid)"/>
   <rect width="1200" height="380" fill="url(#glow)"/>
   <rect x="0" y="0" width="1200" height="3" fill="#D96A57" opacity=".9"/>
-  <text x="64" y="118" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" font-weight="700" fill="url(#title)" letter-spacing=".5">realtime-voice-agent-turn-taking-stack</text>
+  <text x="64" y="118" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="32" font-weight="700" fill="url(#title)" letter-spacing=".5">realtime-voice-agent-turn-taking-stack</text>
   <text x="64" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#D9998B" opacity=".95">Real calls, real tools, a personality enforced by evals.</text>
   <rect x="64" y="178" width="760" height="1" fill="url(#rule)"/>
   <text x="64" y="240" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" font-weight="700" fill="#F7E9E4">61</text>
