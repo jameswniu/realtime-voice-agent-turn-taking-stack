@@ -1,14 +1,24 @@
-<img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: real calls, real tools, a personality enforced by evals" width="100%">
+<div align="center">
 
-[![cases](https://img.shields.io/badge/cases-61_probes-B04437?style=flat-square&labelColor=241512)](#the-suite-stage-by-stage)
-[![graded](https://img.shields.io/badge/graded_by_code-~54_of_55-5C241C?style=flat-square&labelColor=241512)](#the-suite-stage-by-stage)
-[![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-5C241C?style=flat-square&labelColor=241512)](#tier-2-judgepy)
-[![probe cost](https://img.shields.io/badge/probe-192_credits_measured-5C241C?style=flat-square&labelColor=241512)](#cost)
-[![license](https://img.shields.io/badge/license-AGPL--3.0-5C241C?style=flat-square&labelColor=241512)](LICENSE)
+<img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number" width="100%">
+
+<sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, not a recording of a person.</em></sub>
+
+<br><br>
+
+[![cases](https://img.shields.io/badge/cases-61_probes-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
+[![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
+[![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
+[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
+[![license](https://img.shields.io/badge/license-AGPL--3.0-C6A664?style=for-the-badge&labelColor=2B1B12)](LICENSE)
+
+<br>
+
+<code>ring -> she picks up -> it is handled</code>
+
+</div>
 
 **AJ is a phone-native voice companion.** She lives on a real phone number, answers when called, rings back when scheduled, checks a calendar and an inbox, tells jokes she fetched rather than composed, and hangs up only on plain words of leaving. This repo is her skeleton: the agent configuration, the probe harness that talks to her like a person, and the eval suite that decides — with code first and models last — whether she is actually good.
-
-> AJ is a designed persona. Her voice is a generated ElevenLabs voice; it is not a recording of a person, and nothing in this repo contains one.
 
 ## Start here
 
@@ -20,7 +30,7 @@ Three claims, each backed by something you can run or read:
 
 The interactive version of the architecture lives at **[jameswniu.github.io/realtime-voice-agent-turn-taking-stack](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/architecture.html)** — standalone, no dependencies, no build step.
 
-<img src="assets/band-stack.svg" alt="The stack: one number, two transports, sixteen tools" width="100%">
+<img src="assets/band-stack.svg" alt="Back of house: one number, two transports, sixteen tools" width="100%">
 
 ## Architecture
 
@@ -77,9 +87,9 @@ What a stranger needs to run her: an ElevenLabs account with an agents-platform 
 
 Both harnesses share the deferral rule: when her reply is a holding line ("let me have a squiz") and no tool has landed yet, the grace window extends — because the consult tool measured 22–23s on the voice path, and a harness that gives up at 20 reports an agent failure that is actually an instrument failure. Both files carry the same regex, kept in sync deliberately.
 
-<img src="assets/band-suite.svg" alt="The suite: sixty-one cases, one phone number" width="100%">
+<img src="assets/band-suite.svg" alt="The white-glove pass: sixty-one cases, one phone number" width="100%">
 
-## The suite, stage by stage
+## The white-glove pass, stage by stage
 
 ### cases.py — 61 probes, mined not invented
 
