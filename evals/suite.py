@@ -36,6 +36,9 @@ import time
 HOME = os.path.expanduser("~")
 SCRIPTS = os.path.dirname(os.path.abspath(__file__))
 OUTDIR = os.environ.get("AJ_OUT") or f"{HOME}/.aj-voice-agent/runs"
+# A fresh clone has no data dir, and the checkpoint writer assumes one exists
+# -- found by running this exact tree, when test 1 passed and the save crashed.
+os.makedirs(OUTDIR, exist_ok=True)
 BASELINE = f"{OUTDIR}/local-baseline.json"
 TALK = os.path.join(SCRIPTS, "..", "harness", "talk-to-her.js")
 TALK_VOICE = os.path.join(SCRIPTS, "..", "harness", "talk-to-her-voice.js")
