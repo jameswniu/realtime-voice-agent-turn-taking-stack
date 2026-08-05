@@ -24,15 +24,15 @@ Three real 8 kHz calls, placed by the harness from the owner's own caller ID in 
 
 **The route fix** — "what important communication do I have right now?" routes to `check_notes` and walks all three defined channels (sensitive spans silenced, verified by re-transcription).
 
-https://github.com/user-attachments/assets/2890a3ee-7370-4107-b176-7913ea3de376
+https://github.com/user-attachments/assets/f493c1be-e061-4038-800b-e88b7e2afa55
 
 **The thanks trap** — down an 8 kHz line "next" and "thanks" collide; a wrong "thanks" would cost the whole call, so "thanks" keeps the line open and only "next" fetches the next joke.
 
-https://github.com/user-attachments/assets/5637a9e4-dd60-4a4a-bf11-59dfa376b270
+https://github.com/user-attachments/assets/9e5a1141-b684-49bc-a25e-d42eafe91652
 
 **The clean close** — plain words of leaving end the call, and the farewell rides inside the `end_call` tool so goodbye and hang-up are one act.
 
-https://github.com/user-attachments/assets/8e9e4c85-f08f-4e70-90c5-722ca2d52c39
+https://github.com/user-attachments/assets/b3b44bba-0ad3-46b2-b950-ea4ff975c81d
 
 **AJ is a phone-native voice companion.** She lives on a real phone number, answers when called, rings back when scheduled, checks a calendar and an inbox, tells jokes she fetched rather than composed, and hangs up only on plain words of leaving. This repo is her skeleton: the agent configuration, the probe harness that talks to her like a person, and the eval suite that decides — with code first and models last — whether she is actually good.
 
