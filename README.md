@@ -93,7 +93,7 @@ Both harnesses share the deferral rule: when her reply is a holding line ("let m
 
 Latest full run of this exact tree: **61/61 pass** (2026-08-05, 1x with reds escalated to 3x). Two probes graded as instrument errors on the first attempt — the judge's codex lane refused to run outside a git repo — and passed on retest the same day after the one-line fix; both the bug and the fix are in the commit history, which is where this repo keeps its mistakes.
 
-The PSTN lane keeps receipts too: **[a real 8 kHz call transcript](evals/transcripts/2026-08-05-pstn-important-comms.md)**, replaying a production miss from that same morning word for word and showing the routing fix holding on the hard lane.
+The PSTN lane keeps receipts too: **[a real 8 kHz call you can listen to](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** — turn-by-turn players with redacted audio — plus the [written transcript](evals/transcripts/2026-08-05-pstn-important-comms.md), replaying a production miss from that same morning word for word and showing the routing fix holding on the hard lane.
 
 ### cases.py — 61 probes, mined not invented
 

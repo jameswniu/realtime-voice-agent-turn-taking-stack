@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>realtime-voice-agent-turn-taking-stack — call receipts</title>
+<style>
+  :root{
+    --ivory:#FAF6EE; --ivory2:#F1E9DA; --trim:#6B5340; --trimsoft:#C9B69C;
+    --gold:#C6A664; --goldk:#A98B4F; --ink:#2B1B12; --body:#5C4A3D; --mut:#8A7666;
+    --rust:#A83E32;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:linear-gradient(180deg,var(--ivory),var(--ivory2));
+       color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+       min-height:100vh; padding:44px 20px 90px}
+  .wrap{max-width:880px; margin:0 auto}
+  .frame{border:1.4px solid var(--trim); outline:1px solid var(--trimsoft); outline-offset:-7px;
+         background:var(--ivory); padding:34px 34px 40px}
+  h1{font-size:30px; letter-spacing:.3px}
+  .kick{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--goldk);
+        font-weight:700; letter-spacing:2.5px; font-size:13px; margin-bottom:10px}
+  .sub{color:var(--body); font-size:15px; margin-top:8px; line-height:1.5}
+  .top a{color:var(--goldk); font-size:13px; text-decoration:none}
+  .top a:hover{color:var(--rust)}
+  .rule{height:1.4px; background:linear-gradient(90deg,transparent,var(--trim),transparent);
+        margin:26px 0; opacity:.6}
+  .mech{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+        font-size:13px; color:var(--mut)}
+  .mech b{color:var(--ink); font-weight:700}
+  .call-title{font-size:20px; font-weight:700; margin:6px 0 2px}
+  .full{margin:18px 0 8px; padding:16px; border:1px solid var(--trimsoft); background:#FFFDF8}
+  .full .lbl{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px;
+             letter-spacing:1.6px; color:var(--goldk); font-weight:700; margin-bottom:10px}
+  audio{width:100%; height:40px}
+  .turn{display:grid; grid-template-columns:150px 1fr; gap:16px; padding:16px 0;
+        border-bottom:1px solid var(--trimsoft); align-items:start}
+  .turn:last-of-type{border-bottom:none}
+  .who{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; font-weight:700;
+       letter-spacing:1.4px; padding:6px 10px; text-align:center; border-radius:14px}
+  .who.owner{background:var(--ink); color:var(--ivory)}
+  .who.aj{background:linear-gradient(90deg,#A98B4F,#E8D5A8 40%,#C6A664); color:var(--ink)}
+  .who.sys{background:none; border:1px dashed var(--trimsoft); color:var(--mut)}
+  .cap{font-size:15px; color:var(--body); line-height:1.55; margin-bottom:10px}
+  .cap .red{background:var(--ink); color:var(--ivory); padding:0 6px; border-radius:3px;
+            font-size:12.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .note{margin-top:26px; font-size:13.5px; color:var(--mut); line-height:1.6}
+  .note b{color:var(--body)}
+  @media(max-width:560px){.turn{grid-template-columns:1fr}.who{justify-self:start}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="frame">
+  <div class="top">
+    <div class="kick">CALL RECEIPTS</div>
+    <h1>Real calls, kept as evidence</h1>
+    <div class="sub">Every receipt is a real PSTN call placed by the harness: the owner's verified
+    caller ID, his synthesized clone asking the questions, her answering live with real tools.
+    Audio is 8&nbsp;kHz telephony band — the hard lane, as it actually sounds.</div>
+    <div class="sub"><a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">← back to the repo</a>
+    &nbsp;·&nbsp; <a href="architecture.html">the architecture</a></div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="kick" style="color:var(--rust)">2026-08-05 · 13:48 PT</div>
+  <div class="call-title">The important-communications route, verified after a same-day fix</div>
+  <div class="mech">
+    <span><b>47s</b> duration</span>
+    <span><b>8 kHz</b> μ-law PSTN</span>
+    <span><b>check_notes</b> routed correctly</span>
+    <span><b>3 channels</b> swept</span>
+  </div>
+  <div class="sub" style="margin-top:12px">That morning, a live call answered this exact question by
+  opening the wrong channel and reading the owner's own agent thread back to him. The fix moved the
+  scope into tool descriptions and server code. This call replays the original ask — stutter included
+  — and shows the route holding.</div>
+
+  <div class="full">
+    <div class="lbl">FULL CALL · REDACTED</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/full-call-redacted.mp3"></audio>
+  </div>
+
+  <div class="turn">
+    <div class="who aj">AJ</div>
+    <div><div class="cap">"Hey [owner], it is AJ. What are we sorting out?"</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-0-greeting.mp3"></audio></div>
+  </div>
+
+  <div class="turn">
+    <div class="who owner">OWNER'S CLONE</div>
+    <div><div class="cap">"Hey, what, what important, like, communication do I have right now?" — the
+    disfluency is deliberate: it is the production utterance, verbatim.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-1-question.mp3"></audio></div>
+  </div>
+
+  <div class="turn">
+    <div class="who aj">AJ</div>
+    <div><div class="cap">"Let me check my notes for any important communications." — one holding line,
+    said once.</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-2-holding.mp3"></audio></div>
+  </div>
+
+  <div class="turn">
+    <div class="who sys">CONSULT · ~18s</div>
+    <div><div class="cap">The slow tool does its work. Trimmed from the per-turn clips; present in the
+    full recording above.</div></div>
+  </div>
+
+  <div class="turn">
+    <div class="who aj">AJ</div>
+    <div><div class="cap">"Okay, so you've got a few emails: document requests from
+    <span class="red">redacted</span> at <span class="red">redacted</span>, a
+    <span class="red">redacted</span> update about your <span class="red">redacted</span> transfer, and a
+    <span class="red">redacted</span> notice. On iMessage, you have recent texts from
+    <span class="red">redacted</span> and <span class="red">redacted</span>. Nothing new on WhatsApp, though."</div>
+    <audio controls preload="none" src="audio/2026-08-05-pstn-important-comms/turn-3-answer-redacted.mp3"></audio></div>
+  </div>
+
+  <div class="note">
+    <b>Redaction, verified by machine:</b> five spans are silenced in the audio (a law firm and its
+    named partner, two account providers, a job board, and two friends' names). The redacted track was
+    re-transcribed and none of the original names survive; where an ASR imagines words over the
+    silence, that is the transcriber hallucinating, not the audio. The call ends mid-sentence because
+    the probe's 40-second window expired — the agent did not hang up.<br><br>
+    <b>Voices:</b> the caller is a synthesized clone of the owner's voice, played over the line by the
+    test harness; AJ's voice is a designed persona voice. Neither is a recording of a natural person
+    speaking these words live.
+  </div>
+</div></div>
+</body>
+</html>

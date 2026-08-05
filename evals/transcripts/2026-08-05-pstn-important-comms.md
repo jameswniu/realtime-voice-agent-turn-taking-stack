@@ -1,6 +1,7 @@
 # PSTN receipt — the important-communications route, verified on a real call
 
-**2026-08-05, 13:48 PT · 47 seconds · 8 kHz PSTN**
+**2026-08-05, 13:48 PT · 47 seconds · 8 kHz PSTN ·
+[listen to this call, turn by turn](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)**
 
 This is a real phone call, placed by the harness at the E2E layer: dialed from the
 owner's own verified caller ID, speaking his cloned voice via TwiML `<Play>` (never
