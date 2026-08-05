@@ -165,9 +165,13 @@ def vibes_probe(user_turn, reply):
     prompt = VIBES_PROMPT.format(user_turn=user_turn, reply=reply)
     t0 = time.time()
     try:
+        # codex exec refuses to run "outside a trusted directory" unless the
+        # cwd is a git repo. The repo root is a git repo for every cloner, so
+        # run from there -- found when both judge-lane probes returned empty
+        # stdout and graded as instrument errors on the first shipped run.
         r = subprocess.run(["codex", "exec", "--model", GPT_MODEL, prompt],
                            capture_output=True, text=True, timeout=TIMEOUT_S,
-                           cwd=os.path.expanduser("~"))
+                           cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     except subprocess.TimeoutExpired as e:
         return _timeout_detail("vibes", e, time.time() - t0)
     d = _extract_json(r.stdout)
