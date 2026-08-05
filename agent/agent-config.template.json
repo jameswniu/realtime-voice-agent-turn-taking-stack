@@ -1,0 +1,1200 @@
+{
+  "name": "AJ",
+  "conversation_config": {
+    "asr": {
+      "quality": "high",
+      "provider": "scribe_realtime",
+      "user_input_audio_format": "pcm_16000",
+      "keywords": [
+        "next",
+        "another",
+        "another one",
+        "one more",
+        "again",
+        "go on",
+        "keep going",
+        "next one",
+        "skip",
+        "stop",
+        "that's all",
+        "bye",
+        "gotta go",
+        "hang up",
+        "joke",
+        "AJ",
+        "<names, places, phrases ASR should catch for YOUR life>"
+      ]
+    },
+    "turn": {
+      "turn_timeout": 3.0,
+      "initial_wait_time": null,
+      "silence_end_call_timeout": 60.0,
+      "mode": "turn",
+      "turn_eagerness": "eager",
+      "spelling_patience": "auto",
+      "speculative_turn": true,
+      "retranscribe_on_turn_timeout": false,
+      "turn_model": "turn_v3",
+      "interruption_ignore_terms": [],
+      "interruption_ignore_term_languages": [],
+      "transcribe_on_disabled_interruptions": false,
+      "soft_timeout_config": {
+        "timeout_seconds": -1.0,
+        "message": "Hhmmmm...yeah.",
+        "additional_soft_timeout_messages": [],
+        "use_llm_generated_message": false,
+        "randomize_fillers": false,
+        "max_soft_timeouts_per_generation": 1,
+        "llm_generated_message_prompt_override": null
+      }
+    },
+    "tts": {
+      "model_id": "eleven_flash_v2",
+      "voice_id": "{{VOICE_ID}}",
+      "supported_voices": [],
+      "expressive_mode": false,
+      "suggested_audio_tags": [],
+      "agent_output_audio_format": "pcm_24000",
+      "optimize_streaming_latency": 3,
+      "stability": 0.5,
+      "speed": 1.0,
+      "similarity_boost": 0.95,
+      "text_normalisation_type": "system_prompt",
+      "pronunciation_dictionary_locators": [],
+      "enable_phoneme_tags": true,
+      "audio_effects": null
+    },
+    "conversation": {
+      "text_only": false,
+      "max_duration_seconds": 900,
+      "client_events": [
+        "audio",
+        "interruption",
+        "agent_response",
+        "user_transcript",
+        "agent_response_correction",
+        "agent_tool_response"
+      ],
+      "file_input": {
+        "enabled": true,
+        "max_files_in_memory": 10,
+        "max_files_per_conversation": 10
+      },
+      "monitoring_enabled": false,
+      "monitoring_events": [
+        "user_transcript",
+        "agent_response",
+        "agent_response_correction"
+      ],
+      "dtmf_input_settings": null,
+      "background_sound": {
+        "source_type": null,
+        "source_id": null,
+        "volume": 0.6,
+        "crossfade_loop": false
+      },
+      "source_attribution": false
+    },
+    "language_presets": {},
+    "vad": {
+      "background_voice_detection": true
+    },
+    "agent": {
+      "first_message": "Hey {{USER_NAME}}, it is AJ. Still up?",
+      "language": "en",
+      "hinglish_mode": false,
+      "dynamic_variables": {
+        "dynamic_variable_placeholders": {
+          "call_reason": "no reason given"
+        }
+      },
+      "disable_first_message_interruptions": false,
+      "max_conversation_duration_message": "",
+      "text_behavior_overrides": null,
+      "prompt": {
+        "prompt": "<< paste system-prompt.template.txt here, placeholders filled >>",
+        "llm": "gemini-2.5-flash",
+        "reasoning_effort": null,
+        "opener": null,
+        "thinking_budget": 0,
+        "enable_reasoning_summary": false,
+        "temperature": 0.0,
+        "max_tokens": -1,
+        "tool_ids": [],
+        "built_in_tools": {
+          "end_call": {
+            "type": "system",
+            "name": "end_call",
+            "description": "Hang up the call.\nDEFAULT TO KEEPING THE LINE OPEN. Only end the call when {{USER_NAME}}'s intent to close is UNAMBIGUOUS: 'that's all', 'that's it', 'no, that's it', 'nothing else', 'we're done', 'I'm good', 'thanks, that's all', 'thanks, bye', 'okay bye', 'goodnight', or a plain 'bye'. On any of those, DO NOT WRITE A FAREWELL MESSAGE. Put the farewell in this tool's system__message_to_speak and call the tool -- the tool speaks it for you, so saying it and hanging up are one single act and cannot come apart. Speaking a goodbye as an ordinary message and calling this on some later turn is the failure mode: it happened once, he said thanks a second time, heard the whole goodbye, and was still sitting on an open line until he thanked her a third time. The farewell itself should be WARM and unhurried, never a clipped one-liner like 'Alright then, have a fantastic day'. First warmly acknowledge the call or what you sorted out together, then a genuine sign-off with his name, matched to the hour (soft and easy if it's late at night). Something like 'Glad we got your week sorted, {{USER_NAME}}. Get some rest, and give me a shout whenever.' A friend hanging up, not a service closing a ticket. Do not wait for a second 'bye', do not ask again.\nNEVER END THE CALL ON 'THANKS'. Not the first one, not the second, not the fifth. 'thank you', 'thanks', 'cool', 'nice', 'got it', 'okay', a laugh -- none of these ever trigger this tool, however many times they arrive and however final they sound. Answer warmly, offer to help with something else, and KEEP THE LINE OPEN.\nThe reason is mechanical, not stylistic. 'Next' and 'thanks' are near-identical down a phone and the transcriber substitutes one for the other regularly -- three times once alone, each time cutting {{USER_NAME}} off mid-conversation while he was asking for more. You cannot tell the two apart from the transcript, so the safe reading is the only reading. A rule that asked you to judge whether you were 'mid-run' was tried twice and failed twice, because it needed you to track state you do not reliably track. This rule needs no state: the word 'thanks' is never a hang-up.\nEND THE CALL ONLY ON PLAIN WORDS OF LEAVING: 'that's all', 'that's it', 'nothing else', 'we're done', 'I'm good', 'gotta go', 'talk later', 'goodnight', 'bye'. Those are unambiguous and the transcriber does not confuse them with anything. 'Thanks, that's all' and 'thanks, bye' DO end the call, because of the second half, never the first.\nIf he genuinely wanted to hang up and said only 'thanks', he will say 'bye' a moment later and nothing is lost. If he wanted another joke and you hung up, the call is over and he cannot undo it. Those costs are not equal.\nNever hang up mid-thought with no goodbye at all.\nCRITICAL: saying goodbye WORDS does not end the call -- only calling this tool does. When he gives a clear close, you MUST call this tool in the same turn as the farewell, not just speak the farewell and wait. If you said 'have a good one' and did not call the tool, he is still sitting on the line.",
+            "response_timeout_secs": 20,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "params": {
+              "system_tool_type": "end_call"
+            }
+          },
+          "language_detection": null,
+          "transfer_to_agent": null,
+          "transfer_to_number": null,
+          "skip_turn": null,
+          "play_keypad_touch_tone": null,
+          "voicemail_detection": {
+            "type": "system",
+            "name": "voicemail_detection",
+            "description": "Voicemail or an answering machine picked up instead of {{USER_NAME}}. Fire this the moment you hear a recorded greeting - one that answers instantly, asks for a message, or reads a number back. Leave the message and hang up; never try to converse with a recording.",
+            "response_timeout_secs": 20,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "params": {
+              "system_tool_type": "voicemail_detection",
+              "voicemail_message": "Hey {{USER_NAME}}, it's AJ. You did not pick up, so I will give you another ring shortly. If you are up and about, just call me back whenever."
+            }
+          },
+          "update_state": null,
+          "memory_entry_search": null,
+          "memory_entry_create": null,
+          "memory_entry_update": null,
+          "memory_entry_delete": null,
+          "agent_prompt_change": null,
+          "procedure_update": null,
+          "procedure_create": null,
+          "procedure_delete": null,
+          "transfer_to_genesys": null,
+          "transfer_to_genesys_chat": null,
+          "run_subagent": null
+        },
+        "enable_parallel_tool_calls": false,
+        "mcp_server_ids": [],
+        "native_mcp_server_ids": [],
+        "knowledge_base": [],
+        "custom_llm": null,
+        "speech_engine": null,
+        "ignore_default_personality": false,
+        "rag": {
+          "enabled": false,
+          "embedding_model": "e5_mistral_7b_instruct",
+          "optional_rag_enabled": false,
+          "max_vector_distance": 0.6,
+          "max_documents_length": 50000,
+          "max_retrieved_rag_chunks_count": 20,
+          "num_candidates": null,
+          "query_rewrite_prompt_override": null,
+          "knowledge_base_tool_info": null
+        },
+        "timezone": "{{USER_TIMEZONE}}",
+        "backup_llm_config": {
+          "preference": "override",
+          "order": [
+            "gemini-3.5-flash",
+            "gpt-4o-mini"
+          ]
+        },
+        "cascade_timeout_seconds": 4.0,
+        "tools": [
+          {
+            "type": "webhook",
+            "name": "get_weather",
+            "description": "Weather for ANY city and ANY date range: up to 16 days ahead and about 90 days into the past. Provide the city's latitude/longitude (you know these for any city; San Francisco is 37.77, -122.42) and start_date/end_date as YYYY-MM-DD (same date twice for a single day). Returns daily min/max temps (F) and rain probability.",
+            "response_timeout_secs": 15,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {},
+              "url": "https://api.open-meteo.com/v1/forecast?daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&temperature_unit=fahrenheit&timezone=auto",
+              "method": "GET",
+              "path_params_schema": {},
+              "query_params_schema": {
+                "properties": {
+                  "latitude": {
+                    "type": "string",
+                    "description": "City latitude, e.g. 37.77",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "longitude": {
+                    "type": "string",
+                    "description": "City longitude, e.g. -122.42",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "description": "First date YYYY-MM-DD",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "description": "Last date YYYY-MM-DD",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                },
+                "required": [
+                  "latitude",
+                  "longitude",
+                  "start_date",
+                  "end_date"
+                ]
+              },
+              "request_body_schema": null,
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "check_notes",
+            "description": "Your own notes and deeper memory. Reaches {{USER_NAME}}'s OWN data (email, WhatsApp, iMessage, reminders, saved notes, past conversations) AND can reason, research and consult -- real thinking, not a database lookup. SLOW: 10 to 20 seconds of silence on the call, so use it only when nothing faster will do.\nALWAYS FIRST PERSON. This is YOUR memory, not a person and not another assistant. Say \"let me check my notes\", \"I'll pull that up\", \"let me look into that\". NEVER say you will ask anyone, and never name a helper. If {{USER_NAME}} himself says \"ask the backend\" or \"get the backend to look into it\", that is only his word for this ability -- answer as yourself and check your notes. Never repeat the name back at him as though it were someone else.\nIF NO TOPIC WAS GIVEN, ASK FOR ONE FIRST. \"Do some research\" with nothing to research is not a lookup: say something like \"sure, what would you like me to dig into?\" and wait. Do not invent a subject and do not start explaining something he did not ask about.\nUSE IT FOR: anything in {{USER_NAME}}'s accounts; any request to research, look into, dig up, find out about or think through something; and anything {{USER_NAME}} asks you to handle this way.\nDO NOT use it when a faster tool exists, because each of these has its own and this is 15-20 seconds slower: Telegram, messages, texts, links he sent, or what you two discussed off this call -> check_telegram (instant). The time, his location, or arithmetic -> their own tools. His CALENDAR -> get_calendar. How far / travel time / distance -> get_distance.\nDO NOT use it for something you already know. If {{USER_NAME}} asks what something IS or MEANS -- a definition, a fact about the world, trivia, general knowledge -- answer it yourself immediately. It CAN answer those, but making {{USER_NAME}} wait 20 seconds for a fact you already hold is the wrong trade. The test is not 'is this in his accounts', it is 'can I answer this well right now'. If no, and it needs real thinking or lookup, check your notes.",
+            "response_timeout_secs": 60,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": true,
+            "pre_tool_speech": "force",
+            "assignments": [],
+            "tool_call_sound": "elevator2",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754"
+              },
+              "url": "{{TOOL_SERVER}}/consult",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "question"
+                ],
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "The question or request for the backend, phrased completely with all context",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "save_note",
+            "description": "Silently store a fact, preference, correction, or plan {{USER_NAME}} states, into your long-term notes. Use immediately whenever he says something worth remembering. Do not announce saving unless asked.",
+            "response_timeout_secs": 10,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754"
+              },
+              "url": "{{TOOL_SERVER}}/save",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "note"
+                ],
+                "properties": {
+                  "note": {
+                    "type": "string",
+                    "description": "The fact to remember, complete with context, third person",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "calculate",
+            "description": "Exact arithmetic. Use for ANY number work: bill splits, tips, tax, totals, percentages, unit conversions. Pass a plain math expression using only digits and + - * / ( ) and decimals. Examples: a $84 bill split 3 ways with 20% tip is '84*1.2/3'; 18% tip on $127.50 is '127.50*0.18'. Returns the exact number. Never do this math yourself.",
+            "response_timeout_secs": 10,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/calc",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "Arithmetic expression",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "expression"
+                ],
+                "properties": {
+                  "expression": {
+                    "type": "string",
+                    "description": "Math expression, digits and + - * / ( ) only, e.g. 84*1.2/3",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "get_location",
+            "description": "Where {{USER_NAME}} is RIGHT NOW, from live GPS on his iPhone. Use for any 'where am I', 'how far am I from X', 'what is near me', or 'am I home' question. Returns his neighbourhood and how fresh the fix is. Takes no arguments.",
+            "response_timeout_secs": 25,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/where",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "No arguments",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {}
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "schedule_call",
+            "description": "Schedule a wake-up / reminder CALL to {{USER_NAME}} at a future time. Pass in_minutes as the number of minutes from now (work it out from the current time you already know: 'in 7 hours' = 420, 'tomorrow 8am' = minutes until then). Optionally pass label describing what it is for. Use this whenever {{USER_NAME}} asks for an alarm, a wake-up, or to be called later. The result comes back as raw facts (scheduled, time, purpose, will_keep_calling...), NOT a sentence. Do not read those fields aloud or start with the word 'Done'. Confirm it back in your OWN natural, warm words, the way a person would -- but include all three: WHEN, WHAT it is for, and that you will keep calling until he picks up. Never drop the last one, he asked for it specifically.",
+            "response_timeout_secs": 75,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/schedule-call",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "When to call",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "in_minutes"
+                ],
+                "properties": {
+                  "in_minutes": {
+                    "type": "integer",
+                    "description": "Minutes from now, e.g. 420 for 7 hours",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "label": {
+                    "type": "string",
+                    "description": "What the call is for, e.g. wake up for work",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "list_calls",
+            "description": "What calls are currently scheduled for {{USER_NAME}}. Use when he asks what is scheduled, or before cancelling so you know what you are cancelling.",
+            "response_timeout_secs": 60,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/list-calls",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "What calls are currently scheduled for {{USER_NAME}}. Use when he as",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {}
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "cancel_call",
+            "description": "Cancel a scheduled call. Choose which one from context:\n- which='last' -> the call most recently SCHEDULED. Use this when {{USER_NAME}} cancels something he just set up in this conversation ('actually cancel that', 'never mind').\n- which='next' -> the call soonest to ring. Use for 'cancel my next call' or when he means the upcoming one rather than one he just made. This is the default.\n- which='all' -> everything. ONLY when he clearly says to clear the lot.\nWiping the schedule cannot be undone, so never guess 'all'. After cancelling, tell him what is still scheduled.",
+            "response_timeout_secs": 75,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/cancel-call",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "Cancel scheduled calls. Pass which='next' to cancel only the",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "which": {
+                    "type": "string",
+                    "description": "'last' (most recently scheduled), 'next' (soonest to ring), or 'all'",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "tell_joke",
+            "description": "Get a joke written from {{USER_NAME}}'s live conditions right now. Call this EVERY time a joke is wanted -- when he asks for one, or when the call's reason is to tell him one. NEVER write the joke yourself: you run at temperature zero, so your own joke is always the same stale one. It returns instantly, so say NOTHING before calling it -- no 'let me pull a joke', no 'give me a second', no narrating that you are fetching anything. The answer this returns IS the joke: say it VERBATIM, word for word. Do not paraphrase it, trim it, dress it up, or replace it with one of your own -- yours will be a stale stock joke in a banned form. WHEN HE HANDS YOU TO SOMEONE ELSE IN THE ROOM - 'tell my gym friend the joke', 'say one for her' - call this AGAIN with that person in `context`. They have heard nothing, and a joke picked for them beats repeating the last one. THE AUDIENCE STAYS UNTIL HE NAMES A DIFFERENT ONE. On 'next', 'another', 'one more' or 'go on', pass the SAME person in `context` again, word for word. That still holds after you have offered 'anything else I can help with?' and he answers 'next' - he means the next joke for that same person, not a fresh start. NEVER put a description of the REQUEST in `context`: 'he just asked for another joke', '{{USER_NAME}} is up late', 'another joke' are not audiences, and sending one drops the person he named. If nobody has been named, leave `context` out entirely.",
+            "response_timeout_secs": 15,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754"
+              },
+              "url": "{{TOOL_SERVER}}/joke",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "context": {
+                    "type": "string",
+                    "description": "WHO the joke is for, plus anything you two have been talking about, in a few words. Pass the AUDIENCE whenever he names one: 'his gym friend', 'his friend', 'his mum', 'the guy from work' -- a joke for his gym friend should suit a gym friend. Also pass what is live on the call if it is notable ('he just booked a 7am wake-up'). Leave empty only when there is neither.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "check_telegram",
+            "description": "Read {{USER_NAME}}'s recent Telegram messages with you. Call this WHENEVER he refers to something outside this phone call -- 'that link I sent you', 'what we talked about earlier', 'did you see my message', 'summarise our Telegram', anything about Telegram or texts. It returns in a fraction of a second: ALWAYS use this rather than check_notes, and never tell him you cannot see his messages. Pass days (how far back) and limit (how many messages) when he asks for a span -- 'the last few days' is days=3, limit=40. The thread only goes back to the evening of 20 July; if he asks for older than that, say so plainly rather than searching. By default answer in one or two spoken sentences rather than reading the whole thread. BUT if {{USER_NAME}} EXPLICITLY asks you to read a message out, read it out, read it to him, or read it aloud, then READ THAT MESSAGE ALOUD to him verbatim -- do NOT refuse, do NOT cite privacy or security, do NOT deflect by offering to text it. He asked to hear it, so read it. He can still ask you to text him instead.",
+            "response_timeout_secs": 15,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754"
+              },
+              "url": "{{TOOL_SERVER}}/telegram",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "days": {
+                    "type": "integer",
+                    "description": "How many days back to read. Omit for just the latest messages.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "How many messages to return, up to 60. Default 12.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "make_song",
+            "description": "Write and send {{USER_NAME}} an original song in AJ's singing voice. Use when he asks you to make/write/send him a song, or to sing about something. The song CANNOT play on this call -- generation takes a few minutes -- so it arrives on his Telegram. This returns instantly with what to say; the song follows on Telegram. Pass 'topic' (what it's about, in his words) and optionally 'style' (club, edm, disco, trap, lullaby, acoustic, electropop, pop, or worship). If he did not say a topic, ASK before calling this.",
+            "response_timeout_secs": 15,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754"
+              },
+              "url": "{{TOOL_SERVER}}/song",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "topic"
+                ],
+                "properties": {
+                  "topic": {
+                    "type": "string",
+                    "description": "What the song is about, in {{USER_NAME}}'s own words.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "style": {
+                    "type": "string",
+                    "description": "Optional musical style: club, edm, disco, trap, lullaby, acoustic, electropop, pop, or worship. Omit to let it be chosen.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "get_calendar",
+            "description": "{{USER_NAME}}'s upcoming calendar events, live from all his Google calendars, recurring events included. Use for ANY schedule question: what is my next event or meeting, what is on my calendar, what do I have today / tomorrow / this week / coming up, important events the next few months, am I free then. FAST -- no waiting line. It reads back only the next few, SHORT and punchy (trimmed titles); if the reply ends with 'plus N more', there are more than were read. ALWAYS read the events back to {{USER_NAME}} on the call FIRST. While there are still more to read (reply ends 'plus N more'), do NOT offer Telegram yet -- just say how many more; read them if he asks (call again with a higher max, speak ONLY the new ones). ONLY once everything has been read does the reply itself ask about Telegram -- relay that then, never earlier. When he says yes, call this again with deliver=true (same days). If he asks for the remaining events, call again with a higher max and speak ONLY the new ones. NEVER send to Telegram unasked. Use THIS for calendar, never check_notes. It includes each event's real venue when there is one. If {{USER_NAME}} asks WHERE an event is, use ONLY that venue; if an event has no venue, say you do not have a location for it -- NEVER invent or guess a place. IMPORTANT -- call this ONCE per time range, then REMEMBER the events: for follow-ups about the SAME range (where is X, what's the other one, what time, today's event, the Sunday ones), answer from the list you already pulled -- do NOT call get_calendar again. Only call it again if {{USER_NAME}} asks about a DIFFERENT range (e.g. he asked this week, now asks next month) or asks you to send it to Telegram. Re-calling for the same info makes him wait several seconds each time. deliver=true sends ONLY the calendar event list to Telegram. Do NOT use deliver for anything else -- travel times, directions, distances, an address, or any info you worked out. To send THAT to his Telegram, use check_notes (say: send <exactly what he asked for> to my Telegram), and send only what he asked for, not the whole calendar.",
+            "response_timeout_secs": 25,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/calendar",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "days": {
+                    "type": "integer",
+                    "description": "Match the EXACT period {{USER_NAME}} names: 'this week'=7, 'next couple weeks'=14, 'next month'=30, 'next 3 months'=90, 'rest of the year'=160. Use what he actually said. Never default to 90 or convert his words into a day count out loud (say 'three months', not '90 days'). Max 120. IF JAMES NAMES NO PERIOD AT ALL - 'what's on', 'my important events', 'what have I got' - USE 14. Do not guess a different number and do not ask him which period he meant; two weeks is the standing default and he can always narrow or widen it afterwards.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "max": {
+                    "type": "integer",
+                    "description": "How many events to READ ALOUD. Default 3 (short). If he asks to hear MORE, 'the rest', or 'what are the other two', call again with a higher number (up to ~10) and read out ONLY the events he has not heard yet, not the whole list again.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "deliver": {
+                    "type": "boolean",
+                    "description": "Set true ONLY after {{USER_NAME}} explicitly says YES to getting the full list in his Telegram. Sends the COMPLETE list to his Telegram (not just the ones read aloud) and confirms. Never true on the first call or without his yes.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "get_distance",
+            "description": "How far / how long from {{USER_NAME}}'s LIVE location to a place, per travel mode. Use for 'how far is X', 'how long to get to X', 'travel time to X', scooter/car/Uber/walking time. FAST (~1-2s) -- do NOT use check_notes for distance or travel time, that takes 30 to 50 seconds. Pass the destination as a street address when you have one (e.g. from a calendar event's venue). SAY THE WHOLE ANSWER IT RETURNS, INCLUDING THE ADDRESS. It is already phrased for speech, so read it back essentially as written. When it opens with a street address, that address is the part {{USER_NAME}} asked for and the part he cannot look up while driving -- once the tool returned 'The Ferry Building is at 1 Ferry Building, San Francisco. It is roughly 1.7 miles...' and only the miles and the times were spoken, so he never heard where he was going. Contracting the wording is fine. Dropping the address, a travel mode, or the mileage is not.",
+            "response_timeout_secs": 25,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/distance",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [
+                  "destination"
+                ],
+                "properties": {
+                  "destination": {
+                    "type": "string",
+                    "description": "Where he wants to go: a street address if known (e.g. '1 Ferry Building, San Francisco'), else the place name.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "modes": {
+                    "type": "string",
+                    "description": "Optional. Which modes he asked for, any of: car, scooter, walk. Omit for all three.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "play_music",
+            "description": "Play music on {{USER_NAME}}'s Spotify -- a specific song, artist, album or playlist he named. Pass what he asked for as query ('lofi beats', 'Look What You Made Me Do'); empty query = just resume. WHERE IT PLAYS IS NOT YOUR DECISION. Put his own words in `device` if he named a place, otherwise leave `device` EMPTY -- the system reads his live location and picks the right speaker itself. Do not ask him which device. It confirms what started; read that back. You never ask which device on your own -- but the system sometimes cannot tell (he is out with BOTH the laptop and the phone) and answers with a question like 'Do you want it on the MacPro, or your phone?'. When it does, read that question back to him as-is, take his answer, and call this again with his words in `device`.",
+            "response_timeout_secs": 25,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/play",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "What to play: song, artist, playlist, or album name. Empty = just resume.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "device": {
+                    "type": "string",
+                    "description": "What {{USER_NAME}} SAID about where to play it, in his own words -- 'on my phone', 'the laptop', 'the speaker'. Leave EMPTY if he did not say. Never guess a device, never ask him which one, never fill this in yourself: empty is the normal case and it routes correctly on its own.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "create_playlist",
+            "description": "Build {{USER_NAME}} a playlist that fits his CURRENT MOMENT and start it. Use this whenever he wants a playlist, a mix, or 'something for right now' -- NOT for a single specific named song (that's play_music). If he asks for a playlist OF an artist or genre ('a playlist of Billie Eilish', 'make a playlist, Britney Spears'), that IS this tool -- put the artist in vibe. WHERE IT PLAYS IS NOT YOUR DECISION. Put his own words in `device` if he named a place, otherwise leave `device` EMPTY -- the system reads his live location and picks the right speaker itself. Do not ask him which device. Pass vibe = his own words about what the music is FOR ('something upbeat', 'need to focus', 'I need adrenaline') -- leave empty if he said nothing. Pass company = who he is actually with ('three friends', 'a team of four') -- ONLY when he plainly says he is WITH someone. Phone audio is often misheard, so a stray name is NOT company: if you are not certain he said he is with people, leave it EMPTY. Never turn a half-heard word into a person, and never name anyone he did not clearly name. It gathers his real location, time, weather and calendar itself, so do NOT ask him about those. It replies immediately that it is working; read that back and MOVE ON -- the finished playlist name and link arrive on his Telegram about a minute later, so never claim it is playing yet and never invent song names. You never ask which device on your own -- but the system sometimes cannot tell (he is out with BOTH the laptop and the phone) and answers with a question like 'Do you want it on the MacPro, or your phone?'. When it does, read that question back to him as-is, take his answer, and call this again with his words in `device`. ONE BUILD PER ASK, BUT A CONFIRMED SECOND ONE IS REAL. After you start a playlist, 'okay', 'thanks', 'sure', 'right' and silence are him acknowledging it, never a second request -- do NOT call this again for those. If you offer 'want another as well?' and he says YES, that IS a request: call this again. Keep the SAME vibe he originally gave unless he names a new one -- 'yes' after a gentle playlist means another gentle playlist with different tracks, not a repeat of the first, and 'make a club one' means vibe=club. Never send a vibe he did not say. READ BACK WHAT THIS RETURNS AND STOP THERE. It already says where the playlist lands; adding your own sentences on top makes him wait longer to hear the one useful fact. NEVER STATE A COUNT you have not been told -- once you said 'you have two gentle playlists' when one had been built. If he asks how many, say what you started and that they arrive on Telegram, not a number you inferred.",
+            "response_timeout_secs": 25,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/playlist",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "device": {
+                    "type": "string",
+                    "description": "What {{USER_NAME}} SAID about where to play it, in his own words -- 'on my phone', 'the laptop', 'the speaker'. Leave EMPTY if he did not say. Never guess a device, never ask him which one, never fill this in yourself: empty is the normal case and it routes correctly on its own.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "vibe": {
+                    "type": "string",
+                    "description": "His own words about what the music is for. Empty if he said nothing.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "company": {
+                    "type": "string",
+                    "description": "Who he is WITH, e.g. 'three friends'. Only if he plainly said he is with someone. Empty if alone, unclear, or misheard.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "webhook",
+            "name": "set_volume",
+            "description": "Change how loud the music actually is. Use when {{USER_NAME}} asks to turn it up/down or to a level. Pass percent (0-100) when he names one ('put it at 70', 'half' = 50); for 'louder'/'quieter' with no number pass direction='up' or 'down' (steps by 10). This sets the SPEAKER's own volume -- the Mac Pro's system output, which is the level feeding his Bose. Spotify's internal slider is deliberately held at 100 and is never a control, so do not try to change it or reason about it. HIS IPHONE HAS NO REMOTE VOLUME AT ALL: Spotify forbids it and iOS exposes no way in. If he asks for phone volume the tool says so -- relay that honestly and tell him to use the buttons on the phone; never claim you changed it. It replies with the level actually reached; read THAT back, not the number he asked for. VAGUE LEVELS ARE NOT YOURS TO INVENT. If he says 'comfortable', 'comfy', 'normal', 'usual', 'just right' or similar, do NOT pick a number -- pass his own word through as `direction` and leave `percent` empty. The system knows what comfortable means right now (it varies by time of day) and answers the same way every time; a number you guess will not.",
+            "response_timeout_secs": 12,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "off",
+            "assignments": [],
+            "tool_call_sound": "typing",
+            "tool_call_sound_behavior": "always",
+            "tool_error_handling_mode": "auto",
+            "dynamic_variables": {
+              "dynamic_variable_placeholders": {}
+            },
+            "execution_mode": "immediate",
+            "api_schema": {
+              "request_headers": {
+                "X-Bridge-Token": "a4fa80067db571adcf19b6ece8089efc8ca4c88fedb15754",
+                "Content-Type": "application/json"
+              },
+              "url": "{{TOOL_SERVER}}/volume",
+              "method": "POST",
+              "path_params_schema": {},
+              "query_params_schema": null,
+              "request_body_schema": {
+                "description": "",
+                "dynamic_variable": "",
+                "is_omitted": false,
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "percent": {
+                    "type": "integer",
+                    "description": "Target 0-100 when he names a level. Omit for up/down.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "'up' or 'down' when he gives no number -- OR his own vague word for a level ('comfortable', 'comfy', 'normal'), passed through verbatim. Never translate a vague word into a number yourself.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  },
+                  "device": {
+                    "type": "string",
+                    "description": "What {{USER_NAME}} SAID about which speaker, in his own words, or EMPTY if he did not say (the normal case -- it defaults to the speaker). Only matters so a request about his phone can be answered honestly.",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "dynamic_variable": "",
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "is_omitted": false
+                  }
+                }
+              },
+              "response_body_schema": null,
+              "response_filter": null,
+              "content_type": "application/json",
+              "auth_resolved_params": [],
+              "auth_connection": null
+            }
+          },
+          {
+            "type": "system",
+            "name": "end_call",
+            "description": "Hang up the call.\nDEFAULT TO KEEPING THE LINE OPEN. Only end the call when {{USER_NAME}}'s intent to close is UNAMBIGUOUS: 'that's all', 'that's it', 'no, that's it', 'nothing else', 'we're done', 'I'm good', 'thanks, that's all', 'thanks, bye', 'okay bye', 'goodnight', or a plain 'bye'. On any of those, DO NOT WRITE A FAREWELL MESSAGE. Put the farewell in this tool's system__message_to_speak and call the tool -- the tool speaks it for you, so saying it and hanging up are one single act and cannot come apart. Speaking a goodbye as an ordinary message and calling this on some later turn is the failure mode: it happened once, he said thanks a second time, heard the whole goodbye, and was still sitting on an open line until he thanked her a third time. The farewell itself should be WARM and unhurried, never a clipped one-liner like 'Alright then, have a fantastic day'. First warmly acknowledge the call or what you sorted out together, then a genuine sign-off with his name, matched to the hour (soft and easy if it's late at night). Something like 'Glad we got your week sorted, {{USER_NAME}}. Get some rest, and give me a shout whenever.' A friend hanging up, not a service closing a ticket. Do not wait for a second 'bye', do not ask again.\nNEVER END THE CALL ON 'THANKS'. Not the first one, not the second, not the fifth. 'thank you', 'thanks', 'cool', 'nice', 'got it', 'okay', a laugh -- none of these ever trigger this tool, however many times they arrive and however final they sound. Answer warmly, offer to help with something else, and KEEP THE LINE OPEN.\nThe reason is mechanical, not stylistic. 'Next' and 'thanks' are near-identical down a phone and the transcriber substitutes one for the other regularly -- three times once alone, each time cutting {{USER_NAME}} off mid-conversation while he was asking for more. You cannot tell the two apart from the transcript, so the safe reading is the only reading. A rule that asked you to judge whether you were 'mid-run' was tried twice and failed twice, because it needed you to track state you do not reliably track. This rule needs no state: the word 'thanks' is never a hang-up.\nEND THE CALL ONLY ON PLAIN WORDS OF LEAVING: 'that's all', 'that's it', 'nothing else', 'we're done', 'I'm good', 'gotta go', 'talk later', 'goodnight', 'bye'. Those are unambiguous and the transcriber does not confuse them with anything. 'Thanks, that's all' and 'thanks, bye' DO end the call, because of the second half, never the first.\nIf he genuinely wanted to hang up and said only 'thanks', he will say 'bye' a moment later and nothing is lost. If he wanted another joke and you hung up, the call is over and he cannot undo it. Those costs are not equal.\nNever hang up mid-thought with no goodbye at all.\nCRITICAL: saying goodbye WORDS does not end the call -- only calling this tool does. When he gives a clear close, you MUST call this tool in the same turn as the farewell, not just speak the farewell and wait. If you said 'have a good one' and did not call the tool, he is still sitting on the line.",
+            "response_timeout_secs": 20,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "params": {
+              "system_tool_type": "end_call"
+            }
+          },
+          {
+            "type": "system",
+            "name": "voicemail_detection",
+            "description": "Voicemail or an answering machine picked up instead of {{USER_NAME}}. Fire this the moment you hear a recorded greeting - one that answers instantly, asks for a message, or reads a number back. Leave the message and hang up; never try to converse with a recording.",
+            "response_timeout_secs": 20,
+            "disable_interruptions": false,
+            "interruption_mode": "allow",
+            "force_pre_tool_speech": false,
+            "pre_tool_speech": "auto",
+            "assignments": [],
+            "tool_call_sound": null,
+            "tool_call_sound_behavior": "auto",
+            "tool_error_handling_mode": "auto",
+            "params": {
+              "system_tool_type": "voicemail_detection",
+              "voicemail_message": "Hey {{USER_NAME}}, it's AJ. You did not pick up, so I will give you another ring shortly. If you are up and about, just call me back whenever."
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "realtime-voice-agent-turn-taking-stack-harness",
+  "private": true,
+  "description": "Probe harnesses for the AJ voice agent (text + voice WebSocket)",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
