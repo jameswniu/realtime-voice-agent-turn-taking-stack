@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>realtime-voice-agent-turn-taking-stack — call receipts</title>
+<title>realtime-voice-agent-turn-taking-stack, call receipts</title>
 <style>
   :root{
     --ivory:#FAF6EE; --ivory2:#F1E9DA; --trim:#6B5340; --trimsoft:#C9B69C;
@@ -62,7 +62,7 @@
     <h1>Real calls, kept as evidence</h1>
     <div class="sub">Every receipt is a real PSTN call placed by the harness: the owner's verified
     caller ID, his synthesized clone asking the questions, her answering live with real tools.
-    Audio is 8&nbsp;kHz telephony band — the hard lane, as it actually sounds. One card per
+    Audio is 8&nbsp;kHz telephony band, the hard lane, as it actually sounds. One card per
     conversation, split turn by turn.</div>
     <div class="sub toc">
       <a href="#route-fix">01 the route fix</a> &nbsp;·&nbsp;
@@ -84,7 +84,7 @@
   </div>
   <div class="sub">That morning, a live call answered this exact question by opening the wrong
   channel and reading the owner's own agent thread back to him. The fix moved the scope into tool
-  descriptions and server code. This call replays the original ask — stutter included — and shows
+  descriptions and server code. This call replays the original ask, stutter included, and shows
   the route holding.</div>
 
   <div class="full"><div class="lbl">FULL CALL · REDACTED</div>
@@ -94,7 +94,7 @@
     <div><div class="cap">"Hey [owner], it is AJ. What are we sorting out?"</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-important-comms/turn-0-greeting.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who owner">OWNER'S CLONE</div>
-    <div><div class="cap">"Hey, what, what important, like, communication do I have right now?" — the
+    <div><div class="cap">"Hey, what, what important, like, communication do I have right now?", the
     disfluency is deliberate: it is the production utterance, verbatim.</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-important-comms/turn-1-question.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who aj">AJ</div>
@@ -121,7 +121,7 @@
   </div>
   <div class="sub">Down an 8&nbsp;kHz line, "next" and "thanks" are nearly the same word, and the costs
   are asymmetric: a wrong "next" costs one joke, a wrong "thanks" costs the whole call. So thanks
-  never hangs up — the acknowledgement gets a beat and a door, and the run continues.</div>
+  never hangs up, the acknowledgement gets a beat and a door, and the run continues.</div>
 
   <div class="full"><div class="lbl">FULL CALL</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-thanks-trap/full-call.mp4" class="wf"></video></div>
@@ -138,11 +138,11 @@
     complete."</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-thanks-trap/jr-2-joke1.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who owner">OWNER'S CLONE</div>
-    <div><div class="cap">"Thanks." — the trap. An acknowledgement is not a request, and it is never a
+    <div><div class="cap">"Thanks.", the trap. An acknowledgement is not a request, and it is never a
     hang-up.</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-thanks-trap/jr-3-thanks.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who aj">AJ</div>
-    <div><div class="cap">"You are welcome. Anything else I can help with?" — no tool called, the line
+    <div><div class="cap">"You are welcome. Anything else I can help with?", no tool called, the line
     stays open.</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-thanks-trap/jr-4-beat.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who owner">OWNER'S CLONE</div>
@@ -161,7 +161,7 @@
     <span><b>end_call</b> carries the farewell</span>
     <span><b>11s</b> start to finish</span>
   </div>
-  <div class="sub">Plain words of leaving end a call — and the goodbye rides inside the end_call tool,
+  <div class="sub">Plain words of leaving end a call, and the goodbye rides inside the end_call tool,
   so saying it and hanging up are one act that cannot come apart. No dead line, no lingering.</div>
 
   <div class="full"><div class="lbl">FULL CALL</div>
@@ -171,11 +171,11 @@
     <div><div class="cap">"Hey [owner], it is AJ. Afternoon. What is next?"</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-clean-close/cc-0-greeting.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who owner">OWNER'S CLONE</div>
-    <div><div class="cap">"That's all. Thanks." — ends the call because of the first half, never the
+    <div><div class="cap">"That's all. Thanks.", ends the call because of the first half, never the
     second.</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-clean-close/cc-1-thatsall.mp4" class="wf"></video></div></div>
   <div class="turn"><div class="who aj">AJ</div>
-    <div><div class="cap">"Alright, [owner]. Glad we got that sorted. Have a good one!" — spoken by
+    <div><div class="cap">"Alright, [owner]. Glad we got that sorted. Have a good one!", spoken by
     end_call itself; termination_reason confirms the tool hung up, not a timeout.</div>
     <video controls preload="metadata" playsinline src="audio/2026-08-05-pstn-clean-close/cc-2-close.mp4" class="wf"></video></div></div>
 </div>

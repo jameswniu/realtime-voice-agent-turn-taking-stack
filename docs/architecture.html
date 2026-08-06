@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>realtime-voice-agent-turn-taking-stack — architecture</title>
+<title>realtime-voice-agent-turn-taking-stack, architecture</title>
 <style>
   :root{
     --bg0:#140806; --bg1:#241009; --bg2:#3B1710; --card:#1A0B07;
@@ -58,7 +58,7 @@
 <div class="wrap">
   <div class="top">
     <h1>realtime-voice-agent-turn-taking-stack</h1>
-    <div class="sub">the stack, end to end — hover anything; click to pin its note</div>
+    <div class="sub">the stack, end to end, hover anything; click to pin its note</div>
     <a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">← back to the repo</a>
   </div>
 
@@ -76,22 +76,22 @@
 
   <div class="sec">ELEVENLABS AGENTS PLATFORM</div>
   <div class="card">
-    <div class="row" data-t="ASR" data-n="scribe_realtime, quality high. The keywords list biases recognition toward call-control words ('next', 'that's all', 'bye', 'joke') plus names and places from your own life. Doctrine: 'next' and 'thanks' are near-identical down a phone line — the prompt and the end_call tool are both written around that confusion."><b>ASR</b><span>scribe_realtime · control keywords</span><small>'next' ≈ 'thanks'</small></div>
+    <div class="row" data-t="ASR" data-n="scribe_realtime, quality high. The keywords list biases recognition toward call-control words ('next', 'that's all', 'bye', 'joke') plus names and places from your own life. Doctrine: 'next' and 'thanks' are near-identical down a phone line, the prompt and the end_call tool are both written around that confusion."><b>ASR</b><span>scribe_realtime · control keywords</span><small>'next' ≈ 'thanks'</small></div>
     <div class="row" data-t="TURN" data-n="turn_v3, eager, 3.0s timeout, speculative turns on. Soft-timeout filler is disabled (-1): it passed its one test, then swallowed a tool call and two explicit goodbyes on a real call. One green test under unrepresentative load is not evidence."><b>TURN</b><span>turn_v3 · eager · 3.0s</span><small>soft timeout off, deliberately</small></div>
-    <div class="row" data-t="LLM" data-n="The agent LLM does turn-taking and tool choice at temperature 0 — it is the router, not the brain. Deep answers come from the consult tool. A backup cascade kicks in at 4.0s. Fill {{AGENT_LLM}} with whatever your account offers; the suite is how you compare candidates honestly (sequential runs, 3x per config before any verdict)."><b>LLM</b><span class="ph">{{AGENT_LLM}}</span><small>temp 0 · cascade 4.0s</small></div>
-    <div class="row" data-t="TTS" data-n="eleven_flash_v2, stability .50, similarity .95, streaming latency 3, pcm_24000 out. {{VOICE_ID}} is any voice in YOUR ElevenLabs account — the reference implementation uses a designed persona voice. Voice swaps go by exact voice ID and must propagate to every consumer."><b>TTS</b><span>eleven_flash_v2 · <span class="ph">{{VOICE_ID}}</span></span><small>.50 / .95</small></div>
+    <div class="row" data-t="LLM" data-n="The agent LLM does turn-taking and tool choice at temperature 0, it is the router, not the brain. Deep answers come from the consult tool. A backup cascade kicks in at 4.0s. Fill {{AGENT_LLM}} with whatever your account offers; the suite is how you compare candidates honestly (sequential runs, 3x per config before any verdict)."><b>LLM</b><span class="ph">{{AGENT_LLM}}</span><small>temp 0 · cascade 4.0s</small></div>
+    <div class="row" data-t="TTS" data-n="eleven_flash_v2, stability .50, similarity .95, streaming latency 3, pcm_24000 out. {{VOICE_ID}} is any voice in YOUR ElevenLabs account, the reference implementation uses a designed persona voice. Voice swaps go by exact voice ID and must propagate to every consumer."><b>TTS</b><span>eleven_flash_v2 · <span class="ph">{{VOICE_ID}}</span></span><small>.50 / .95</small></div>
     <div class="row" data-t="SYSTEM TOOLS" data-n="end_call and voicemail_detection. The end_call description carries the hang-up doctrine: THANKS NEVER ENDS A CALL, only plain words of leaving do ('that's all', 'bye', 'gotta go'), and the farewell is passed INTO the tool so saying goodbye and hanging up are one act that cannot come apart. The costs are asymmetric: a wrong 'next' costs one joke, a wrong 'thanks' costs the whole call."><b>SYS</b><span>end_call · voicemail_detection</span><small>the hang-up doctrine</small></div>
   </div>
 
   <div class="conn">16 webhook tools, one server</div>
 
-  <div class="sec">TOOL SERVER — <span class="ph">{{TOOL_SERVER}}</span></div>
+  <div class="sec">TOOL SERVER, <span class="ph">{{TOOL_SERVER}}</span></div>
   <div class="card">
     <div class="chips">
-      <div class="chip" data-t="fast tools" data-n="calculate, get_location, get_calendar, get_distance, list_calls, schedule_call, cancel_call, set_volume, play_music, create_playlist. Prompt rule: for quick tools, never announce — call the tool and report the result in ONE sentence. Announcing then confirming makes her sound like an echo.">fast · 10 tools</div>
-      <div class="chip" data-t="check_notes (the consult)" data-n="The slow one: a consult brain behind the gateway, measured 10–22s end to end on the voice path. Everything about deferral exists because of this tool — she says a varied holding line once ('let me have a squiz'), the harness extends its grace window when it hears one, and the prompt forbids asking the caller to repeat while a lookup is pending.">check_notes · 10–22s</div>
-      <div class="chip" data-t="the rest" data-n="tell_joke (jokes are fetched, never composed — at temperature 0 her own joke is always the same stale one), check_telegram, make_song, save_note. get_weather skips the server entirely and hits open-meteo directly: no key, no server hop, 16 days ahead / 90 back.">tell_joke · check_telegram · make_song · save_note</div>
-      <div class="chip" data-t="the server itself" data-n="{{TOOL_SERVER}} is wherever you can host 15 small HTTP endpoints — the reference implementation is an OpenClaw gateway plus thin shims on a Mac, exposed over a private tailnet. The agent config only needs URLs; the server's own stack is yours to choose.">an OpenClaw gateway + shims</div>
+      <div class="chip" data-t="fast tools" data-n="calculate, get_location, get_calendar, get_distance, list_calls, schedule_call, cancel_call, set_volume, play_music, create_playlist. Prompt rule: for quick tools, never announce, call the tool and report the result in ONE sentence. Announcing then confirming makes her sound like an echo.">fast · 10 tools</div>
+      <div class="chip" data-t="check_notes (the consult)" data-n="The slow one: a consult brain behind the gateway, measured 10-22s end to end on the voice path. Everything about deferral exists because of this tool, she says a varied holding line once ('let me have a squiz'), the harness extends its grace window when it hears one, and the prompt forbids asking the caller to repeat while a lookup is pending.">check_notes · 10-22s</div>
+      <div class="chip" data-t="the rest" data-n="tell_joke (jokes are fetched, never composed, at temperature 0 her own joke is always the same stale one), check_telegram, make_song, save_note. get_weather skips the server entirely and hits open-meteo directly: no key, no server hop, 16 days ahead / 90 back.">tell_joke · check_telegram · make_song · save_note</div>
+      <div class="chip" data-t="the server itself" data-n="{{TOOL_SERVER}} is wherever you can host 15 small HTTP endpoints, the reference implementation is an OpenClaw gateway plus thin shims on a Mac, exposed over a private tailnet. The agent config only needs URLs; the server's own stack is yours to choose.">an OpenClaw gateway + shims</div>
     </div>
   </div>
 
@@ -99,14 +99,14 @@
 
   <div class="sec">EVALS</div>
   <div class="card">
-    <div class="row" data-t="cases.py" data-n="61 probes mined verbatim from live calls — disfluencies kept ('Uh, h- how long by car?'), paired with the tool the agent SHOULD call, hand-set. READ probes are safe; WRITE probes really change volume and create playlists, gated behind --allow-actions. Several probes flipped direction after real calls proved the test wrong, and the comments keep those reversals on the record."><b>cases</b><span>61 probes, mined verbatim from live calls</span><small>READ / WRITE tagged</small></div>
-    <div class="row" data-t="suite.py" data-n="The runner. Checkpoints after every test (a kernel panic now costs one test, not the run), majority-across-repeats (all-must-pass reds on ordinary nondeterminism day one), and the default shape is 1x then escalate only the reds to 3x — same confidence as a flat 3x sweep at ~40% of the cost. Outcome probes also check what EXISTS afterwards: a scheduled call must land in cron, and the probe deletes only what it created."><b>suite</b><span>checkpointed · majority · 1x then escalate</span><small>outcome probes incl.</small></div>
-    <div class="row" data-t="grade.py" data-n="Tier 0/1: pure code, no model, no credits, decides ~54 of 55. Business tools are graded; call-control tools are filtered so a legitimate goodbye never fails a no-tool test — and '!end_call' exists because that same filter once made a premature hangup invisible. Earned trust by replaying the vendor's own stored corpus and diffing verdicts."><b>grade</b><span>tier 0/1 · pure code · ~54/55 decided</span><small>validated by replay</small></div>
-    <div class="row" data-t="judge.py" data-n="Tier 2, two probes asking two DIFFERENT questions: a structural probe (did the reply satisfy the written condition — evidence-bound, must quote, fabricated quotes rejected) and a vibes probe (would this annoy a real caller). Structural pass + vibes fail = FLAG: technically correct, feels wrong — the most valuable signal the harness produces, and usually means the TEST needs fixing."><b>judge</b><span>structural (the letter) + vibes (the ear)</span><small>disagreement = signal</small></div>
+    <div class="row" data-t="cases.py" data-n="61 probes mined verbatim from live calls, disfluencies kept ('Uh, h- how long by car?'), paired with the tool the agent SHOULD call, hand-set. READ probes are safe; WRITE probes really change volume and create playlists, gated behind --allow-actions. Several probes flipped direction after real calls proved the test wrong, and the comments keep those reversals on the record."><b>cases</b><span>61 probes, mined verbatim from live calls</span><small>READ / WRITE tagged</small></div>
+    <div class="row" data-t="suite.py" data-n="The runner. Checkpoints after every test (a kernel panic now costs one test, not the run), majority-across-repeats (all-must-pass reds on ordinary nondeterminism day one), and the default shape is 1x then escalate only the reds to 3x, same confidence as a flat 3x sweep at ~40% of the cost. Outcome probes also check what EXISTS afterwards: a scheduled call must land in cron, and the probe deletes only what it created."><b>suite</b><span>checkpointed · majority · 1x then escalate</span><small>outcome probes incl.</small></div>
+    <div class="row" data-t="grade.py" data-n="Tier 0/1: pure code, no model, no credits, decides ~54 of 55. Business tools are graded; call-control tools are filtered so a legitimate goodbye never fails a no-tool test, and '!end_call' exists because that same filter once made a premature hangup invisible. Earned trust by replaying the vendor's own stored corpus and diffing verdicts."><b>grade</b><span>tier 0/1 · pure code · ~54/55 decided</span><small>validated by replay</small></div>
+    <div class="row" data-t="judge.py" data-n="Tier 2, two probes asking two DIFFERENT questions: a structural probe (did the reply satisfy the written condition, evidence-bound, must quote, fabricated quotes rejected) and a vibes probe (would this annoy a real caller). Structural pass + vibes fail = FLAG: technically correct, feels wrong, the most valuable signal the harness produces, and usually means the TEST needs fixing."><b>judge</b><span>structural (the letter) + vibes (the ear)</span><small>disagreement = signal</small></div>
     <div class="row" data-t="metrics.py" data-n="Production calls only. The discriminator is exact: placed through Twilio, far-end number is the owner's, not text-only. Without it, ~99% of 'call quality' was the harness grading itself. Exclusions are published beside the numbers, because a filter that silently drops rows looks identical to a broken fetch."><b>metrics</b><span>production only · exclusions published</span><small>harness ≠ product</small></div>
   </div>
 
-  <div id="note"><span class="t">·</span><span class="hint">hover a row or chip — its story lands here. click to pin.</span></div>
+  <div id="note"><span class="t">·</span><span class="hint">hover a row or chip, its story lands here. click to pin.</span></div>
 
   <div class="foot">placeholders in {{double braces}} come from .env.example · built by hand, no dependencies, no build step</div>
 </div>
