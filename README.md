@@ -87,6 +87,7 @@ The interactive version of the architecture lives at **[jameswniu.github.io/real
 <img src="assets/architecture.svg" alt="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" width="100%">
 
 ```mermaid
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
 flowchart TD
     PSTN["iPhone · Twilio PSTN · 8 kHz<br/>the hard lane"]
     WS["browser widget · WebSocket · 16 kHz<br/>what the harness drives"]
