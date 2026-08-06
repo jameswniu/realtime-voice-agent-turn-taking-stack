@@ -52,11 +52,49 @@ The interactive version of the architecture lives at **[jameswniu.github.io/real
 
 <img src="assets/architecture.svg" alt="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" width="100%">
 
-<details>
-<summary><b>The same map as a terminal read</b>, every box above, as monospace</summary>
-<br>
-<img src="assets/architecture-terminal.svg" alt="The stack end to end, rendered as a terminal screen" width="100%">
-</details>
+```mermaid
+flowchart TD
+    PSTN["iPhone · Twilio PSTN · 8 kHz<br/>the hard lane"]
+    WS["browser widget · WebSocket · 16 kHz<br/>what the harness drives"]
+
+    subgraph AGENT["ElevenLabs Agents platform · the router, not the brain"]
+        direction LR
+        ASR["ASR<br/>scribe_realtime"] --> TURN["turn_v3<br/>eager · 3.0s"] --> LLM["LLM<br/>temp 0 · cascade 4.0s"] --> TTS["TTS<br/>eleven_flash_v2"]
+        SYS["end_call · voicemail_detection<br/>the hang-up doctrine"]
+    end
+
+    subgraph TOOLS["Tool server · an OpenClaw gateway"]
+        direction LR
+        FAST["fast lane · 10 tools<br/>calendar · calls · music"]
+        SLOW["slow lane<br/>check_notes · 10-22s"]
+    end
+
+    subgraph REF["The referee · every claim names its layer"]
+        direction LR
+        HARN["harness<br/>text + voice probes"]
+        SUITE["suite<br/>61 cases · 1x then 3x"]
+        GJ["grade + judge<br/>code, then two probes"]
+        MET["metrics<br/>production only"]
+    end
+
+    PSTN --> AGENT
+    WS --> AGENT
+    AGENT -->|"16 webhook tools"| TOOLS
+    AGENT -.->|"audited by"| REF
+    TOOLS -.->|"audited by"| REF
+
+    classDef caller fill:#FFFDF8,stroke:#6B5340,color:#2B1B12
+    classDef agent fill:#FBF2E2,stroke:#C6A664,color:#2B1B12
+    classDef tool fill:#FFFDF8,stroke:#6B5340,color:#2B1B12
+    classDef ref fill:#F7E9CC,stroke:#A98B4F,color:#2B1B12
+    class PSTN,WS caller
+    class ASR,TURN,LLM,TTS,SYS agent
+    class FAST,SLOW tool
+    class HARN,SUITE,GJ,MET ref
+    style AGENT fill:#FBF6EC,stroke:#C6A664,color:#5C4A3D
+    style TOOLS fill:#FBF6EC,stroke:#6B5340,color:#5C4A3D
+    style REF fill:#F7EFDD,stroke:#A98B4F,color:#5C4A3D
+```
 
 Two transports land in one agent, and the difference between them is the whole testing story. The WebSocket lane is crisp 16 kHz and drivable from code; the PSTN lane is 8 kHz telephony audio where "next" and "thanks" become the same word. Cheap layers come back green while the real call fails, so the layers are explicit, and every claim names the layer it was proven on.
 
