@@ -1,145 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1330" width="980" height="1330" role="img" aria-label="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
-    <stop offset="0" stop-color="#160907"/>
-    <stop offset="0.55" stop-color="#0F0605"/>
-    <stop offset="1" stop-color="#0B0403"/>
-  </linearGradient>
-  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
-    <circle cx="1" cy="1" r="0.7" fill="#241210"/>
-  </pattern>
-  <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#7A615A"/>
-    <stop offset="0.28" stop-color="#F3E7E2"/>
-    <stop offset="0.5" stop-color="#A8908A"/>
-    <stop offset="0.72" stop-color="#FCF6F4"/>
-    <stop offset="1" stop-color="#836A63"/>
-  </linearGradient>
-  <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#2B130D"/>
-    <stop offset="0.5" stop-color="#20100A"/>
-    <stop offset="1" stop-color="#180B07"/>
-  </linearGradient>
-  <linearGradient id="panelLive" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#3A1B12"/>
-    <stop offset="1" stop-color="#221009"/>
-  </linearGradient>
-  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#4A241C" stop-opacity="0.2"/>
-    <stop offset="0.5" stop-color="#C9A79C" stop-opacity="0.75"/>
-    <stop offset="1" stop-color="#4A241C" stop-opacity="0.2"/>
-  </linearGradient>
-  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-    <path d="M0,0 L10,5 L0,10 z" fill="#A5837A"/>
-  </marker>
-  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-    <path d="M0,0 L10,5 L0,10 z" fill="#F3E7E2"/>
-  </marker>
-</defs>
-
-<rect x="0" y="0" width="980" height="1330" fill="url(#bg)"/>
-<rect x="0" y="0" width="980" height="1330" fill="url(#grid)"/>
-
-<rect x="34" y="150" width="1" height="1136" fill="#2E1712"/>
-
-<text x="34" y="46" fill="#D96A57" font-size="15" font-weight="700" letter-spacing="3.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">SYSTEM MAP</text>
-<text x="34" y="88" fill="#F5EBE7" font-size="34" font-weight="700" letter-spacing="0.4">Architecture</text>
-<text x="34" y="118" fill="#9B7A70" font-size="19">One call, top to bottom. The bright band is the referee.</text>
-<rect x="700" y="30" width="2" height="62" fill="#3A1D16"/>
-<text x="946" y="52" fill="#A5837A" font-size="17" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">2 transports / 16 tools</text>
-<text x="946" y="78" fill="#A5837A" font-size="17" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">61 cases / 8 kHz floor</text>
-
-<text x="62" y="170" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">01</text>
-<text x="96" y="170" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">CALLER</text>
-<text x="216" y="170" fill="#8F6F65" font-size="18">two transports, one agent; the difference is the testing story</text>
-<line x1="62" y1="184" x2="946" y2="184" stroke="#2E1712" stroke-width="1"/>
-
-<rect x="62" y="200" width="420" height="124" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="74" y="200.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="84" y="236" fill="#F5EBE7" font-size="22" font-weight="700">Twilio PSTN, 8 kHz</text>
-<text x="84" y="270" fill="#C4A196" font-size="19">telephony audio, the hard lane</text>
-<text x="84" y="302" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">'next' and 'thanks' collide here</text>
-
-<rect x="526" y="200" width="420" height="124" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="538" y="200.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="548" y="236" fill="#F5EBE7" font-size="22" font-weight="700">WebSocket, 16 kHz</text>
-<text x="548" y="270" fill="#C4A196" font-size="19">widget sessions and the probe harness</text>
-<text x="548" y="302" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_audio_chunk, pcm_16000</text>
-
-<text x="62" y="378" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">02</text>
-<text x="96" y="378" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">AGENT</text>
-<text x="200" y="378" fill="#8F6F65" font-size="18">ElevenLabs Agents platform; the router, not the brain</text>
-<line x1="62" y1="392" x2="946" y2="392" stroke="#2E1712" stroke-width="1"/>
-
-<rect x="62" y="408" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="74" y="408.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="84" y="444" fill="#F5EBE7" font-size="22" font-weight="700">conversation loop</text>
-<text x="84" y="478" fill="#C4A196" font-size="19">scribe_realtime ASR, keyword-biased</text>
-<text x="84" y="506" fill="#C4A196" font-size="19">turn_v3, eager, 3.0s, speculative</text>
-<text x="84" y="540" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">soft-timeout filler off, deliberately</text>
-
-<rect x="526" y="408" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="538" y="408.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="548" y="444" fill="#F5EBE7" font-size="22" font-weight="700">generation</text>
-<text x="548" y="478" fill="#C4A196" font-size="19">agent LLM at temperature 0</text>
-<text x="548" y="506" fill="#C4A196" font-size="19">TTS eleven_flash_v2, your voice id</text>
-<text x="548" y="540" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">stability .50, similarity .95, cascade 4.0s</text>
-
-<path d="M 482 484 L 518 484" stroke="#A5837A" stroke-width="2" fill="none" marker-end="url(#a)"/>
-
-<text x="62" y="614" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">03</text>
-<text x="96" y="614" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">TOOLS</text>
-<text x="196" y="614" fill="#8F6F65" font-size="18">16 webhooks, one server; weather goes straight to open-meteo</text>
-<line x1="62" y1="628" x2="946" y2="628" stroke="#2E1712" stroke-width="1"/>
-
-<rect x="62" y="644" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="74" y="644.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="84" y="680" fill="#F5EBE7" font-size="22" font-weight="700">fast lane, 10 tools</text>
-<text x="84" y="714" fill="#C4A196" font-size="19">calendar, location, distance, calculate</text>
-<text x="84" y="742" fill="#C4A196" font-size="19">calls, volume, music, playlists</text>
-<text x="84" y="776" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">call, then report in ONE sentence</text>
-
-<rect x="526" y="644" width="420" height="152" fill="url(#panel)" stroke="#4A241C" stroke-width="1.5"/>
-<rect x="538" y="644.7" width="396" height="1.4" fill="url(#edge)"/>
-<text x="548" y="680" fill="#F5EBE7" font-size="22" font-weight="700">slow lane</text>
-<text x="548" y="714" fill="#C4A196" font-size="19">check_notes, the consult brain</text>
-<text x="548" y="742" fill="#C4A196" font-size="19">deferral grammar holds the turn open</text>
-<text x="548" y="776" fill="#97756A" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">measured 10-22s end to end</text>
-
-<path d="M 482 720 L 518 720" stroke="#A5837A" stroke-width="2" fill="none" marker-end="url(#a)"/>
-
-<text x="62" y="850" fill="#F3E7E2" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">04</text>
-<text x="96" y="850" fill="#FFFFFF" font-size="17" font-weight="700" letter-spacing="2.2">THE REFEREE</text>
-<text x="270" y="850" fill="#C9A79C" font-size="18">every claim names the layer it was proven on; the subject of this repository</text>
-<line x1="62" y1="864" x2="946" y2="864" stroke="#5A2E24" stroke-width="1"/>
-
-<rect x="62" y="880" width="420" height="146" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
-<text x="84" y="918" fill="#FFFFFF" font-size="22" font-weight="700">harness</text>
-<text x="84" y="952" fill="#E9D5CE" font-size="19">talk-to-her.js, text, no audio</text>
-<text x="84" y="980" fill="#E9D5CE" font-size="19">talk-to-her-voice.js, real ASR and VAD</text>
-<text x="84" y="1008" fill="#A98F86" font-size="17">a turn ends when her ANSWER lands</text>
-
-<rect x="526" y="880" width="420" height="146" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
-<text x="548" y="918" fill="#FFFFFF" font-size="22" font-weight="700">suite</text>
-<text x="548" y="952" fill="#E9D5CE" font-size="19">61 cases mined verbatim from live calls</text>
-<text x="548" y="980" fill="#E9D5CE" font-size="19">1x, reds escalate to 3x, majority wins</text>
-<text x="548" y="1008" fill="#A98F86" font-size="17">checkpointed after every test</text>
-
-<path d="M 482 946 L 518 946" stroke="#F3E7E2" stroke-width="2.2" fill="none" marker-end="url(#ab)"/>
-
-<rect x="62" y="1046" width="884" height="86" fill="url(#panelLive)" stroke="url(#chrome)" stroke-width="2.2"/>
-<text x="84" y="1082" fill="#FFFFFF" font-size="22" font-weight="700">grade + judge</text>
-<text x="84" y="1114" fill="#E9D5CE" font-size="19">pure code decides ~54 of 55; the rest get two probes, the letter and the ear, and disagreement flags the test</text>
-
-<text x="62" y="1186" fill="#D96A57" font-size="16" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">05</text>
-<text x="96" y="1186" fill="#D6B0A6" font-size="17" font-weight="700" letter-spacing="2.2">PRODUCTION</text>
-<text x="262" y="1186" fill="#8F6F65" font-size="18">metrics that exclude the instrument</text>
-<line x1="62" y1="1200" x2="946" y2="1200" stroke="#2E1712" stroke-width="1"/>
-
-<rect x="62" y="1216" width="420" height="60" fill="url(#panel)" stroke="#4A241C" stroke-width="1.4"/>
-<text x="84" y="1240" fill="#C4A196" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">metrics.py: Twilio + owner number only</text>
-<text x="84" y="1264" fill="#97756A" font-size="16">the harness never grades itself</text>
-<rect x="526" y="1216" width="420" height="60" fill="url(#panel)" stroke="#4A241C" stroke-width="1.4"/>
-<text x="548" y="1240" fill="#C4A196" font-size="18">exclusions published beside the numbers</text>
-<text x="548" y="1264" fill="#97756A" font-size="16">a caller hanging up is not a failure</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1330" viewBox="0 0 980 1330" role="img" aria-label="aj-voice-agent architecture: caller, ElevenLabs agent, tool server, and the evals referee">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#FAF6EE"/><stop offset="1" stop-color="#F1E9DA"/></linearGradient><linearGradient id="acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8D5A8"/><stop offset="0.5" stop-color="#C6A664"/><stop offset="1" stop-color="#A98B4F"/></linearGradient><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#A98B4F"/></marker></defs>
+<rect x="1.5" y="1.5" width="977" height="1327" rx="18" fill="url(#bg)" stroke="#6B5340" stroke-width="1.6"/>
+<rect x="9" y="9" width="962" height="1312" rx="13" fill="none" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="34" y="150" width="5" height="1030" rx="2.5" fill="url(#acc)"/>
+<text x="62" y="60" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" font-weight="700" letter-spacing="3.4" fill="#A98B4F">SYSTEM MAP</text>
+<text x="62" y="100" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#2B1B12" letter-spacing="0.3">Architecture</text>
+<text x="62" y="128" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="18" fill="#9C8672">One call, top to bottom. The bright band is the referee.</text>
+<rect x="682" y="46" width="236" height="58" rx="12" fill="#FFFDF8" stroke="#C6A664" stroke-width="1.4"/>
+<text x="902" y="74" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#5C4A3D" text-anchor="end">2 transports / 16 tools</text>
+<text x="902" y="94" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#5C4A3D" text-anchor="end">61 cases / 8 kHz floor</text>
+<text x="62" y="176" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="700" fill="#A83E32">01</text>
+<text x="96" y="176" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.5" font-weight="700" letter-spacing="2.2" fill="#2B1B12">CALLER</text>
+<text x="220" y="176" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#9C8672">two transports, one agent; the difference is the testing story</text>
+<line x1="62" y1="190" x2="918" y2="190" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="62" y="196" width="356" height="116" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="76" y="197.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="82" y="230" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">Twilio PSTN, 8 kHz</text>
+<text x="82" y="260" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">telephony audio, the hard lane</text>
+<text x="82" y="296" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">&#x27;next&#x27; and &#x27;thanks&#x27; collide here</text>
+<rect x="500" y="196" width="356" height="116" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="514" y="197.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="520" y="230" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">WebSocket, 16 kHz</text>
+<text x="520" y="260" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">widget sessions and the probe harness</text>
+<text x="520" y="296" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">user_audio_chunk, pcm_16000</text>
+<text x="62" y="356" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="700" fill="#A83E32">02</text>
+<text x="96" y="356" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.5" font-weight="700" letter-spacing="2.2" fill="#2B1B12">AGENT</text>
+<text x="206" y="356" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#9C8672">ElevenLabs Agents platform; the router, not the brain</text>
+<line x1="62" y1="370" x2="918" y2="370" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="62" y="376" width="356" height="150" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="76" y="377.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="82" y="410" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">conversation loop</text>
+<text x="82" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">scribe_realtime ASR, keyword-biased</text>
+<text x="82" y="467" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">turn_v3, eager, 3.0s, speculative</text>
+<text x="82" y="510" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">soft-timeout filler off, deliberately</text>
+<rect x="500" y="376" width="356" height="150" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="514" y="377.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="520" y="410" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">generation</text>
+<text x="520" y="440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">agent LLM at temperature 0</text>
+<text x="520" y="467" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">TTS eleven_flash_v2, your voice id</text>
+<text x="520" y="510" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">stability .50, similarity .95</text>
+<path d="M 422 451 L 496 451" stroke="#A98B4F" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<text x="62" y="570" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="700" fill="#A83E32">03</text>
+<text x="96" y="570" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.5" font-weight="700" letter-spacing="2.2" fill="#2B1B12">TOOLS</text>
+<text x="206" y="570" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#9C8672">16 webhooks, one server; weather goes straight to open-meteo</text>
+<line x1="62" y1="584" x2="918" y2="584" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="62" y="590" width="356" height="150" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="76" y="591.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="82" y="624" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">fast lane, 10 tools</text>
+<text x="82" y="654" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">calendar, location, distance, calculate</text>
+<text x="82" y="681" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">calls, volume, music, playlists</text>
+<text x="82" y="724" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">call, then report in ONE sentence</text>
+<rect x="500" y="590" width="356" height="150" rx="14" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<rect x="514" y="591.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="520" y="624" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">slow lane</text>
+<text x="520" y="654" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">check_notes, the consult brain</text>
+<text x="520" y="681" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">deferral grammar holds the turn open</text>
+<text x="520" y="724" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">measured 10-22s end to end</text>
+<path d="M 422 665 L 496 665" stroke="#A98B4F" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<text x="62" y="784" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="700" fill="#A83E32">04</text>
+<text x="96" y="784" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.5" font-weight="700" letter-spacing="2.2" fill="#2B1B12">THE REFEREE</text>
+<text x="290" y="784" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#9C8672">every claim names the layer it was proven on</text>
+<line x1="62" y1="798" x2="918" y2="798" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="62" y="804" width="356" height="150" rx="14" fill="#FBF2E2" stroke="#C6A664" stroke-width="2"/>
+<rect x="76" y="805.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="82" y="838" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">harness</text>
+<text x="82" y="868" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">talk-to-her.js, text, no audio</text>
+<text x="82" y="895" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">talk-to-her-voice.js, real ASR + VAD</text>
+<text x="82" y="938" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">a turn ends when her ANSWER lands</text>
+<rect x="500" y="804" width="356" height="150" rx="14" fill="#FBF2E2" stroke="#C6A664" stroke-width="2"/>
+<rect x="514" y="805.5" width="328" height="1" rx="0.5" fill="#E8D5A8" opacity="0.5"/>
+<text x="520" y="838" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">suite</text>
+<text x="520" y="868" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">61 cases mined from live calls</text>
+<text x="520" y="895" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">1x, reds escalate to 3x, majority</text>
+<text x="520" y="938" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#8A7666">checkpointed after every test</text>
+<path d="M 422 879 L 496 879" stroke="#A98B4F" stroke-width="2.2" fill="none" marker-end="url(#ar)"/>
+<rect x="62" y="972" width="794" height="92" rx="14" fill="#FBF2E2" stroke="#C6A664" stroke-width="2"/>
+<rect x="76" y="973.5" width="766" height="1" fill="#E8D5A8" opacity="0.5"/>
+<text x="82" y="1006" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#2B1B12">grade + judge</text>
+<text x="82" y="1038" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">pure code decides ~54 of 55; the rest get two probes, the letter and the ear,</text>
+<text x="82" y="1060" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17.5" fill="#5C4A3D">and their disagreement flags the test.</text>
+<text x="62" y="1108" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="700" fill="#A83E32">05</text>
+<text x="96" y="1108" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.5" font-weight="700" letter-spacing="2.2" fill="#2B1B12">PRODUCTION</text>
+<text x="276" y="1108" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#9C8672">metrics that exclude the instrument</text>
+<line x1="62" y1="1122" x2="918" y2="1122" stroke="#D8C6AC" stroke-width="1"/>
+<rect x="62" y="1126" width="356" height="64" rx="12" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<text x="80" y="1152" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15.5" fill="#5C4A3D">metrics.py: Twilio + owner only</text>
+<text x="80" y="1176" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="16" fill="#8A7666">the harness never grades itself</text>
+<rect x="500" y="1126" width="356" height="64" rx="12" fill="#FFFDF8" stroke="#6B5340" stroke-width="1.4"/>
+<text x="518" y="1152" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="16.5" fill="#5C4A3D">exclusions published beside the numbers</text>
+<text x="518" y="1176" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="16" fill="#8A7666">a caller hanging up is not a failure</text>
+<text x="62" y="1306" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#9C8672">placeholders in {{double braces}} are yours to fill  ·  interactive version: architecture.html</text>
 </svg>
