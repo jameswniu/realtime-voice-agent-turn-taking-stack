@@ -18,21 +18,51 @@
 
 </div>
 
-## Hear it
+## Hear her work
 
-Three real 8 kHz calls, placed by the harness from the owner's own caller ID in his cloned voice, her answering live. This is the hard lane as it actually sounds, press play. Turn-by-turn splits and more receipts live on the [call receipts page](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
+Nine real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Press play. This is what she does for the person who calls; the engineering behind each one is dissected on the [technical receipts page](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
 
-**The route fix**, "what important communication do I have right now?" routes to `check_notes` and walks all three defined channels (sensitive spans silenced, verified by re-transcription).
+### Stays on top of your day
+
+**Sweeps what actually needs you** across email, iMessage, and WhatsApp, and names the quiet channel instead of skipping it (real names and vendors silenced here).
 
 https://github.com/user-attachments/assets/cc7a5256-c94f-4e22-b056-d48f35b1bfa2
 
-**The thanks trap**, down an 8 kHz line "next" and "thanks" collide; a wrong "thanks" would cost the whole call, so "thanks" keeps the line open and only "next" fetches the next joke.
+**Reads back your week** from the calendar, with days and times (the private event details are bleeped for this demo).
+
+https://github.com/user-attachments/assets/34460eaf-b04d-4cef-8d1c-86a8c5ca5243
+
+**Wakes you with a real call**, schedules it on the spot and confirms the time back to you.
+
+https://github.com/user-attachments/assets/6f02c2ae-c745-44fd-acef-be45504b9937
+
+### Answers on the spot
+
+**Splits the check** with tip, out loud, in one turn.
+
+https://github.com/user-attachments/assets/2e73368b-c72b-4208-b35a-b431cbee9124
+
+**Gives you the weekend weather**, real forecast, spoken like a person.
+
+https://github.com/user-attachments/assets/c29517ee-8d63-4a74-b016-211b7366d523
+
+**Tells you how far and how to get there**, drive, scooter, and walk times in one answer.
+
+https://github.com/user-attachments/assets/2feb0db4-ba98-4951-ac1c-ef750d15b6fe
+
+### Keeps you company
+
+**Tells a joke, and keeps the line open**; a "thanks" never hangs up, only a real close does.
 
 https://github.com/user-attachments/assets/50dba324-41fc-42a6-88ca-fad7ec0f1060
 
-**The clean close**, plain words of leaving end the call, and the farewell rides inside the `end_call` tool so goodbye and hang-up are one act.
+**Checks in warmly**, no tool, no script, just a person on the line.
 
-https://github.com/user-attachments/assets/644da285-35a9-47af-bd91-db57501ca3a1
+https://github.com/user-attachments/assets/ee9db041-a533-4478-8ab6-6c00bc1bd32c
+
+**Tells you what she can do**, in her own words, when you ask.
+
+https://github.com/user-attachments/assets/782cedd8-035f-41d3-9866-64801d0bc7bf
 
 **AJ is a phone-native voice companion.** She lives on a real phone number, answers when called, rings back when scheduled, checks a calendar and an inbox, tells jokes she fetched rather than composed, and hangs up only on plain words of leaving. This repo is her skeleton: the agent configuration, the probe harness that talks to her like a person, and the eval suite that decides, with code first and models last, whether she is actually good.
 
