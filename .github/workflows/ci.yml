@@ -1,0 +1,35 @@
+name: gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies if declared
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Suite dry run (no keys, no calls, no cost)
+        run: python3 evals/suite.py --dry-run
+
+      - name: Import smoke of evals modules
+        run: |
+          python3 - <<'PYEOF'
+          import importlib.util
+          for name in ("cases", "grade", "judge", "metrics", "sync"):
+              spec = importlib.util.spec_from_file_location(name, f"evals/{name}.py")
+              mod = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(mod)
+              print(name, "imports clean")
+          PYEOF
