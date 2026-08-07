@@ -7,7 +7,6 @@
 <br><br>
 
 [![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
-[![call receipts](https://img.shields.io/badge/call_receipts-10_panels_live-A83E32?style=for-the-badge&labelColor=2B1B12)](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)
 [![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
 [![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
 [![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
@@ -18,9 +17,6 @@
 <code>ring -> she picks up -> it is handled</code>
 
 </div>
-
-> [!TIP]
-> **Want to see how it gets debugged?** Testing here means placing real phone calls, the way a person actually reaches her, then keeping every one as a receipt. **[Call receipts](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** replays an actual production miss word for word, shows the routing fix holding on the hard 8 kHz line, and re-transcribes the redacted audio to prove the private names are gone. Ten panels, turn by turn, every one a playable call.
 
 ## Hear her work
 
@@ -268,7 +264,6 @@ Setting her up from scratch: create an agents-platform agent in ElevenLabs, past
 
 ## Read next
 
-- **[Call receipts](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)**, the debugging in the open: ten real calls kept as turn-by-turn players, a production miss replayed and fixed, redaction machine-verified
 - **[docs/architecture.html](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/architecture.html)**, the interactive stack diagram; every row carries the doctrine behind it
 - **`agent/system-prompt.template.txt`**, the rulebook itself; the sections on acknowledgements, jokes, and call-ending are where most of the failures lived
 - **`evals/cases.py`**, read the comments top to bottom and you have the project's honest history
