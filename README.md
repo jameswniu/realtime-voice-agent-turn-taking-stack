@@ -237,6 +237,20 @@ Reads the ElevenLabs conversation history and computes the two-layer dashboard (
 | voice probe cost | ~242 credits | 9.7 credits/sec × ~25s, from account billing |
 | credit price | $1.66 = 10,000 credits | the account's own top-up dialog |
 
+## Watched in production
+
+The suite gates changes; a live dashboard watches the shipped agent. Every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself.
+
+<img src="assets/observability.svg" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
+
+| panel | what it watches | current reading |
+|---|---|---|
+| responsiveness + reliability | answer latency from end of caller speech, tool latency, dead-air 5s+, tool failure rate, clean-close rate | 1.6s answer (p95 10.8s), 1% tool fail of 81, 100% clean close |
+| conversation + usage | friction (caller corrects her), interruptions, turns per call, call length, tool mix, volume | 0% friction, 0.5 interruptions/call, 9.1 turns, 43s avg, 39 calls/3 days |
+| model governance | fallback order pinned (not the vendor default), how often the backup brain actually fired, models billed outside the allowlist, LLM credit burn vs the pinned baseline | backup fired 17% of convs, rogue models none, burn 1.82x flagged |
+
+Three watchdogs keep it honest unattended: a bridge watchdog every 30 minutes, a metrics sweep every 6 hours, and a daily model watch that checks credit burn and days left, every billed model against the allowlist, and goodbyes that did not hang up. Alerts page loudly; silence is never treated as evidence.
+
 ## Cost
 
 A full 1x pass prints its own estimate before running: **~$1.97** at current definitions. The escalation shape is the economics: a flat 3x sweep costs ~35,000 credits (~$5.82); 1x with only the reds escalated costs ~14,600 (~$2.42) for the same per-verdict confidence. The cost constants in `suite.py` are measured, and the comment above them records the time a made-up constant under-reported by 13x, never restore one.

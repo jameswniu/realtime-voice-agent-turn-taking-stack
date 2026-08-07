@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 452" width="1040" height="452" role="img" aria-label="Production observability: responsiveness, conversation, and model governance panels with the unattended watchdog process"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#A98B4F"/><stop offset="0.28" stop-color="#E8D5A8"/><stop offset="0.5" stop-color="#C6A664"/><stop offset="0.72" stop-color="#F4E9CC"/><stop offset="1" stop-color="#9C7E45"/></linearGradient><linearGradient id="iv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FAF6EE"/><stop offset="1" stop-color="#F1E9DA"/></linearGradient></defs>
+<rect width="1040" height="452" rx="9" fill="url(#iv)"/><rect width="1040" height="452" rx="9" fill="none" stroke="#6B5340"/><rect x="0" y="0" width="7" height="452" rx="3.5" fill="url(#gold)"/>
+<text x="34" y="40" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.1" letter-spacing="2" fill="#A98B4F" font-weight="700">FRONT OF HOUSE, MEASURED</text>
+<text x="34" y="74" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="27.3" fill="#2B1B12" font-weight="700">Every production call feeds three panels</text>
+<text x="1006" y="42" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#8A7666" text-anchor="end">39 calls / 3 days</text>
+
+<!-- panel 1: responsiveness -->
+<g>
+<rect x="34" y="96" width="312" height="252" rx="8" fill="#FFFDF8" stroke="#D9C08A"/>
+<text x="52" y="126" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" letter-spacing="1.6" fill="#A83E32" font-weight="700">RESPONSIVENESS + RELIABILITY</text>
+<text x="52" y="156" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Answer latency</text><text x="328" y="156" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">1.6s · p95 10.8s</text>
+<text x="52" y="184" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Tool latency</text><text x="328" y="184" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">1.6s · p95 4.0s</text>
+<text x="52" y="212" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Dead-air, 5s+ silent</text><text x="328" y="212" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">0.4 / call</text>
+<text x="52" y="240" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Tool reliability</text><text x="328" y="240" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">1% fail of 81</text>
+<text x="52" y="268" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Slowest tool, named</text><text x="328" y="268" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#A83E32" text-anchor="end" font-weight="700">check_notes 7%</text>
+<text x="52" y="296" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Clean close</text><text x="328" y="296" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#7B8B4F" text-anchor="end" font-weight="700">100%</text>
+<text x="52" y="330" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">latency from end of caller speech,</text>
+<text x="52" y="345" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">the way a human experiences it</text>
+</g>
+
+<!-- panel 2: conversation -->
+<g>
+<rect x="364" y="96" width="312" height="252" rx="8" fill="#FFFDF8" stroke="#D9C08A"/>
+<text x="382" y="126" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" letter-spacing="1.6" fill="#A83E32" font-weight="700">CONVERSATION + USAGE</text>
+<text x="382" y="156" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Friction, you correct her</text><text x="658" y="156" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#7B8B4F" text-anchor="end" font-weight="700">0%</text>
+<text x="382" y="184" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Interruptions, talked over</text><text x="658" y="184" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">0.5 / call</text>
+<text x="382" y="212" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Turns per call</text><text x="658" y="212" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">9.1</text>
+<text x="382" y="240" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Call length, avg</text><text x="658" y="240" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">43s</text>
+<text x="382" y="268" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Tool mix</text><text x="658" y="268" font-size="12" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700" textLength="180" lengthAdjust="spacingAndGlyphs">end_call 25 · joke 14 · notes 13</text>
+<text x="382" y="296" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Volume</text><text x="658" y="296" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">39 calls / 3 days</text>
+<text x="382" y="330" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">harness traffic excluded, so the</text>
+<text x="382" y="345" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">instrument never grades itself</text>
+</g>
+
+<!-- panel 3: governance -->
+<g>
+<rect x="694" y="96" width="312" height="252" rx="8" fill="#FFFDF8" stroke="#D9C08A"/>
+<text x="712" y="126" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5" letter-spacing="1.6" fill="#A83E32" font-weight="700">MODEL GOVERNANCE</text>
+<text x="712" y="156" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Backup brain order</text><text x="988" y="156" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#7B8B4F" text-anchor="end" font-weight="700">pinned</text>
+<text x="712" y="184" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Backup actually fired</text><text x="988" y="184" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">11/64 convs · 17%</text>
+<text x="712" y="212" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Rogue models billed</text><text x="988" y="212" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#7B8B4F" text-anchor="end" font-weight="700">none</text>
+<text x="712" y="240" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">LLM burn vs pinned</text><text x="988" y="240" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#A83E32" text-anchor="end" font-weight="700">1.82x</text>
+<text x="712" y="268" font-size="14" font-family="-apple-system,'Segoe UI',sans-serif" fill="#2B1B12">Credits, watched daily</text><text x="988" y="268" font-size="13" font-family="ui-monospace,Menlo,monospace" fill="#6B5340" text-anchor="end" font-weight="700">burn + days left</text>
+<text x="712" y="302" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">every model that bills is checked</text>
+<text x="712" y="317" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">against an allowlist, and the</text>
+<text x="712" y="332" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">fallback order is pinned, not the</text>
+<text x="712" y="347" font-size="12" font-family="-apple-system,'Segoe UI',sans-serif" fill="#8A7666">vendor default</text>
+</g>
+
+<!-- watchdog band -->
+<rect x="34" y="368" width="972" height="56" rx="8" fill="#2B1B12"/>
+<text x="56" y="392" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" letter-spacing="1.6" fill="#C6A664" font-weight="700">UNATTENDED PROCESS</text>
+<text x="56" y="412" font-size="13" font-family="-apple-system,'Segoe UI',sans-serif" fill="#F1E9DA">bridge watchdog every 30m · metrics sweep every 6h · daily model watch: credit burn, allowlist, bye-without-hangup</text>
+<text x="984" y="404" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" fill="#8A7666" text-anchor="end">cron, not hope</text>
+</svg>

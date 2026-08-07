@@ -69,6 +69,7 @@
       <a href="#thanks-trap">02 the thanks trap</a> &nbsp;·&nbsp;
       <a href="#clean-close">03 the clean close</a> &nbsp;·&nbsp;
       <a href="#more-panels">+7 more panels</a> &nbsp;·&nbsp;
+      <a href="#observability">watched in production</a> &nbsp;·&nbsp;
       <a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">the repo</a> &nbsp;·&nbsp;
       <a href="architecture.html">the architecture</a>
     </div>
@@ -211,6 +212,34 @@
   <div class="turn"><div class="who sys">no tool</div>
     <div><div class="cap"><b>Knows when a tool is the wrong move.</b> "When will it warm up for summer?" is seasonal, outside any 16-day forecast, so she answers from knowledge with no lookup and no dead air.</div>
     <video controls preload="metadata" playsinline src="audio/showcase/tech-seasonal.mp4" class="wf"></video></div></div>
+</div>
+
+<div class="frame" id="observability">
+  <div class="kick" style="color:var(--rust)">WATCHED IN PRODUCTION</div>
+  <div class="call-title">After the suite passes, the dashboard takes over</div>
+  <div class="sub">Every production call feeds three live panels, refreshed by cron with no human in the
+  loop. Harness traffic is excluded, so the instrument never grades itself.</div>
+
+  <div class="turn"><div class="who sys">reliability</div>
+    <div><div class="cap"><b>Responsiveness, as a human hears it.</b> Answer latency measured from the end
+    of caller speech: 1.6s median, p95 10.8s. Tool latency 1.6s, dead-air 0.4 per call, 1% tool
+    failures of 81 lookups, and a 100% clean-close rate. The slowest tool is named, not averaged away.</div></div></div>
+
+  <div class="turn"><div class="who sys">usage</div>
+    <div><div class="cap"><b>Conversation quality.</b> Friction (the caller correcting her) at 0%,
+    interruptions 0.5 per call, 9.1 turns and 43 seconds per call across 39 production calls in three
+    days, with the tool mix tracked per conversation.</div></div></div>
+
+  <div class="turn"><div class="who sys">governance</div>
+    <div><div class="cap"><b>Model governance.</b> The fallback order is pinned, not the vendor default,
+    and the dashboard counts how often the backup brain actually fired (17% of conversations). Every
+    billed model is checked against an allowlist (rogue models: none), and LLM credit burn is compared
+    to the pinned baseline, currently flagged at 1.82x.</div></div></div>
+
+  <div class="turn"><div class="who sys">watchdogs</div>
+    <div><div class="cap"><b>Unattended process.</b> A bridge watchdog every 30 minutes, a metrics sweep
+    every 6 hours, and a daily model watch: credit burn and days left, allowlist membership, and
+    goodbyes that did not hang up. Alerts page loudly; silence is never treated as evidence.</div></div></div>
 </div>
 
 <div class="frame">
