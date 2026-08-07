@@ -241,7 +241,7 @@ Reads the ElevenLabs conversation history and computes the two-layer dashboard (
 
 The suite gates changes; a live dashboard watches the shipped agent. Every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself.
 
-<img src="assets/observability.svg" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
+<img src="assets/observability.svg?v=2" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
 
 | panel | what it watches | current reading |
 |---|---|---|
