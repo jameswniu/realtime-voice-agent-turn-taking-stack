@@ -7,7 +7,7 @@
 <br><br>
 
 [![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
-[![call receipts](https://img.shields.io/badge/call_receipts-10_panels_live-A83E32?style=for-the-badge&labelColor=2B1B12)](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)
+[![synthetic testing](https://img.shields.io/badge/synthetic_testing-10_cases_live-A83E32?style=for-the-badge&labelColor=2B1B12)](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)
 [![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#the-white-glove-pass-stage-by-stage)
 [![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
 [![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
@@ -20,53 +20,31 @@
 </div>
 
 > [!TIP]
-> **Want to see how it gets debugged?** Testing here means placing real phone calls, the way a person actually reaches her, then keeping every one as a receipt. **[Call receipts](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** replays an actual production miss word for word, shows the routing fix holding on the hard 8 kHz line, and re-transcribes the redacted audio to prove the private names are gone. Ten panels, turn by turn, every one a playable call.
+> **Want to see how she is tested at scale?** A probe harness drives synthetic calls, the owner's clone-voice caller on the hard 8 kHz line, and a 61-case suite grades each one by code before a model gets a vote. **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** opens ten of those cases turn by turn: a real production miss replayed and fixed, redaction machine-verified, every panel a routing decision under test.
 
 ## Hear her work
 
-Nine real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Press play. This is what she does for the person who calls; the engineering behind each one is dissected on the [technical receipts page](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
+Five real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Each one takes on a part of a real conversation that voice AI still gets wrong in 2026, the failures everyone has hit: the assistant that talks over you, the reminder that never fires, the confident wrong answer. Press play.
 
-### Stays on top of your day
-
-**Sweeps what actually needs you** across email, iMessage, and WhatsApp, and names the quiet channel instead of skipping it (real names and vendors silenced here).
-
-https://github.com/user-attachments/assets/cc7a5256-c94f-4e22-b056-d48f35b1bfa2
-
-**Reads back your week** from the calendar, with days and times (the private event details are bleeped for this demo).
-
-https://github.com/user-attachments/assets/34460eaf-b04d-4cef-8d1c-86a8c5ca5243
-
-**Wakes you with a real call**, schedules it on the spot and confirms the time back to you.
-
-https://github.com/user-attachments/assets/6f02c2ae-c745-44fd-acef-be45504b9937
-
-### Answers on the spot
-
-**Splits the check** with tip, out loud, in one turn.
-
-https://github.com/user-attachments/assets/2e73368b-c72b-4208-b35a-b431cbee9124
-
-**Gives you the weekend weather**, real forecast, spoken like a person.
-
-https://github.com/user-attachments/assets/c29517ee-8d63-4a74-b016-211b7366d523
-
-**Tells you how far and how to get there**, drive, scooter, and walk times in one answer.
-
-https://github.com/user-attachments/assets/2feb0db4-ba98-4951-ac1c-ef750d15b6fe
-
-### Keeps you company
-
-**Tells a joke, and keeps the line open**; a "thanks" never hangs up, only a real close does.
+**Knowing when you are actually done.** The hardest moment on a live call is a silence: has the caller finished, and have you. Assistants barge in, or will not let go, and a plain "thanks" ends the call when it should not. Here she tells a joke, takes the "thanks" without hanging up, and closes only on real words of leaving.
 
 https://github.com/user-attachments/assets/50dba324-41fc-42a6-88ca-fad7ec0f1060
 
-**Checks in warmly**, no tool, no script, just a person on the line.
+**Everything that actually needs you, across every app.** Nobody's messages live in one place, so nothing triages them together. She sweeps email, iMessage, and WhatsApp at once, tells you what matters, and names the quiet channel instead of skipping it (real names and vendors silenced here).
+
+https://github.com/user-attachments/assets/cc7a5256-c94f-4e22-b056-d48f35b1bfa2
+
+**A reminder that actually happens.** Assistants say yes and forget; the callback never comes. She schedules a real wake-up call on the spot and confirms the time back to you, and the suite checks that an actual job landed, not just that she agreed to it.
+
+https://github.com/user-attachments/assets/6f02c2ae-c745-44fd-acef-be45504b9937
+
+**A real answer, not a confident guess.** The failure that quietly erodes trust is the fluent wrong fact. Ask her the weekend weather and she reaches a live source and speaks the real forecast, instead of inventing one that sounds right.
+
+https://github.com/user-attachments/assets/c29517ee-8d63-4a74-b016-211b7366d523
+
+**Presence, when that is the whole point.** Loneliness is the problem underneath a lot of calls, and scripted warmth is the industry's tell. No tool and no script here, just someone on the line who stays with it.
 
 https://github.com/user-attachments/assets/ee9db041-a533-4478-8ab6-6c00bc1bd32c
-
-**Tells you what she can do**, in her own words, when you ask.
-
-https://github.com/user-attachments/assets/782cedd8-035f-41d3-9866-64801d0bc7bf
 
 **AJ is a phone-native voice companion.** She lives on a real phone number, answers when called, rings back when scheduled, checks a calendar and an inbox, tells jokes she fetched rather than composed, and hangs up only on plain words of leaving. This repo is her skeleton: the agent configuration, the probe harness that talks to her like a person, and the eval suite that decides, with code first and models last, whether she is actually good.
 
@@ -268,7 +246,7 @@ Setting her up from scratch: create an agents-platform agent in ElevenLabs, past
 
 ## Read next
 
-- **[Call receipts](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)**, the debugging in the open: ten real calls kept as turn-by-turn players, a production miss replayed and fixed, redaction machine-verified
+- **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)**, ten harness cases opened turn by turn: a production miss replayed and fixed, redaction machine-verified, each panel a routing decision under test
 - **[docs/architecture.html](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/architecture.html)**, the interactive stack diagram; every row carries the doctrine behind it
 - **`agent/system-prompt.template.txt`**, the rulebook itself; the sections on acknowledgements, jokes, and call-ending are where most of the failures lived
 - **`evals/cases.py`**, read the comments top to bottom and you have the project's honest history
