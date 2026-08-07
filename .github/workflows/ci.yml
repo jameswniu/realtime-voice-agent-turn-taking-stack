@@ -1,0 +1,33 @@
+name: gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies (if any are declared)
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # The suite's free path: parses every case, prints the roster and the
+      # cost estimate, makes no network calls and needs no keys.
+      - name: Suite dry run
+        run: python3 evals/suite.py --dry-run
+
+      # Import smoke: every evals module must load cleanly with stdlib only.
+      # A module that cannot import cannot grade, so this catches breakage
+      # before any credit is spent on a live probe.
+      - name: Evals import smoke
+        run: |
+          python3 -c "import sys; sys.path.insert(0, 'evals'); import cases, grade, judge, metrics, sync, suite; print('evals modules import clean')"
