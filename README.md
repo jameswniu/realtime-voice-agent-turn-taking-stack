@@ -26,43 +26,43 @@ Nine real phone calls, placed from the owner's own number in his cloned voice, h
 
 **Sweeps what actually needs you** across email, iMessage, and WhatsApp, and names the quiet channel instead of skipping it (real names and vendors silenced here).
 
-https://github.com/user-attachments/assets/07681bfd-2079-4708-a701-68688abff648
+https://github.com/user-attachments/assets/d6b95eb2-2e1b-47a8-9abb-020832cf4b89
 
 **Reads back your week** from the calendar, with days and times (the private event details are bleeped for this demo).
 
-https://github.com/user-attachments/assets/3a04da02-fb20-4ae0-8bc9-876309527429
+https://github.com/user-attachments/assets/41aa61c5-a319-43d8-919a-2a65911b7150
 
 **Wakes you with a real call**, schedules it on the spot and confirms the time back to you.
 
-https://github.com/user-attachments/assets/6ab5c8c7-219c-47db-9a5c-7c14580397fe
+https://github.com/user-attachments/assets/dac43edf-bf1e-410f-b218-689f8527dcad
 
 ### Answers on the spot
 
 **Splits the check** with tip, out loud, in one turn.
 
-https://github.com/user-attachments/assets/0c0a18a1-efe9-4f8c-b0bb-4ec0843d7628
+https://github.com/user-attachments/assets/4591104f-059f-483b-b30b-a8b4b002191e
 
 **Gives you the weekend weather**, real forecast, spoken like a person.
 
-https://github.com/user-attachments/assets/f8d265ed-66cb-41ac-8ca3-d8999bb56fbc
+https://github.com/user-attachments/assets/d8d77b17-2754-4c40-a21b-55a0d77266c3
 
 **Tells you how far and how to get there**, drive, scooter, and walk times in one answer.
 
-https://github.com/user-attachments/assets/68081aad-0eef-48b2-8d79-8b890d206278
+https://github.com/user-attachments/assets/18c0f4e3-b978-4fe9-b68a-f6dc2e2cceb7
 
 ### Keeps you company
 
 **Tells a joke, and keeps the line open**; a "thanks" never hangs up, only a real close does.
 
-https://github.com/user-attachments/assets/ddebf65c-b572-4989-99ef-43339641e0ba
+https://github.com/user-attachments/assets/8fc07ed7-37c1-4643-8b0b-c529ce06b8ce
 
 **Checks in warmly**, no tool, no script, just a person on the line.
 
-https://github.com/user-attachments/assets/3769a8cf-2bb2-4b6a-97df-311851323fd2
+https://github.com/user-attachments/assets/894ce382-30c9-413a-a0f5-bf0b32b05c3e
 
 **Tells you what she can do**, in her own words, when you ask.
 
-https://github.com/user-attachments/assets/bf70a24e-b0a4-43a2-959d-53359e19e2ff
+https://github.com/user-attachments/assets/90fe78e5-c21e-458c-a1b1-ad8863a51691
 
 **AJ is a phone-native voice companion.** She lives on a real phone number, answers when called, rings back when scheduled, checks a calendar and an inbox, tells jokes she fetched rather than composed, and hangs up only on plain words of leaving. This repo is her skeleton: the agent configuration, the probe harness that talks to her like a person, and the eval suite that decides, with code first and models last, whether she is actually good.
 
