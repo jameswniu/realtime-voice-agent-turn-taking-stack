@@ -26,9 +26,9 @@
 
 Five real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Each one takes on a part of a real conversation that voice AI still gets wrong in 2026, the failures everyone has hit: the assistant that talks over you, the reminder that never fires, the confident wrong answer. Press play.
 
-**Knowing when you are actually done.** The hardest moment on a live call is a silence: has the caller finished, and have you. Assistants barge in, or will not let go, and a plain "thanks" ends the call when it should not. Here she tells a joke, takes the "thanks" without hanging up, and closes only on real words of leaving.
+**Knowing when the call is actually over.** The hardest moment on a live line is a silence: has the caller finished, and should you let go. Assistants barge in, or cling and make you say goodbye twice. Here the caller signs off, "That's all. Thanks.", and she closes on it gracefully, "Glad we got that sorted, have a good one," and lets the call go in the same breath. No dead air, nobody left holding the line for a reply that is not coming.
 
-https://github.com/user-attachments/assets/50dba324-41fc-42a6-88ca-fad7ec0f1060
+https://github.com/user-attachments/assets/644da285-35a9-47af-bd91-db57501ca3a1
 
 **Everything that actually needs you, across every app.** Nobody's messages live in one place, so nothing triages them together. She sweeps email, iMessage, and WhatsApp at once, tells you what matters, and names the quiet channel instead of skipping it (real names and vendors silenced here).
 
