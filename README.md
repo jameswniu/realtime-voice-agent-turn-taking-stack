@@ -6,10 +6,11 @@
 
 <br><br>
 
+[![gate](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml/badge.svg?branch=production-full-v2)](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 [![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-release-gate)
 [![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#the-release-gate)
 [![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
-[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
+[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost-engineering)
 [![license](https://img.shields.io/badge/license-AGPL--3.0-C6A664?style=for-the-badge&labelColor=2B1B12)](LICENSE)
 
 <br>
@@ -19,6 +20,12 @@
 </div>
 
 This repository is the production skeleton of a real-time speech-to-speech agent that answers a public phone number: the agent configuration, the probe harness that drives it like a caller, the eval suite that gates every behavior change, and the observability that watches it after it ships. The reference deployment (a phone companion persona called AJ) runs on the ElevenLabs Agents platform behind two transports, Twilio PSTN at 8 kHz (the hard lane) and WebSocket at 16 kHz, with 16 webhook tools against one tool server. ASR is scribe_realtime, turn-taking is turn_v3 (eager, 3.0s), the agent LLM runs at temperature 0 with a 4.0s fallback cascade, and TTS is eleven_flash_v2.
+
+## The 90 second tour
+
+- **Hear it:** [a real call on the hard 8 kHz phone lane](#hear-it-work), the agent answering live.
+- **Read it:** [a production postmortem](#incidents), symptom to root cause to regression guard.
+- **Run it:** the release gate, free, in one command: `python3 evals/suite.py --dry-run`; [the same gate runs in CI](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml).
 
 ## Service level objectives
 
@@ -293,9 +300,9 @@ Reads the ElevenLabs conversation history and computes the two-layer dashboard (
 | voice probe cost | ~242 credits | 9.7 credits/sec × ~25s, from account billing |
 | credit price | $1.66 = 10,000 credits | the account's own top-up dialog |
 
-## Cost
+## Cost engineering
 
-A full 1x pass prints its own estimate before running: **~$1.97** at current definitions. The escalation shape is the economics: a flat 3x sweep costs ~35,000 credits (~$5.82); 1x with only the reds escalated costs ~14,600 (~$2.42) for the same per-verdict confidence. The cost constants in `suite.py` are measured, and the comment above them records the time a made-up constant under-reported by 13x, never restore one.
+A full 1x pass prints its own estimate before running: **~$1.97** at current definitions. The 1x-then-escalate design is a per-verdict cost decision: a probe that passes on its first run has bought its verdict, and only a red spends the extra runs it takes to confirm one. The escalation shape is the economics: a flat 3x sweep costs ~35,000 credits (~$5.82); 1x with only the reds escalated costs ~14,600 (~$2.42) for the same per-verdict confidence. The cost constants in `suite.py` are measured, and the comment above them records the time a made-up constant under-reported by 13x, never restore one.
 
 ## What ships here, and what does not
 
@@ -337,6 +344,14 @@ Setting the agent up from scratch: create an agents-platform agent in ElevenLabs
 - **[RUNBOOK.md](RUNBOOK.md)**, the operating runbook: symptoms and first checks, alerting cadences, and the restore path
 - **`agent/system-prompt.template.txt`**, the rulebook itself; the sections on acknowledgements, jokes, and call-ending are where most of the failures lived
 - **`evals/cases.py`**, read the comments top to bottom and you have the project's honest history
+
+## Limitations
+
+- The reference deployment is single tenant: one owner, one phone number.
+- ASR, TTS, and turn-taking run inside a managed vendor platform, so those layers are tuned by configuration rather than replaceable code.
+- The phone lane is bounded by 8 kHz telephony audio, so some acoustic confusions are physics; the design absorbs them with absolute rules instead of pretending better audio exists.
+- Full suite sweeps cost real credits, so they are budgeted runs rather than continuous.
+- The personalization layer (calendar, notes, contacts) ships as templates, because the reference data is one person's life.
 
 ## Roadmap
 
