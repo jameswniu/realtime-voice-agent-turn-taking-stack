@@ -27,26 +27,28 @@
 
 ## Service level objectives
 
-The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. Current values come from the latest production window: 39 calls over 3 days, with synthetic harness traffic excluded.
+The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The 30 day column covers 119 production calls (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the current window, 39 calls.
 
-| SLO | target | current | how measured |
-|---|---|---|---|
-| answer latency, p95 | under 12s | 10.8s (1.6s median) | from end of caller speech to the reply, computed by `evals/metrics.py` over the conversation history, production calls only |
-| tool latency, p95 | under 5s | 4.0s (1.6s median) | webhook round trip per lookup, across 81 lookups in the window |
-| tool failure rate | under 2% | 1% of 81 lookups | failed webhook lookups over total; the slowest tool is named rather than averaged away (check_notes, 7% fail) |
-| clean close | 100% | 100% | a call ends through end_call or the caller hanging up; abnormal socket drops, duration-cap hits, and dying of silence count as failures |
-| dead-air | under 0.5 per call | 0.4 per call | silences of 5s or more, counted per production call |
+| SLO | target | 30 days | last 3 days | how measured |
+|---|---|---|---|---|
+| answer latency, p95 | under 12s | 10.6s (2.1s median) | 10.8s (1.6s median) | from end of caller speech to the reply, computed by `evals/metrics.py` over the conversation history, production calls only |
+| tool latency, p95 | under 5s | 5.9s | 4.0s (1.6s median) | webhook round trip per lookup; 333 lookups in 30 days, 81 in the last 3 |
+| tool failure rate | under 2% | 3 of 333 (0.9%) | 1% of 81 | failed webhook lookups over total; the slowest tool is named rather than averaged away (check_notes) |
+| clean close | 100% | 100% | 100% | a call ends through end_call or the caller hanging up; abnormal socket drops, duration-cap hits, and dying of silence count as failures |
+| dead-air | under 0.5 per call | 1.1 per call | 0.4 per call | silences of 5s or more, counted per production call |
+
+Two rows breached over the month, tool latency p95 and dead-air, and the [incidents below](#incidents) are why: the slow consult tool and the harness bugs that hid it. The last 3 days are the fixes holding, not a lucky window.
 
 > [!TIP]
 > **Want to see how she is tested at scale?** A probe harness drives synthetic calls, the owner's clone-voice caller on the hard 8 kHz line, and a 61-case suite grades each one by code before a model gets a vote. **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** opens ten of those cases turn by turn: a real production miss replayed and fixed, redaction machine-verified, every panel a routing decision under test.
 
 ## Hear her work
 
-<sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, and the caller is a synthesized clone of the owner's. Neither is a recording of a person.</em></sub>
-
 ### Stays on top of your day
 
 **Sweeps what actually needs you** across email, iMessage, and WhatsApp, and names the quiet channel instead of skipping it (real names and vendors silenced here).
+
+<sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, and the caller is a synthesized clone of the owner's. Neither is a recording of a person.</em></sub>
 
 https://github.com/user-attachments/assets/5ea98a04-8e44-4fd6-a152-a91547968a4a
 
