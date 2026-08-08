@@ -32,7 +32,7 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 | SLO | target | lifetime | last 3 days | how measured |
 |---|---|---|---|---|
 | answer latency, p95 | under 12s | 10.6s (2.1s median) | 10.8s (1.6s median) | from end of caller speech to the reply, computed by `evals/metrics.py` over the conversation history, production calls only |
-| tool latency, p95 | under 5s | 5.9s | 4.0s (1.6s median) | webhook round trip per lookup; 333 lookups in 30 days, 81 in the last 3 |
+| tool latency, p95 | under 5s | 5.9s | 4.0s (1.6s median) | webhook round trip per lookup; 333 lookups lifetime, 81 in the last 3 days |
 | tool failure rate | under 2% | 3 of 333 (0.9%) | 1% of 81 | failed webhook lookups over total; the slowest tool is named rather than averaged away (check_notes) |
 | clean close | 100% | 100% | 100% | a call ends through end_call or the caller hanging up; abnormal socket drops, duration-cap hits, and dying of silence count as failures |
 | dead-air | under 0.5 per call | 1.1 per call | 0.4 per call | silences of 5s or more, counted per production call |
