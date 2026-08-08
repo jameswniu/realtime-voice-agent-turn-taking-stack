@@ -37,6 +37,9 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 | clean close | 100% | 100% | a call ends through end_call or the caller hanging up; abnormal socket drops, duration-cap hits, and dying of silence count as failures |
 | dead-air | under 0.5 per call | 0.4 per call | silences of 5s or more, counted per production call |
 
+> [!TIP]
+> **Want to see how she is tested at scale?** A probe harness drives synthetic calls, the owner's clone-voice caller on the hard 8 kHz line, and a 61-case suite grades each one by code before a model gets a vote. **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** opens ten of those cases turn by turn: a real production miss replayed and fixed, redaction machine-verified, every panel a routing decision under test.
+
 <img src="assets/band-stack.svg" alt="Back of house: one number, two transports, sixteen tools" width="100%">
 
 ## Architecture
