@@ -27,9 +27,9 @@
 
 ## Service level objectives
 
-The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The 30 day column covers 119 production calls (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the current window, 39 calls.
+The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The lifetime column covers all 119 production calls since the agent went live in mid July (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the dashboard's current rolling window, 39 calls.
 
-| SLO | target | 30 days | last 3 days | how measured |
+| SLO | target | lifetime | last 3 days | how measured |
 |---|---|---|---|---|
 | answer latency, p95 | under 12s | 10.6s (2.1s median) | 10.8s (1.6s median) | from end of caller speech to the reply, computed by `evals/metrics.py` over the conversation history, production calls only |
 | tool latency, p95 | under 5s | 5.9s | 4.0s (1.6s median) | webhook round trip per lookup; 333 lookups in 30 days, 81 in the last 3 |
@@ -37,7 +37,7 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 | clean close | 100% | 100% | 100% | a call ends through end_call or the caller hanging up; abnormal socket drops, duration-cap hits, and dying of silence count as failures |
 | dead-air | under 0.5 per call | 1.1 per call | 0.4 per call | silences of 5s or more, counted per production call |
 
-Two rows breached over the month, tool latency p95 and dead-air, and the [incidents below](#incidents) are why: the slow consult tool and the harness bugs that hid it. The last 3 days are the fixes holding, not a lucky window.
+Two rows breached over the lifetime window, tool latency p95 and dead-air, and the [incidents below](#incidents) are why: the slow consult tool and the harness bugs that hid it. The last 3 days are the fixes holding, not a lucky window.
 
 > [!TIP]
 > **Want to see how she is tested at scale?** A probe harness drives synthetic calls, the owner's clone-voice caller on the hard 8 kHz line, and a 61-case suite grades each one by code before a model gets a vote. **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** opens ten of those cases turn by turn: a real production miss replayed and fixed, redaction machine-verified, every panel a routing decision under test.
@@ -179,9 +179,9 @@ The slow consult tool, `check_notes`, measures 10-22s end to end and gets a defe
 
 ## Observability
 
-The suite gates changes; a live dashboard watches the shipped agent. Metrics, alerting, and model governance: every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself.
+The suite gates changes; a live dashboard watches the shipped agent. Metrics, alerting, and model governance: every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself. The panel below is a snapshot of the dashboard's rolling 3 day window; lifetime numbers live in the [SLO table](#service-level-objectives).
 
-<img src="assets/observability.svg?v=2" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
+<img src="assets/observability.svg?v=3" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
 
 | panel | what it watches | current reading |
 |---|---|---|

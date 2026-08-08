@@ -2,7 +2,7 @@
 <rect width="1040" height="668" rx="9" fill="url(#iv)"/><rect width="1040" height="668" rx="9" fill="none" stroke="#6B5340"/><rect x="0" y="0" width="7" height="668" rx="3.5" fill="url(#gold)"/>
 <text x="34" y="42" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16.1" letter-spacing="2" fill="#A98B4F" font-weight="700">FRONT OF HOUSE, MEASURED</text>
 <text x="34" y="78" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="28" fill="#2B1B12" font-weight="700">Every production call feeds three panels</text>
-<text x="1006" y="44" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" fill="#8A7666" text-anchor="end">39 calls / 3 days</text>
+<text x="1006" y="44" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" fill="#8A7666" text-anchor="end">rolling 3 day window · 39 calls</text>
 
 <!-- panel 1: responsiveness -->
 <g>
