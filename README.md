@@ -44,29 +44,29 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 <img src="assets/architecture.svg" alt="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" width="100%">
 
 ```mermaid
-%%{init: {'flowchart': {'curve': 'linear', 'useMaxWidth': false}, 'themeVariables': {'fontSize': '18px'}}}%%
+%%{init: {'flowchart': {'curve': 'linear', 'nodeSpacing': 30, 'rankSpacing': 34, 'padding': 8}, 'themeVariables': {'fontSize': '18px'}}}%%
 flowchart TD
-    PSTN["iPhone · Twilio PSTN · 8 kHz<br/>the hard lane"]
-    WS["browser widget · WebSocket · 16 kHz<br/>what the harness drives"]
+    PSTN["Twilio PSTN · 8 kHz · the hard lane"]
+    WS["WebSocket · 16 kHz · the harness lane"]
 
     subgraph AGENT["ElevenLabs Agents platform · the router, not the brain"]
         direction LR
-        ASR["ASR<br/>scribe_realtime"] --> TURN["turn_v3<br/>eager · 3.0s"] --> LLM["LLM<br/>temp 0 · cascade 4.0s"] --> TTS["TTS<br/>eleven_flash_v2"]
-        SYS["end_call · voicemail_detection<br/>the hang-up doctrine"]
+        ASR["ASR · scribe_realtime"] --> TURN["turn_v3 · eager 3.0s"] --> LLM["LLM · temp 0 · cascade 4.0s"] --> TTS["TTS · eleven_flash_v2"]
+        SYS["end_call · voicemail_detection"]
     end
 
     subgraph TOOLS["Tool server · an OpenClaw gateway"]
         direction LR
-        FAST["fast lane · 10 tools<br/>calendar · calls · music"]
-        SLOW["slow lane<br/>check_notes · 10-22s"]
+        FAST["fast lane · 10 tools"]
+        SLOW["slow lane · check_notes 10-22s"]
     end
 
     subgraph REF["The referee · every claim names its layer"]
         direction LR
-        HARN["harness<br/>text + voice probes"]
-        SUITE["suite<br/>61 cases · 1x then 3x"]
-        GJ["grade + judge<br/>code, then two probes"]
-        MET["metrics<br/>production only"]
+        HARN["harness · text + voice probes"]
+        SUITE["suite · 61 cases · 1x then 3x"]
+        GJ["grade + judge · code first"]
+        MET["metrics · production only"]
     end
 
     PSTN --> AGENT
