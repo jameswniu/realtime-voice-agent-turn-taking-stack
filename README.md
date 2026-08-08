@@ -27,7 +27,7 @@
 
 ## Service level objectives
 
-The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The lifetime column covers all 119 production calls since the agent went live in mid July (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the dashboard's current rolling window, 39 calls.
+The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The lifetime column covers all 119 production calls since the agent went live in mid July (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the dashboard's rolling window at capture, 39 calls (both columns captured 2026-08-07).
 
 | SLO | target | lifetime | last 3 days | how measured |
 |---|---|---|---|---|
@@ -179,9 +179,9 @@ The slow consult tool, `check_notes`, measures 10-22s end to end and gets a defe
 
 ## Observability
 
-The suite gates changes; a live dashboard watches the shipped agent. Metrics, alerting, and model governance: every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself. The panel below is a snapshot of the dashboard's rolling 3 day window; lifetime numbers live in the [SLO table](#service-level-objectives).
+The suite gates changes; a live dashboard watches the shipped agent. Metrics, alerting, and model governance: every production call feeds three panels, refreshed by cron with no human in the loop, and harness traffic is excluded so the instrument never grades itself. The panel below is a snapshot of the dashboard's rolling 3 day window, captured 2026-08-07; lifetime numbers live in the [SLO table](#service-level-objectives).
 
-<img src="assets/observability.svg?v=3" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
+<img src="assets/observability.svg?v=4" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
 
 | panel | what it watches | current reading |
 |---|---|---|
