@@ -6,10 +6,11 @@
 
 <br><br>
 
+[![gate](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml/badge.svg?branch=production-soft-v2)](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 [![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-release-gate)
 [![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#gradepy-tier-01)
 [![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
-[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost)
+[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost-engineering)
 [![license](https://img.shields.io/badge/license-AGPL--3.0-C6A664?style=for-the-badge&labelColor=2B1B12)](LICENSE)
 
 <br>
@@ -17,6 +18,12 @@
 <code>ring -> she picks up -> it is handled</code>
 
 </div>
+
+## The 90 second tour
+
+- [Hear her take a real call](#hear-her-work) on the hard 8 kHz phone lane: nine of them, press play
+- [Read a postmortem](#incidents): three production incidents, each fix held in place by a regression guard that replays the failure
+- Run the release gate free in one command: `python3 evals/suite.py --dry-run`, the same check [CI runs](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 
 ## Service level objectives
 
@@ -294,9 +301,9 @@ Reads the ElevenLabs conversation history and computes the two-layer dashboard (
 | voice probe cost | ~242 credits | 9.7 credits/sec × ~25s, from account billing |
 | credit price | $1.66 = 10,000 credits | the account's own top-up dialog |
 
-## Cost
+## Cost engineering
 
-A full 1x pass prints its own estimate before running: **~$1.97** at current definitions. The escalation shape is the economics: a flat 3x sweep costs ~35,000 credits (~$5.82); 1x with only the reds escalated costs ~14,600 (~$2.42) for the same per-verdict confidence. The cost constants in `suite.py` are measured, and the comment above them records the time a made-up constant under-reported by 13x, never restore one.
+The 1x-then-escalate design is a per-verdict cost decision: repeat spend goes only to probes whose verdict is in doubt, so confidence is bought exactly where it is needed instead of across the whole suite. A full 1x pass prints its own estimate before running: **~$1.97** at current definitions. The escalation shape is the economics: a flat 3x sweep costs ~35,000 credits (~$5.82); 1x with only the reds escalated costs ~14,600 (~$2.42) for the same per-verdict confidence. The cost constants in `suite.py` are measured, and the comment above them records the time a made-up constant under-reported by 13x, never restore one.
 
 ## What ships here, and what does not
 
@@ -338,6 +345,14 @@ Setting the agent up from scratch: create an agents-platform agent in ElevenLabs
 - **[docs/architecture.html](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/architecture.html)**, the interactive stack diagram; every row carries the doctrine behind it
 - **`agent/system-prompt.template.txt`**, the rulebook itself; the sections on acknowledgements, jokes, and call-ending are where most of the failures lived
 - **`evals/cases.py`**, read the comments top to bottom and you have the project's honest history
+
+## Limitations
+
+- **Single tenant.** The reference deployment serves one owner and one phone number.
+- **Managed vendor platform.** ASR, TTS, and turn-taking run inside a managed vendor platform, so those layers are tuned by configuration rather than replaceable code.
+- **8 kHz telephony.** The phone lane is bounded by 8 kHz telephony audio, so some acoustic confusions are physics; the design absorbs them with absolute rules instead of pretending better audio exists.
+- **Budgeted, not continuous.** Full suite sweeps cost real credits, so they are budgeted runs rather than continuous.
+- **Templates, not one person's data.** The personalization layer (calendar, notes, contacts) ships as templates because the reference data is one person's life.
 
 ## Roadmap
 
