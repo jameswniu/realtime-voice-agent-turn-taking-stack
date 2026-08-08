@@ -44,7 +44,7 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 <img src="assets/architecture.svg" alt="System map: two transports land in one ElevenLabs agent, sixteen webhook tools reach one server, and a chrome band of harness plus suite referees every claim" width="100%">
 
 ```mermaid
-%%{init: {'flowchart': {'curve': 'linear'}}}%%
+%%{init: {'flowchart': {'curve': 'linear', 'useMaxWidth': false}, 'themeVariables': {'fontSize': '18px'}}}%%
 flowchart TD
     PSTN["iPhone · Twilio PSTN · 8 kHz<br/>the hard lane"]
     WS["browser widget · WebSocket · 16 kHz<br/>what the harness drives"]
@@ -168,7 +168,7 @@ Three production incidents, kept as postmortems rather than buried. Each one cha
 
 ## Hear her work
 
-Nine real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Press play. This is what she does for the person who calls; the engineering behind each one is dissected on the [technical receipts page](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
+Nine real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Press play. This is what she does for the person who calls; the engineering behind each one is dissected under [synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
 
 <sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, not a recording of a person.</em></sub>
 
