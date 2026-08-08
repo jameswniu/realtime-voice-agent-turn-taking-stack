@@ -42,9 +42,7 @@ The production dashboard alarms on thresholds; the targets below are those alarm
 
 ## Hear her work
 
-Nine real phone calls, placed from the owner's own number in his cloned voice, her answering live on an 8 kHz line. Press play. This is what she does for the person who calls; the engineering behind each one is dissected under [synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html).
-
-<sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, not a recording of a person.</em></sub>
+<sub><em>AJ is a designed persona; her voice is a generated ElevenLabs voice, and the caller is a synthesized clone of the owner's. Neither is a recording of a person.</em></sub>
 
 ### Stays on top of your day
 
