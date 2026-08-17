@@ -17,7 +17,7 @@
 
 She answers a real phone number for a real customer, one number per agent, accounts kept apart. 119 production calls since mid July, each one billed. Two service targets were breached in that lifetime window; both hold in the [latest one](#service-level-objectives), and the [three postmortems](#incidents) are why.
 
-**The interesting part of a voice agent is not the prompt, it is the referee.** The prompt is one file. The machinery that catches the agent being wrong, mishearings, premature hangups, dead-end replies, tools that fired but did nothing, is nine files, and every one exists because a real call failed in a specific way.
+**The interesting part of a voice agent is not the prompt, it is the referee.** The prompt is one file. The machinery that catches the agent being wrong is nine: mishearings, premature hangups, dead-end replies, tools that fired but did nothing. Every one of the nine exists because a real call failed.
 
 | | |
 |---|---|
