@@ -11,9 +11,9 @@
 
 </div>
 
-| The business problem | The technical challenge | Who it is for |
+| The problem | The technical challenge | Who it is for |
 |:---|:---|:---|
-| A missed call is a lost customer, so the phone stays staffed. Voice agents demo well and lose callers, so nobody puts one on the line | Down a phone line, "next" and "thanks" are the same word. A lookup takes 22 seconds. And the test harness was grading itself | A customer's callers, on a real number. 119 billed calls, [nine you can hear](#hear-her-work) |
+| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch all of it was grading itself | Whoever answers that phone today. One customer live, one number per agent, [nine calls you can hear](#hear-her-work) |
 | **The flow** | **The benchmark** | **The difference** |
 | `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file. The referee that catches it being wrong is nine |
 

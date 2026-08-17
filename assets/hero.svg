@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img"
  aria-label="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number">
   <defs>
     <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1">
@@ -16,11 +16,10 @@
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="420" fill="url(#ivory)"/>
-  <rect x="14" y="14" width="1172" height="392" fill="none" stroke="#6B5340" stroke-width="1.4"/>
-  <rect x="20" y="20" width="1160" height="380" fill="none" stroke="#C9B69C" stroke-width="1"/>
+  <rect width="1200" height="460" fill="url(#ivory)"/>
+  <rect x="14" y="14" width="1172" height="432" fill="none" stroke="#6B5340" stroke-width="1.4"/>
+  <rect x="20" y="20" width="1160" height="420" fill="none" stroke="#C9B69C" stroke-width="1"/>
 
-  <!-- concierge bell, drawn -->
   <g transform="translate(600,74)">
     <circle cx="0" cy="-26" r="4.5" fill="url(#gold)"/>
     <rect x="-2" y="-24" width="4" height="7" fill="#B3945A"/>
@@ -30,43 +29,44 @@
   </g>
 
   <text x="600" y="132" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
-        font-size="17" fill="#8A7666" letter-spacing="2">realtime-voice-agent-turn-taking-stack</text>
+        font-size="19" fill="#8A7666" letter-spacing="2">realtime-voice-agent-turn-taking-stack</text>
 
-  <text x="600" y="186" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
-        font-size="44" font-weight="700" fill="#2B1B12" letter-spacing=".5">At your service, on the first ring.</text>
+  <text x="600" y="188" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+        font-size="46" font-weight="700" fill="#2B1B12" letter-spacing=".5">At your service, on the first ring.</text>
 
-  <text x="600" y="222" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
-        font-size="19" fill="#5C4A3D">A voice concierge on a real phone number, and the white-glove inspection that keeps her flawless.</text>
+  <text x="600" y="226" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+        font-size="21" fill="#5C4A3D">A voice concierge on a real phone number, and the white-glove inspection that keeps her flawless.</text>
 
-  <rect x="240" y="252" width="720" height="1.4" fill="url(#goldrule)"/>
+  <rect x="150" y="256" width="900" height="1.4" fill="url(#goldrule)"/>
 
-  <!-- service ledger -->
   <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">
-    <text x="330" y="296" font-size="30" font-weight="700" fill="#2B1B12">61/61</text>
-    <text x="330" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">SUITE CASES GREEN</text>
-    <text x="510" y="296" font-size="30" font-weight="700" fill="#2B1B12">2</text>
-    <text x="510" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">TRANSPORTS</text>
-    <text x="690" y="296" font-size="30" font-weight="700" fill="#2B1B12">16</text>
-    <text x="690" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">TOOLS ON CALL</text>
-    <text x="870" y="296" font-size="30" font-weight="700" fill="#2B1B12">24/7</text>
-    <text x="870" y="322" font-size="14" fill="#8A7666" letter-spacing="1.4">SHE PICKS UP</text>
+    <text x="195" y="306" font-size="38" font-weight="700" fill="#2B1B12">61/61</text>
+    <text x="195" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">SUITE GREEN</text>
+    <text x="465" y="306" font-size="38" font-weight="700" fill="#2B1B12">119</text>
+    <text x="465" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">PRODUCTION CALLS</text>
+    <text x="735" y="306" font-size="38" font-weight="700" fill="#2B1B12">3</text>
+    <text x="735" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">INCIDENTS GUARDED</text>
+    <text x="1005" y="306" font-size="38" font-weight="700" fill="#2B1B12">100%</text>
+    <text x="1005" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">CLEAN CLOSE</text>
   </g>
 
-  <!-- service rail -->
-  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">
-    <rect x="240" y="348" width="118" height="30" rx="15" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
-    <text x="299" y="368" text-anchor="middle" fill="#5C4A3D">greet</text>
-    <circle cx="372" cy="363" r="2" fill="#6B5340"/>
-    <rect x="386" y="348" width="118" height="30" rx="15" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
-    <text x="445" y="368" text-anchor="middle" fill="#5C4A3D">hear</text>
-    <circle cx="518" cy="363" r="2" fill="#6B5340"/>
-    <rect x="532" y="348" width="118" height="30" rx="15" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
-    <text x="591" y="368" text-anchor="middle" fill="#5C4A3D">fetch</text>
-    <circle cx="664" cy="363" r="2" fill="#6B5340"/>
-    <rect x="678" y="348" width="118" height="30" rx="15" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
-    <text x="737" y="368" text-anchor="middle" fill="#5C4A3D">speak</text>
-    <circle cx="810" cy="363" r="2" fill="#6B5340"/>
-    <rect x="824" y="348" width="136" height="30" rx="15" fill="url(#gold)"/>
-    <text x="892" y="368" text-anchor="middle" fill="#2B1B12" font-weight="700">inspected</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">
+    <rect x="240" y="360" width="118" height="32" rx="16" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
+    <text x="299" y="381" text-anchor="middle" fill="#5C4A3D">greet</text>
+    <circle cx="372" cy="376" r="2" fill="#6B5340"/>
+    <rect x="386" y="360" width="118" height="32" rx="16" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
+    <text x="445" y="381" text-anchor="middle" fill="#5C4A3D">hear</text>
+    <circle cx="518" cy="376" r="2" fill="#6B5340"/>
+    <rect x="532" y="360" width="118" height="32" rx="16" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
+    <text x="591" y="381" text-anchor="middle" fill="#5C4A3D">fetch</text>
+    <circle cx="664" cy="376" r="2" fill="#6B5340"/>
+    <rect x="678" y="360" width="118" height="32" rx="16" fill="none" stroke="#6B5340" stroke-opacity=".7"/>
+    <text x="737" y="381" text-anchor="middle" fill="#5C4A3D">speak</text>
+    <circle cx="810" cy="376" r="2" fill="#6B5340"/>
+    <rect x="824" y="360" width="136" height="32" rx="16" fill="url(#gold)"/>
+    <text x="892" y="381" text-anchor="middle" fill="#2B1B12" font-weight="700">inspected</text>
   </g>
+
+  <text x="600" y="422" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="16" fill="#6B5340">Sixty-one probes mined from real calls &#183; every fix replays its failure &#183; nothing ships the suite cannot prove</text>
 </svg>
