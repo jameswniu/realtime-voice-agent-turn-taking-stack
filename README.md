@@ -2,15 +2,11 @@
 
 <img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number" width="100%">
 
-<sub><em>A production voice agent stack behind a real phone number: eval gates, latency SLOs, pinned failover routing, live observability, and a personality worth calling.</em></sub>
+<sub><em>Voice agents hang up on a misheard word, talk over the caller, and go quiet while a tool runs. This one does not, and every fix has a receipt.</em></sub>
 
-<br><br>
+<br>
 
 [![gate](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
-[![suite](https://img.shields.io/badge/suite-61%2F61_green-A83E32?style=for-the-badge&labelColor=2B1B12)](#the-release-gate)
-[![graded by code](https://img.shields.io/badge/graded_by_code-~54_of_55-C6A664?style=for-the-badge&labelColor=2B1B12)](#gradepy-tier-01)
-[![judge](https://img.shields.io/badge/judge-structural_%2B_vibes-C6A664?style=for-the-badge&labelColor=2B1B12)](#tier-2-judgepy)
-[![probe](https://img.shields.io/badge/probe-192_credits_measured-C6A664?style=for-the-badge&labelColor=2B1B12)](#cost-engineering)
 [![license](https://img.shields.io/badge/license-AGPL--3.0-C6A664?style=for-the-badge&labelColor=2B1B12)](LICENSE)
 
 <br>
@@ -19,13 +15,23 @@
 
 </div>
 
-## The 90 second tour
+She answers a real phone number for a real customer, one number per agent, accounts kept apart. 119 production calls since mid July, each one billed. Two service targets were breached in that lifetime window; both hold in the [latest one](#service-level-objectives), and the [three postmortems](#incidents) are why.
 
-- [Hear her take a real call](#hear-her-work) on the hard 8 kHz phone lane: nine of them, press play
-- [Read a postmortem](#incidents): three production incidents, each fix held in place by a regression guard that replays the failure
-- Run the release gate free in one command: `python3 evals/suite.py --dry-run`, the same check [CI runs](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
+**The interesting part of a voice agent is not the prompt, it is the referee.** The prompt is one file. The machinery that catches the agent being wrong, mishearings, premature hangups, dead-end replies, tools that fired but did nothing, is nine files, and every one exists because a real call failed in a specific way.
+
+| | |
+|---|---|
+| **The agent** | `agent/` the config and the ~24k-char rulebook, temperature 0 |
+| **The harness** | `harness/` text probes for routing, voice probes for hearing |
+| **The referee** | `evals/` 61 cases mined from live calls, graded by code first |
+
+- [**Hear her take a real call**](#hear-her-work), nine of them on the hard 8 kHz phone lane, press play
+- [**Read a postmortem**](#incidents), three production incidents, each fix held by a guard that replays the failure
+- **Run the gate free**, `python3 evals/suite.py --dry-run`, the same check [CI runs](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 
 ## Service level objectives
+
+**Read the two right-hand columns as before and after.** Lifetime breached two targets, tool latency and dead-air; the recent window clears both. That gap is the postmortems below, doing their job.
 
 The production dashboard alarms on thresholds; the targets below are those alarm lines, stated as such rather than dressed up as aspirations. The lifetime column covers all 119 production calls since the agent went live in mid July (1,007 synthetic harness conversations excluded, so the instrument never grades itself); the last 3 days column is the dashboard's rolling window at capture, 39 calls (both columns captured 2026-08-07).
 
@@ -227,7 +233,7 @@ Behavior changes ship only through the suite. A change to the prompt, the config
 
 Three working principles, each earned by a specific failure:
 
-1. **The interesting part of a voice agent is not the prompt, it is the referee.** The prompt here is one file. The machinery that catches the agent being wrong, mishears, premature hangups, dead-end replies, tools that fired but did nothing, is nine files, and every one of them exists because a real call failed in a specific way.
+1. **The referee is the product** (the claim at the top of this page, and here is the arithmetic behind it). One prompt file against nine files of machinery: mishears, premature hangups, dead-end replies, tools that fired but did nothing. Every one of the nine traces to a specific call that failed.
 2. **A test can be wrong, and half of these were.** The probe comments keep the reversals on the record: R57 flipped twice before the transcript data settled it. When a green suite disagrees with a failing live call, the suite is what gets indicted.
 3. **Production numbers must exclude the instrument.** The metrics module filters to calls placed through Twilio from the owner's own number, because without that filter, ~99% of "call quality" was the harness grading itself.
 
@@ -351,7 +357,7 @@ Setting the agent up from scratch: create an agents-platform agent in ElevenLabs
 
 ## Limitations
 
-- **Single tenant.** The reference deployment serves one owner and one phone number.
+- **Single tenant per customer.** Each customer gets an isolated account and one number per agent. Multiple numbers per customer, split by department, are on the roadmap rather than shipped.
 - **Managed vendor platform.** ASR, TTS, and turn-taking run inside a managed vendor platform, so those layers are tuned by configuration rather than replaceable code.
 - **8 kHz telephony.** The phone lane is bounded by 8 kHz telephony audio, so some acoustic confusions are physics; the design absorbs them with absolute rules instead of pretending better audio exists.
 - **Budgeted, not continuous.** Full suite sweeps cost real credits, so they are budgeted runs rather than continuous.
