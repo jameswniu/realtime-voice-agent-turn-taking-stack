@@ -21,6 +21,9 @@
   .kick{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--goldk);
         font-weight:700; letter-spacing:2.5px; font-size:13px; margin-bottom:10px}
   .sub{color:var(--body); font-size:15px; margin-top:8px; line-height:1.5}
+  .lede{color:var(--ink); font-size:15px; line-height:1.55; margin:10px 0 4px; max-width:74ch}
+  .lede b{color:var(--goldk)}
+  p.who{color:var(--body); font-size:13px; line-height:1.5; margin:0 0 10px; max-width:74ch}
   .top a{color:var(--goldk); font-size:13px; text-decoration:none}
   .top a:hover{color:var(--rust)}
   .rule{height:1.4px; background:linear-gradient(90deg,transparent,var(--trim),transparent);
@@ -60,6 +63,8 @@
   <div class="top">
     <div class="kick">SYNTHETIC TESTING AT SCALE</div>
     <h1>Tested like production, on the hard lane</h1>
+    <p class="lede">A green test suite can hide a broken call. <b>These are the calls themselves</b>, turn by turn, on the 8 kHz phone lane where "next" and "thanks" sound the same.</p>
+    <p class="who">Real production audio from a real customer line, redacted, replayed against the fix that holds it.</p>
     <div class="sub">End-to-end evidence from the production test lane. The harness places real
     PSTN calls with the owner's verified caller ID and a synthesized clone of the owner's voice as
     the caller; a 61-case suite grades every one by code before a model gets a vote, 1x with reds

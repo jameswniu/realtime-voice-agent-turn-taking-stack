@@ -21,6 +21,9 @@
      background:linear-gradient(90deg,var(--pale),var(--ink) 55%,var(--bright));
      -webkit-background-clip:text; background-clip:text; color:transparent}
   .sub{color:var(--mut); font-size:14px; margin:8px 0 6px}
+  .lede{color:var(--ink); font-size:15px; line-height:1.55; margin:10px 0 4px; max-width:74ch}
+  .lede b{color:var(--pale)}
+  .who{color:var(--mut); font-size:13px; line-height:1.5; margin:0 0 10px; max-width:74ch}
   .top{border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:26px}
   .top a{color:var(--pale); text-decoration:none; font-size:13px}
   .top a:hover{color:var(--bright)}
@@ -58,6 +61,8 @@
 <div class="wrap">
   <div class="top">
     <h1>realtime-voice-agent-turn-taking-stack</h1>
+    <p class="lede">Voice agents hang up on a misheard word, talk over the caller, and go quiet while a tool runs. <b>The fix is not a better prompt, it is a referee.</b> Every row below is a decision that a real call forced.</p>
+    <p class="who">She answers a real phone number for a real customer. 119 production calls since mid July, each one billed.</p>
     <div class="sub">the stack, end to end, hover anything; click to pin its note</div>
     <a href="https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack">← back to the repo</a>
   </div>
