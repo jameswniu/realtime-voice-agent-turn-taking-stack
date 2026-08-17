@@ -2,7 +2,7 @@
 
 <img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number" width="100%">
 
-<sub><em>Voice agents hang up on a misheard word, talk over the caller, and go quiet while a tool runs. This one does not, and every fix has a receipt.</em></sub>
+<sub><em>Businesses keep a person on the phone because a voice agent cannot be trusted with a real customer. This one holds a real line, and every fix has a receipt.</em></sub>
 
 <br>
 
@@ -11,11 +11,11 @@
 
 </div>
 
-| The problem | Who it is for | The proof |
+| The business problem | The technical challenge | Who it is for |
 |:---|:---|:---|
-| A misheard "thanks" ends the call | A customer's callers, on a real phone number | 119 billed calls, [nine you can hear](#hear-her-work) |
+| A missed call is a lost customer, so the phone stays staffed. Voice agents demo well and lose callers, so nobody puts one on the line | Down a phone line, "next" and "thanks" are the same word. A lookup takes 22 seconds. And the test harness was grading itself | A customer's callers, on a real number. 119 billed calls, [nine you can hear](#hear-her-work) |
 | **The flow** | **The benchmark** | **The difference** |
-| `agent/` speaks, `harness/` calls it, `evals/` judges it | Two SLOs breached, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file, the referee is nine |
+| `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file. The referee that catches it being wrong is nine |
 
 - [**Hear a real call**](#hear-her-work), nine of them on the 8 kHz phone lane, press play
 - [**Read a postmortem**](#incidents), three production failures, each fix held by a guard
