@@ -11,14 +11,11 @@
 
 </div>
 
-|  |  |
-|---|---|
-| **The problem** | A misheard "thanks" ends the call |
-| **Who it is for** | A customer's callers, on a real phone number |
-| **The proof** | 119 billed calls. [Nine you can listen to](#hear-her-work) |
-| **The flow** | `agent/` speaks &middot; `harness/` calls it &middot; `evals/` judges it |
-| **The benchmark** | Two SLOs breached, [both fixed](#service-level-objectives), 61/61 green |
-| **The difference** | The prompt is one file. The referee is nine |
+| The problem | Who it is for | The proof |
+|:---|:---|:---|
+| A misheard "thanks" ends the call | A customer's callers, on a real phone number | 119 billed calls, [nine you can hear](#hear-her-work) |
+| **The flow** | **The benchmark** | **The difference** |
+| `agent/` speaks, `harness/` calls it, `evals/` judges it | Two SLOs breached, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file, the referee is nine |
 
 - [**Hear a real call**](#hear-her-work), nine of them on the 8 kHz phone lane, press play
 - [**Read a postmortem**](#incidents), three production failures, each fix held by a guard
