@@ -359,6 +359,7 @@ The suite runs identically against any agent carrying the same tool names.
 
 ## Roadmap
 
+- Per-department numbers inside one customer, so a finance line and a security line answer from separate rulebooks under separate auth. One number per agent already keeps a wrong answer inside one team; splitting further is what keeps each rulebook small enough to stay testable, since a single agent holding every department's rules is a prompt no suite can cover
 - A scripted PSTN probe lane: real 8 kHz calls are already placed and [kept as receipts](evals/transcripts/2026-08-05-pstn-important-comms.md); the missing piece is packaging that flow as a harness script
 - A fixture-capture helper, so multi-turn cases replay recorded tool turns instead of reconstructions
 - A minimal reference tool server, so the webhook side runs without an OpenClaw install
