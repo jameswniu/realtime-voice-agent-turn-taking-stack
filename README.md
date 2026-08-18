@@ -17,7 +17,7 @@
 
 | The problem | The technical challenge | Who it is for |
 |:---|:---|:---|
-| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch all of it was grading itself | Whoever answers that phone today. One customer live, one number per agent, [nine calls you can hear](#hear-her-work) |
+| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch all of it was grading itself | Whoever used to do it by hand. One customer live, one number per agent, and [what changed for them](#who-calls-and-what-changed-for-them) |
 | **The flow** | **The benchmark** | **The difference** |
 | `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file. The referee that catches it being wrong is nine |
 
@@ -25,9 +25,34 @@
 - [**Read a postmortem**](#incidents), three production failures, each fix held by a guard
 - **Run the gate free**, `python3 evals/suite.py --dry-run`, the same check [CI runs](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 
-She answers a real phone number for a real customer, one number per agent, accounts kept apart.
-
 **The interesting part is not the prompt, it is the referee.** Each of those nine files exists because a real call failed.
+
+## Who calls, and what changed for them
+
+One customer today, on their own number, with accounts kept apart. 119 billed calls since mid July. The caller is whoever used to do the left column:
+
+| before | after |
+|---|---|
+| three apps open to find what actually needed a reply | one question, and the sweep names the quiet channel too |
+| the calendar checked on a laptop | the week read back, days and times, out loud |
+| an alarm set the night before, and hope | a real call at the hour asked for, confirmed on the spot |
+| pulling over to check how long the drive takes | asked and answered while still driving |
+| a tab open for the forecast | the weekend, spoken like a person |
+
+Every row on the right is a call you can [listen to below](#hear-her-work).
+
+## What holds when nobody is watching
+
+The author is asleep and the caller has not called. That is the normal state, and it is the state the system has to be right in.
+
+| runs unattended | cadence | what it catches |
+|---|---|---|
+| bridge watchdog | every 30 minutes | the line has stopped answering |
+| metrics sweep | every 6 hours | latency, dead-air, and failure-rate drift |
+| model watch | daily | credit burn, models billed outside the allowlist, goodbyes that did not hang up |
+| release gate | every push | a change the 61-case suite cannot pass |
+
+**Alerts page loudly, and silence is never treated as evidence.** 119 calls, every one of them closed cleanly, and the operating notes live in [RUNBOOK.md](RUNBOOK.md): symptom, first check, fix, and the restore path. The point of that file is that the next person does not have to ask me.
 
 ## Service level objectives
 
@@ -200,7 +225,7 @@ The slow consult tool, `check_notes`, gets a deferral protocol rather than a tim
 | conversation + usage | friction (the caller correcting the agent), interruptions, turns per call, call length, tool mix, volume | 0% friction, 0.5 interruptions/call, 9.1 turns, 43s avg, 39 calls/3 days |
 | model governance | fallback order pinned, how often the backup brain fired, models billed outside the allowlist, credit burn vs baseline | backup fired 17% of convs, rogue models none, burn 1.82x flagged |
 
-Three watchdogs keep it honest unattended: a bridge watchdog every 30 minutes, a metrics sweep every 6 hours, and a daily model watch. The model watch checks credit burn, every billed model against the allowlist, and goodbyes that did not hang up. **Alerts page loudly; silence is never treated as evidence.** Snapshot is the rolling 3-day window at 2026-08-07; operations live in [RUNBOOK.md](RUNBOOK.md).
+The three cron watchdogs that keep this honest while nobody is looking are listed under [what holds when nobody is watching](#what-holds-when-nobody-is-watching). Snapshot is the rolling 3-day window at 2026-08-07; operations live in [RUNBOOK.md](RUNBOOK.md).
 
 ## Incidents
 
