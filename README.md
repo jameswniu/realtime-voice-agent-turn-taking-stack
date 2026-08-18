@@ -2,10 +2,6 @@
 
 <img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number" width="100%">
 
-<sub><em>Businesses keep a person on the phone because a voice agent cannot be trusted with a real customer. This one holds a real line, and every fix has a receipt.</em></sub>
-
-<br>
-
 [![gate](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jameswniu/realtime-voice-agent-turn-taking-stack/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-AGPL--3.0-C6A664?style=for-the-badge&labelColor=2B1B12)](LICENSE)
 
