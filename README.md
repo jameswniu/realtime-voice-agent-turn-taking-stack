@@ -135,7 +135,16 @@ flowchart TD
     style REF fill:#F7EFDD,stroke:#A98B4F,color:#5C4A3D
 ```
 
-**Two transports, and the difference between them is the whole testing story.** WebSocket is crisp 16 kHz and drivable from code. PSTN is 8 kHz telephony, where "next" and "thanks" become the same word. Cheap layers come back green while the real call fails, so every claim on this page names the layer it was proven on.
+**Two transports, and the difference between them is the whole testing story.**
+
+| | WebSocket | Twilio PSTN |
+|---|---|---|
+| audio | 16 kHz, crisp | 8 kHz, telephony |
+| cost per run | cheap | a real billed call |
+| what it hides | every acoustic failure | nothing |
+| the tell | "next" and "thanks" stay distinct | "next" and "thanks" collide |
+
+Cheap layers come back green while the real call fails, so every claim on this page names the layer it was proven on.
 
 The agent is a router, not a brain: turn-taking, tool choice, and personality at temperature 0. Real knowledge goes through `check_notes`, a consult brain measured at 10-22s end to end. The entire deferral apparatus, holding lines and grace windows and never asking the caller to repeat, exists because of that latency.
 
@@ -164,10 +173,12 @@ One suite definition, two runners. `suite.py` runs locally against the live agen
 
 Routing across models is cost and latency aware, with governance wrapped around it:
 
-- **Pinned failover order.** The agent LLM runs a 4.0s fallback cascade, pinned rather than vendor default. Which model takes the turn when the primary stalls is a deliberate decision.
-- **Failover is a live path, not a config line.** The backup brain fired in 11 of 64 conversations (17%), so its behavior is known rather than assumed.
-- **An allowlist on billing.** Every billed model is checked against an allowlist. Rogue models in the current window: none.
-- **Burn tracked against a pinned baseline.** Credit burn reads 1.82x and is flagged on the dashboard. Cost drift pages; it does not accumulate quietly.
+| control | what it does | current reading |
+|---|---|---|
+| pinned failover order | a 4.0s fallback cascade, pinned rather than vendor default, so which model takes a stalled turn is a deliberate decision | pinned |
+| failover exercised | the backup brain is a live path, not a config line, so its behavior is known rather than assumed | fired in 11 of 64 conversations, 17% |
+| allowlist on billing | every billed model is checked against an allowlist | rogue models: none |
+| burn vs baseline | credit burn tracked against a pinned baseline, so cost drift pages instead of accumulating quietly | 1.82x, flagged |
 
 The slow consult tool, `check_notes`, gets a deferral protocol rather than a timeout: holding lines and grace windows sized to measured latency, so a slow answer arrives late instead of never.
 
@@ -227,15 +238,31 @@ The gate reaches the real lane. End-to-end tests are real PSTN calls, placed by 
 
 ### The harness
 
-**`talk-to-her.js`** opens a real conversation over the text WebSocket: real agent, real tools, no audio. Its one hard-earned rule: *a turn is over when the answer has landed, not when a clock says so.* The first version advanced on a blind 14-second timer. That made every latency read identical and truncated slow tools *unevenly*, biasing any A/B toward whatever it measured.
+| | `talk-to-her.js` | `talk-to-her-voice.js` |
+|---|---|---|
+| drives | text WebSocket: real agent, real tools, no audio | real TTS to ASR to VAD, streamed at speaking pace |
+| catches | routing, tool choice, deferral | mishearings, turn-taking, barge-in |
+| cannot catch | anything acoustic, structurally | it is the expensive one, so it runs less often |
+| measures latency from | end of caller text | end of speech, the way a human hears it |
+| prints | what the agent did | what ASR actually heard, beside what was said |
 
-**`talk-to-her-voice.js`** speaks. Each phrase renders to PCM and streams at real-time pace as microphone frames, with continuous silence between utterances so server-side VAD sees a live mic. It prints what ASR *actually heard* beside what was said, and measures latency from end-of-speech, the way a human experiences it. The text harness structurally cannot catch a mishearing, and that is the class of bug that keeps surfacing on live calls.
+**A turn is over when the answer has landed, not when a clock says so.** The first version advanced on a blind 14-second timer. That made every latency read identical and truncated slow tools *unevenly*, biasing any A/B toward whatever it measured.
 
 Both share the deferral rule: a holding line with no tool landed extends the grace window. The consult tool measured 22-23s on the voice path, so a harness giving up at 20 reports an instrument failure as an agent failure.
 
 <img src="assets/band-suite.svg" alt="The white-glove pass: sixty-one cases, one phone number" width="100%">
 
 ### The suite, stage by stage
+
+| file | job | how it decides |
+|---|---|---|
+| `cases.py` | 61 probes, mined verbatim from live calls | a hand-set expected tool per probe |
+| `suite.py` | the runner | checkpointed, majority across repeats, 1x then escalate |
+| `grade.py` | tier 0/1 | pure code, no model, decides ~54 of 55 |
+| `judge.py` | tier 2 | two probes asking different questions, on different model families |
+| `metrics.py` | the production dashboard | reads live calls, filters the harness out |
+
+Every row below exists because of a specific failure.
 
 #### cases.py, 61 probes, mined not invented
 
