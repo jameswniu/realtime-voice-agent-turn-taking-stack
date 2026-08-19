@@ -60,20 +60,11 @@ One customer today, on their own number, with accounts kept apart, billing real 
 
 Most of the right column is a call you can [listen to below](#hear-her-work); the rest is a tool in the [config](#the-code-in-three-pieces).
 
-## What holds when nobody is watching
-
-The author is asleep and the caller has not called. That is the normal state, and it is the state the system has to be right in.
-
-| Runs unattended | Cadence | What it catches |
-|---|---|---|
-| bridge watchdog | every 30 minutes | the line has stopped answering |
-| metrics sweep | every 6 hours | latency, dead-air, and failure-rate drift |
-| model watch | daily | credit burn, models billed outside the allowlist, goodbyes that did not hang up |
-| release gate | every push | a change the 61-case suite cannot pass |
-
-**Alerts page loudly, and silence is never treated as evidence.** Every call so far has closed cleanly, and the operating notes live in [RUNBOOK.md](RUNBOOK.md): symptom, first check, fix, and the restore path. The point of that file is that the next person does not have to ask me.
-
 ## Service level objectives
+
+**A metric is a number. An objective is a number with a promise attached.** That is the whole difference, and it is why two cells below read as breached rather than merely reporting a value. A target nobody ever misses is not a target, it is decoration.
+
+Four layers, and this page keeps them separate on purpose: the **metric** is the left column, the **measurement** is `How measured`, the **objective** is `Target`, and the **defence** is the watchdogs below. Where a human watches it live is [the dashboard](#observability).
 
 **Read the last two columns as before and after.** Lifetime breached two targets, tool latency and dead-air. The recent window clears both, and the [postmortems](#incidents) are why.
 
@@ -89,6 +80,19 @@ These targets are the dashboard's alarm lines, not aspirations. Lifetime covers 
 
 > [!TIP]
 > **[Synthetic testing, at scale](https://jameswniu.github.io/realtime-voice-agent-turn-taking-stack/receipts.html)** opens ten cases turn by turn: a real production miss replayed and fixed, redaction machine-verified, every panel a routing decision under test.
+
+### What holds when nobody is watching
+
+The author is asleep and the caller has not called. That is the normal state, and it is the state the system has to be right in.
+
+| Runs unattended | Cadence | What it catches |
+|---|---|---|
+| bridge watchdog | every 30 minutes | the line has stopped answering |
+| metrics sweep | every 6 hours | latency, dead-air, and failure-rate drift |
+| model watch | daily | credit burn, models billed outside the allowlist, goodbyes that did not hang up |
+| release gate | every push | a change the 61-case suite cannot pass |
+
+**Alerts page loudly, and silence is never treated as evidence.** Every call so far has closed cleanly, and the operating notes live in [RUNBOOK.md](RUNBOOK.md): symptom, first check, fix, and the restore path. The point of that file is that the next person does not have to ask me.
 
 ## Hear her work
 
