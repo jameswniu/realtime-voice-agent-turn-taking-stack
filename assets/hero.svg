@@ -42,10 +42,10 @@
   <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" text-anchor="middle">
     <text x="195" y="306" font-size="38" font-weight="700" fill="#2B1B12">61/61</text>
     <text x="195" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">SUITE GREEN</text>
-    <text x="465" y="306" font-size="38" font-weight="700" fill="#2B1B12">119</text>
-    <text x="465" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">PRODUCTION CALLS</text>
-    <text x="735" y="306" font-size="38" font-weight="700" fill="#2B1B12">3</text>
-    <text x="735" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">INCIDENTS GUARDED</text>
+    <text x="465" y="306" font-size="38" font-weight="700" fill="#2B1B12">2.1s</text>
+    <text x="465" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">MEDIAN ANSWER</text>
+    <text x="735" y="306" font-size="38" font-weight="700" fill="#2B1B12">0.9%</text>
+    <text x="735" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">TOOL FAILURE</text>
     <text x="1005" y="306" font-size="38" font-weight="700" fill="#2B1B12">100%</text>
     <text x="1005" y="334" font-size="18" fill="#8A7666" letter-spacing="1.2">CLEAN CLOSE</text>
   </g>

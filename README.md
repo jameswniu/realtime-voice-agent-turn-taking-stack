@@ -29,7 +29,7 @@
 
 ## Who calls, and what changed for them
 
-One customer today, on their own number, with accounts kept apart. 119 billed calls since mid July. Every row below is read off a recording on this page: the right column is what she does, the left is what it replaced.
+One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Every row below is read off a recording on this page: the right column is what she does, the left is what it replaced.
 
 | before | after |
 |---|---|
@@ -52,7 +52,7 @@ The author is asleep and the caller has not called. That is the normal state, an
 | model watch | daily | credit burn, models billed outside the allowlist, goodbyes that did not hang up |
 | release gate | every push | a change the 61-case suite cannot pass |
 
-**Alerts page loudly, and silence is never treated as evidence.** 119 calls, every one of them closed cleanly, and the operating notes live in [RUNBOOK.md](RUNBOOK.md): symptom, first check, fix, and the restore path. The point of that file is that the next person does not have to ask me.
+**Alerts page loudly, and silence is never treated as evidence.** Every call so far has closed cleanly, and the operating notes live in [RUNBOOK.md](RUNBOOK.md): symptom, first check, fix, and the restore path. The point of that file is that the next person does not have to ask me.
 
 ## Service level objectives
 
