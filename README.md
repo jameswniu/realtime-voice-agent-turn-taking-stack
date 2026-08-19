@@ -27,6 +27,20 @@
 
 **The interesting part is not the prompt, it is the referee.** Each of those nine files exists because a real call failed.
 
+## The five hard problems in voice
+
+A voice agent is not a chat model with a microphone. Five things are genuinely unsolved. This stack answers three, and the honest status of the other two is in the right column.
+
+| | the problem | where this stack stands |
+|---|---|---|
+| 1 | **Turn-taking under interruption.** Knowing the caller stopped talking is the easy half. Holding a buffer when they change direction mid-sentence is not. | Partly. `turn_v3` eager at 3.0s, barge-ins counted at 0.5 per call, and deferral that extends its window instead of timing out. Direction-change mid-utterance is not handled. |
+| 2 | **Irreversibility against annoyance.** Every confirmation costs patience. Every one you skip risks an act you cannot take back. | Answered. Costs are asymmetric, so the rule is absolute: an acknowledgement never ends a call, and the goodbye rides inside `end_call` so saying it and doing it cannot come apart. [The postmortem](#the-thanks-hangup). |
+| 3 | **Persistent memory.** What the caller told you last week. | Not answered. `check_notes` retrieves within a call; nothing carries across them. |
+| 4 | **Personalization of tone.** Sounding like someone this particular caller wants to talk to. | Half. A fixed persona at temperature 0, plus a vibes probe asking whether a reply would annoy a real caller. That grades tone; it does not adapt it. |
+| 5 | **Two layers, one conversation.** The talking layer has to answer in under two seconds. The thinking layer takes as long as it takes. | Answered, and it is the shape of the whole system. The agent is a router at temperature 0; real knowledge goes to `check_notes`, measured at 10-22 seconds. |
+
+**One and five are the same problem seen twice.** The brain takes 22 seconds and no caller will wait that long in silence, so the entire deferral apparatus, the holding lines and the grace windows and the rule against ever asking someone to repeat themselves, exists to cover that gap. Close the latency and half the turn-taking difficulty closes with it.
+
 ## Who calls, and what changed for them
 
 One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Every row below is read off a recording or a shipped tool on this page: the right column is what she does, the left is what it replaced. Ordered by what matters most.
@@ -45,20 +59,6 @@ One customer today, on their own number, with accounts kept apart, billing real 
 | an alarm set the night before, and hope | the phone actually rings, at the hour asked for |
 
 Most of the right column is a call you can [listen to below](#hear-her-work); the rest is a tool in the [config](#the-code-in-three-pieces).
-
-## The five hard problems in voice
-
-A voice agent is not a chat model with a microphone. Five things are genuinely unsolved. This stack answers three, and the honest status of the other two is in the right column.
-
-| | the problem | where this stack stands |
-|---|---|---|
-| 1 | **Turn-taking under interruption.** Knowing the caller stopped talking is the easy half. Holding a buffer when they change direction mid-sentence is not. | Partly. `turn_v3` eager at 3.0s, barge-ins counted at 0.5 per call, and deferral that extends its window instead of timing out. Direction-change mid-utterance is not handled. |
-| 2 | **Irreversibility against annoyance.** Every confirmation costs patience. Every one you skip risks an act you cannot take back. | Answered. Costs are asymmetric, so the rule is absolute: an acknowledgement never ends a call, and the goodbye rides inside `end_call` so saying it and doing it cannot come apart. [The postmortem](#the-thanks-hangup). |
-| 3 | **Persistent memory.** What the caller told you last week. | Not answered. `check_notes` retrieves within a call; nothing carries across them. |
-| 4 | **Personalization of tone.** Sounding like someone this particular caller wants to talk to. | Half. A fixed persona at temperature 0, plus a vibes probe asking whether a reply would annoy a real caller. That grades tone; it does not adapt it. |
-| 5 | **Two layers, one conversation.** The talking layer has to answer in under two seconds. The thinking layer takes as long as it takes. | Answered, and it is the shape of the whole system. The agent is a router at temperature 0; real knowledge goes to `check_notes`, measured at 10-22 seconds. |
-
-**One and five are the same problem seen twice.** The brain takes 22 seconds and no caller will wait that long in silence, so the entire deferral apparatus, the holding lines and the grace windows and the rule against ever asking someone to repeat themselves, exists to cover that gap. Close the latency and half the turn-taking difficulty closes with it.
 
 ## What holds when nobody is watching
 
