@@ -43,20 +43,20 @@ A voice agent is not a chat model with a microphone. Five things are genuinely u
 
 ## Who calls, and what changed for them
 
-One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Every row below is read off a recording or a shipped tool on this page: the right column is what she does, the left is what it replaced. Ordered by what matters most.
+One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Read the rows as one person's day: the left is how it went before the line existed, the right is how it goes now. Ordered by what matters most.
 
-| before | after |
+| you, before | you, now |
 |---|---|
-| three apps open, hunting for what actually needed a reply | one question, and the sweep names the quiet channel too |
-| a laptop opened to see what the week looks like | the week read back, days and times, out loud |
-| pulling over to check how long the drive takes | asked and answered while still driving |
-| the calculator out at the table, working the tip twice | the check split with tip, in one turn, spoken |
-| a note typed with one thumb at a red light | said once, and filed by name without opening anything |
-| a tab opened for the forecast | the weekend, in a sentence, like a person |
-| a fourth app checked in case something landed there | Telegram swept with everything else, not separately |
-| a manual read to find out what the thing can even do | asked, and she answers in her own words |
-| the quiet left alone, or a joke hunted down on a screen | a joke told out loud, and the line stays open after it |
-| an alarm set the night before, and hope | the phone actually rings, at the hour asked for |
+| You opened three apps to find what actually needed a reply | You ask once, and she names the quiet channel too |
+| You opened a laptop to see what the week looks like | You hear the week back, days and times |
+| You pulled over to check how long the drive takes | You ask while you keep driving |
+| You did the tip twice on a calculator at the table | You hear the split, tip included, in one turn |
+| You typed a note with one thumb at a red light | You say it once and it is filed by name |
+| You opened a tab for the forecast | You get the weekend in a sentence |
+| You checked a fourth app in case something landed there | Telegram gets swept with everything else |
+| You read a manual to find out what it can even do | You ask, and she tells you in her own words |
+| You left the quiet alone, or hunted a joke on a screen | She tells you one, and the line stays open |
+| You set an alarm the night before, and hoped | The phone rings you, at the hour you asked |
 
 Most of the right column is a call you can [listen to below](#hear-her-work); the rest is a tool in the [config](#the-code-in-three-pieces).
 
