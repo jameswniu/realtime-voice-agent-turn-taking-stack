@@ -17,7 +17,7 @@
 
 | The problem | The technical challenge | Who it is for |
 |:---|:---|:---|
-| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch all of it was grading itself | Whoever used to do it by hand. One customer live, one number per agent, and [what changed for them](#who-calls-and-what-changed-for-them) |
+| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch it was grading itself. [All five](#the-five-hard-problems-in-voice) | Whoever used to do it by hand. One customer live, one number per agent, and [what changed for them](#who-calls-and-what-changed-for-them) |
 | **The flow** | **The benchmark** | **The difference** |
 | `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file. The referee that catches it being wrong is nine |
 
@@ -29,17 +29,36 @@
 
 ## Who calls, and what changed for them
 
-One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Every row below is read off a recording on this page: the right column is what she does, the left is what it replaced.
+One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Every row below is read off a recording or a shipped tool on this page: the right column is what she does, the left is what it replaced. Ordered by what matters most.
 
 | before | after |
 |---|---|
-| three apps open to find what actually needed a reply | one question, and the sweep names the quiet channel too |
-| the calendar checked on a laptop | the week read back, days and times, out loud |
-| an alarm set the night before, and hope | a real call at the hour asked for, confirmed on the spot |
+| three apps open, hunting for what actually needed a reply | one question, and the sweep names the quiet channel too |
+| a laptop opened to see what the week looks like | the week read back, days and times, out loud |
 | pulling over to check how long the drive takes | asked and answered while still driving |
-| a tab open for the forecast | the weekend, spoken like a person |
+| the calculator out at the table, working the tip twice | the check split with tip, in one turn, spoken |
+| a note typed with one thumb at a red light | said once, and filed by name without opening anything |
+| a tab opened for the forecast | the weekend, in a sentence, like a person |
+| a fourth app checked in case something landed there | Telegram swept with everything else, not separately |
+| a manual read to find out what the thing can even do | asked, and she answers in her own words |
+| the quiet left alone, or a joke hunted down on a screen | a joke told out loud, and the line stays open after it |
+| an alarm set the night before, and hope | the phone actually rings, at the hour asked for |
 
-Every row on the right is a call you can [listen to below](#hear-her-work).
+Most of the right column is a call you can [listen to below](#hear-her-work); the rest is a tool in the [config](#the-code-in-three-pieces).
+
+## The five hard problems in voice
+
+A voice agent is not a chat model with a microphone. Five things are genuinely unsolved. This stack answers three, and the honest status of the other two is in the right column.
+
+| | the problem | where this stack stands |
+|---|---|---|
+| 1 | **Turn-taking under interruption.** Knowing the caller stopped talking is the easy half. Holding a buffer when they change direction mid-sentence is not. | Partly. `turn_v3` eager at 3.0s, barge-ins counted at 0.5 per call, and deferral that extends its window instead of timing out. Direction-change mid-utterance is not handled. |
+| 2 | **Irreversibility against annoyance.** Every confirmation costs patience. Every one you skip risks an act you cannot take back. | Answered. Costs are asymmetric, so the rule is absolute: an acknowledgement never ends a call, and the goodbye rides inside `end_call` so saying it and doing it cannot come apart. [The postmortem](#the-thanks-hangup). |
+| 3 | **Persistent memory.** What the caller told you last week. | Not answered. `check_notes` retrieves within a call; nothing carries across them. |
+| 4 | **Personalization of tone.** Sounding like someone this particular caller wants to talk to. | Half. A fixed persona at temperature 0, plus a vibes probe asking whether a reply would annoy a real caller. That grades tone; it does not adapt it. |
+| 5 | **Two layers, one conversation.** The talking layer has to answer in under two seconds. The thinking layer takes as long as it takes. | Answered, and it is the shape of the whole system. The agent is a router at temperature 0; real knowledge goes to `check_notes`, measured at 10-22 seconds. |
+
+**One and five are the same problem seen twice.** The brain takes 22 seconds and no caller will wait that long in silence, so the entire deferral apparatus, the holding lines and the grace windows and the rule against ever asking someone to repeat themselves, exists to cover that gap. Close the latency and half the turn-taking difficulty closes with it.
 
 ## What holds when nobody is watching
 
