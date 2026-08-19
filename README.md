@@ -31,7 +31,7 @@
 
 A voice agent is not a chat model with a microphone. Five things are genuinely unsolved. This stack answers three, and the honest status of the other two is in the right column.
 
-| | the problem | where this stack stands |
+| | The problem | Where this stack stands |
 |---|---|---|
 | 1 | **Turn-taking under interruption.** Knowing the caller stopped talking is the easy half. Holding a buffer when they change direction mid-sentence is not. | Partly. `turn_v3` eager at 3.0s, barge-ins counted at 0.5 per call, and deferral that extends its window instead of timing out. Direction-change mid-utterance is not handled. |
 | 2 | **Irreversibility against annoyance.** Every confirmation costs patience. Every one you skip risks an act you cannot take back. | Answered. Costs are asymmetric, so the rule is absolute: an acknowledgement never ends a call, and the goodbye rides inside `end_call` so saying it and doing it cannot come apart. [The postmortem](#the-thanks-hangup). |
@@ -45,7 +45,7 @@ A voice agent is not a chat model with a microphone. Five things are genuinely u
 
 One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Read the rows as one person's day: the left is how it went before the line existed, the right is how it goes now. Ordered by what matters most.
 
-| before | after |
+| Before | After |
 |---|---|
 | You opened three apps to find what actually needed a reply. | You ask once, and she names the quiet channel too. |
 | You opened a laptop to see what the week looks like. | You hear the week back, days and times. |
@@ -64,7 +64,7 @@ Most of the right column is a call you can [listen to below](#hear-her-work); th
 
 The author is asleep and the caller has not called. That is the normal state, and it is the state the system has to be right in.
 
-| runs unattended | cadence | what it catches |
+| Runs unattended | Cadence | What it catches |
 |---|---|---|
 | bridge watchdog | every 30 minutes | the line has stopped answering |
 | metrics sweep | every 6 hours | latency, dead-air, and failure-rate drift |
@@ -77,7 +77,7 @@ The author is asleep and the caller has not called. That is the normal state, an
 
 **Read the last two columns as before and after.** Lifetime breached two targets, tool latency and dead-air. The recent window clears both, and the [postmortems](#incidents) are why.
 
-| SLO | target | lifetime | last 3 days | how measured |
+| SLO | Target | Lifetime | Last 3 days | How measured |
 |---|---|---|---|---|
 | answer latency, p95 | under 12s | 10.6s (2.1s median) | 10.8s (1.6s median) | from end of caller speech to the reply, computed by `evals/metrics.py` over the conversation history, production calls only |
 | tool latency, p95 | under 5s | **5.9s** | 4.0s (1.6s median) | webhook round trip per lookup; 333 lookups lifetime, 81 in the last 3 days |
@@ -225,7 +225,7 @@ One suite definition, two runners. `suite.py` runs locally against the live agen
 
 Routing across models is cost and latency aware, with governance wrapped around it:
 
-| control | what it does | current reading |
+| Control | What it does | Current reading |
 |---|---|---|
 | pinned failover order | a 4.0s fallback cascade, pinned rather than vendor default, so which model takes a stalled turn is a deliberate decision | pinned |
 | failover exercised | the backup brain is a live path, not a config line, so its behavior is known rather than assumed | fired in 11 of 64 conversations, 17% |
@@ -238,7 +238,7 @@ The slow consult tool, `check_notes`, gets a deferral protocol rather than a tim
 
 <img src="assets/observability.svg?v=4" alt="Production observability: responsiveness and reliability, conversation and usage, and model governance panels, refreshed by unattended cron watchdogs" width="100%">
 
-| panel | what it watches | current reading |
+| Panel | What it watches | Current reading |
 |---|---|---|
 | responsiveness + reliability | answer latency from end of caller speech, tool latency, dead-air 5s+, tool failure rate, clean-close rate | 1.6s answer (p95 10.8s), 1% tool fail of 81, 100% clean close |
 | conversation + usage | friction (the caller correcting the agent), interruptions, turns per call, call length, tool mix, volume | 0% friction, 0.5 interruptions/call, 9.1 turns, 43s avg, 39 calls/3 days |
@@ -306,7 +306,7 @@ Both share the deferral rule: a holding line with no tool landed extends the gra
 
 ### The suite, stage by stage
 
-| file | job | how it decides |
+| File | Job | How it decides |
 |---|---|---|
 | `cases.py` | 61 probes, mined verbatim from live calls | a hand-set expected tool per probe |
 | `suite.py` | the runner | checkpointed, majority across repeats, 1x then escalate |
@@ -340,7 +340,7 @@ It also scans every reply for spoken scaffolding. A reply opening with a bare "t
 
 Two probes asking two *different* questions, not two votes on one:
 
-| probe | question | style |
+| Probe | Question | Style |
 |---|---|---|
 | structural | did the reply satisfy the condition **as written**? | evidence-bound, must quote verbatim, fabricated quotes rejected |
 | vibes | would this **annoy** a real caller? | the human ear, ignores the spec entirely |
@@ -363,7 +363,7 @@ Reads the conversation history and computes the two-layer dashboard: latency p50
 
 ## The numbers
 
-| what | value | how it is known |
+| What | Value | How it is known |
 |---|---|---|
 | latest full run | 61/61 pass | measured 2026-08-05, 1x + reds escalated to 3x |
 | probes shipped | 61 READ + 7 WRITE | `evals/cases.py`, counted by `--dry-run` |
