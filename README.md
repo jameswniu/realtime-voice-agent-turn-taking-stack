@@ -45,18 +45,18 @@ A voice agent is not a chat model with a microphone. Five things are genuinely u
 
 One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Read the rows as one person's day: the left is how it went before the line existed, the right is how it goes now. Ordered by what matters most.
 
-| you, before | you, now |
+| before | after |
 |---|---|
-| You opened three apps to find what actually needed a reply | You ask once, and she names the quiet channel too |
-| You opened a laptop to see what the week looks like | You hear the week back, days and times |
-| You pulled over to check how long the drive takes | You ask while you keep driving |
-| You did the tip twice on a calculator at the table | You hear the split, tip included, in one turn |
-| You typed a note with one thumb at a red light | You say it once and it is filed by name |
-| You opened a tab for the forecast | You get the weekend in a sentence |
-| You checked a fourth app in case something landed there | Telegram gets swept with everything else |
-| You read a manual to find out what it can even do | You ask, and she tells you in her own words |
-| You left the quiet alone, or hunted a joke on a screen | She tells you one, and the line stays open |
-| You set an alarm the night before, and hoped | The phone rings you, at the hour you asked |
+| You opened three apps to find what actually needed a reply. | You ask once, and she names the quiet channel too. |
+| You opened a laptop to see what the week looks like. | You hear the week back, days and times. |
+| You pulled over to check how long the drive takes. | You ask while you keep driving. |
+| You did the tip twice on a calculator at the table. | You hear the split, tip included, in one turn. |
+| You typed a note with one thumb at a red light. | You say it once and it is filed by name. |
+| You opened a tab for the forecast. | You get the weekend in a sentence. |
+| You checked a fourth app in case something landed there. | Telegram gets swept with everything else. |
+| You read a manual to find out what it can even do. | You ask, and she tells you in her own words. |
+| You left the quiet alone, or hunted a joke on a screen. | She tells you one, and the line stays open. |
+| You set an alarm the night before, and hoped. | The phone rings you, at the hour you asked. |
 
 Most of the right column is a call you can [listen to below](#hear-her-work); the rest is a tool in the [config](#the-code-in-three-pieces).
 
