@@ -29,7 +29,7 @@
 
 ## Who calls, and what changed for them
 
-One customer today, on their own number, with accounts kept apart. 119 billed calls since mid July. The caller is whoever used to do the left column:
+One customer today, on their own number, with accounts kept apart. 119 billed calls since mid July. Every row below is read off a recording on this page: the right column is what she does, the left is what it replaced.
 
 | before | after |
 |---|---|
