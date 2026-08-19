@@ -15,11 +15,11 @@
 
 </div>
 
-| The problem | The technical challenge | Who it is for |
-|:---|:---|:---|
-| A caller said thanks. The agent heard goodbye and hung up on them. That happened on a real call here, and no demo would have caught it | 8 kHz audio makes those two words identical. A lookup takes 22 seconds of silence. And the harness meant to catch it was grading itself. [All five](#the-five-hard-problems-in-voice) | Whoever used to do it by hand. One customer live, one number per agent, and [what changed for them](#who-calls-and-what-changed-for-them) |
-| **The flow** | **The benchmark** | **The difference** |
-| `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green | The prompt is one file. The referee that catches it being wrong is nine |
+| Who it is for | The difference |
+|:---|:---|
+| Whoever used to do it by hand. One customer live, one number per agent, and [what changed for them](#who-calls-and-what-changed-for-them) | The prompt is one file. The referee that catches it being wrong is nine |
+| **The flow** | **The benchmark** |
+| `agent/` speaks, `harness/` calls it, `evals/` judges it. Nothing reaches a caller that the suite has not passed | Two SLOs breached over the lifetime, [both fixed](#service-level-objectives), 61/61 green |
 
 - [**Hear a real call**](#hear-her-work), nine of them on the 8 kHz phone lane, press play
 - [**Read a postmortem**](#incidents), three production failures, each fix held by a guard
