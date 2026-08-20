@@ -2,7 +2,7 @@
 
 <img src="assets/hero.svg" alt="realtime-voice-agent-turn-taking-stack: a white-glove voice concierge on a real phone number" width="100%">
 
-<sub><em>A production voice agent stack behind a real phone number: eval gates, latency SLOs, pinned failover routing, live observability, and a personality worth calling.</em></sub>
+<sub><em>Turn-taking, irreversibility, memory, tone, and the two-layer split. The five hard problems, and where this one actually stands on each.</em></sub>
 
 <br><br>
 
