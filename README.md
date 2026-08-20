@@ -434,7 +434,7 @@ The suite runs identically against any agent carrying the same tool names.
 - **Managed vendor platform.** ASR, TTS, and turn-taking run inside a managed platform, so those layers are tuned by configuration rather than replaceable code.
 - **8 kHz telephony.** The phone lane is bounded by 8 kHz audio, so some acoustic confusions are physics. The design absorbs them with absolute rules instead of pretending better audio exists.
 - **Budgeted, not continuous.** Full suite sweeps cost real credits, so they are budgeted runs.
-- **Templates, not one person's data.** The personalization layer ships as templates because the reference data is one person's life.
+- **Templates, not live customer data.** The personalization layer ships as templates because the reference set comes from a single account.
 
 ## Roadmap
 
