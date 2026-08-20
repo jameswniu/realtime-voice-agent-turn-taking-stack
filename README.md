@@ -43,7 +43,7 @@ A voice agent is not a chat model with a microphone. Five things are genuinely u
 
 ## Who calls, and what changed for them
 
-One customer today, on their own number, with accounts kept apart, billing real calls since mid July. Read the rows as one person's day: the left is how it went before the line existed, the right is how it goes now. Ordered by what matters most.
+One customer today, on their own number, with accounts kept apart, billing real calls since mid July. The left is how it went before the line existed, the right is how it goes now. Ordered by what matters most.
 
 | Before | After |
 |---|---|
